@@ -1,7 +1,9 @@
-package com.alcoholcountermeasuresystems.android.elan;
+package com.alcoholcountermeasuresystems.android.elan.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.alcoholcountermeasuresystems.android.elan.R;
 
 public class MainActivity extends AppCompatActivity {
 

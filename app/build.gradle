@@ -7,12 +7,14 @@ buildscript {
     dependencies {
         classpath 'me.tatarka:gradle-retrolambda:3.3.0'
         classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
 
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'android-apt'
 
 // Manifest version information
 def versionMajor = 0
@@ -82,6 +84,9 @@ dependencies {
     // Logging
     compile 'com.jakewharton.timber:timber:4.3.1'
 
+    // Java 8 Stream operators
+    compile 'com.annimon:stream:1.1.2'
+
     // Reactive extensions
     compile 'com.jakewharton.rxrelay:rxrelay:1.1.0'
     compile 'io.reactivex:rxandroid:1.2.1'
@@ -92,14 +97,23 @@ dependencies {
 
     // UI injection
     compile 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
 
     // Dependency injection
-    compile 'com.google.dagger:dagger:2.5'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.5'
+    compile 'com.google.dagger:dagger:2.7'
+    apt 'com.google.dagger:dagger-compiler:2.7'
     provided 'javax.annotation:jsr250-api:1.0'
 
-    // DB Debugging
+    // Debugging
     compile 'com.facebook.stetho:stetho:1.4.1'
-    compile 'com.uphyca:stetho_realm:0.9.0'
+    compile 'com.uphyca:stetho_realm:2.0.0'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4'
+
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
+        transitive = true;
+    }
+
 }
