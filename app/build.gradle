@@ -1,0 +1,105 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.3.0'
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+apply plugin: 'me.tatarka.retrolambda'
+
+// Manifest version information
+def versionMajor = 0
+def versionMinor = 1
+def versionPatch = 0
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+    defaultConfig {
+        applicationId "com.alcoholcountermeasuresystems.android.elan"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            resValue "string", "app_name", "ELAN Debug"
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", "ELAN"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+    maven {
+        url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+    }
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:support-annotations:25.0.0'
+
+    // Logging
+    compile 'com.jakewharton.timber:timber:4.3.1'
+
+    // Reactive extensions
+    compile 'com.jakewharton.rxrelay:rxrelay:1.1.0'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.2.0'
+
+    // Date-time functionality
+    compile 'net.danlew:android.joda:2.9.4.1'
+
+    // UI injection
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    // Dependency injection
+    compile 'com.google.dagger:dagger:2.5'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.5'
+    provided 'javax.annotation:jsr250-api:1.0'
+
+    // DB Debugging
+    compile 'com.facebook.stetho:stetho:1.4.1'
+    compile 'com.uphyca:stetho_realm:0.9.0'
+}
