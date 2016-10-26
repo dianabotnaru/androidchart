@@ -116,4 +116,6 @@ dependencies {
         transitive = true;
     }
 
+    //Fonts Setting Function
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 }
