@@ -13,6 +13,7 @@ import io.fabric.sdk.android.Fabric;
 import net.danlew.android.joda.JodaTimeAndroid;
 
 import timber.log.Timber;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class MainApplication extends Application {
 
@@ -33,6 +34,11 @@ public class MainApplication extends Application {
         } else {
             Fabric.with(this, new Crashlytics());
         }
+
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                        .setFontAttrId(R.attr.fontName)
+                        .build()
+        );
 
         JodaTimeAndroid.init(this);
         initAppComponent();

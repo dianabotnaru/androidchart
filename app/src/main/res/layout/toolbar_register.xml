@@ -1,0 +1,16 @@
+<android.support.v7.widget.Toolbar android:id="@+id/toolbar"
+    android:minHeight="?attr/actionBarSize"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/text_toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register.toolbar.title"
+        style="@style/RegisterToolbarTitle"
+        />
+
+</android.support.v7.widget.Toolbar>
