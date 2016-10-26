@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    style="@style/RegisterItemLayout"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/RegisterItemTitle"
+        android:id="@+id/textView" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:inputType="textPersonName"
+        style="@style/RegisterItemText"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editText" />
+</LinearLayout>

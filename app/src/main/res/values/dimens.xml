@@ -7,4 +7,12 @@
     <dimen name="medium_text_size">14sp</dimen>
     <dimen name="small_text_size">12sp</dimen>
 
+    <dimen name="blue_button_height">36dp</dimen>
+    <dimen name="blue_button_bottom_margin">30dp</dimen>
+
+    <dimen name="item_register_title_top_margin">20dp</dimen>
+    <dimen name="item_register_text_height">32dp</dimen>
+    <dimen name="item_register_text_top_margin">8dp</dimen>
+    <dimen name="item_register_text_left_padding">8dp</dimen>
+
 </resources>
