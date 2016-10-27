@@ -12,5 +12,12 @@
         android:text="@string/register.toolbar.title"
         style="@style/RegisterToolbarTitle"
         />
-
+    <ImageButton
+        android:id="@+id/button_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_cancel"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        />
 </android.support.v7.widget.Toolbar>

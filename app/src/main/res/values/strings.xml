@@ -12,5 +12,14 @@
     <string name="font.opensans.semibolditalic">fonts/OpenSans-SemiboldItalic.ttf</string>
 
     <string name="register.toolbar.title">REGISTER</string>
+    <string name="register.profile.firstname">First Name</string>
+    <string name="register.profile.lastname">Last Name</string>
+    <string name="register.profile.email">Email</string>
+    <string name="register.profile.language">Language</string>
+    <string name="register.profile.country">Country</string>
+    <string name="register.profile.serial">Serial #</string>
+    <string name="register.profile.purchased">Purchased</string>
+    <string name="register.profile.location">Location</string>
+    <string name="register.button.title">ACTIVATE</string>
 
 </resources>

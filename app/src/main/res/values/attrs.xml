@@ -3,4 +3,9 @@
     <declare-styleable name="Font">
         <attr name="fontName" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="Title">
+        <attr name="itemTitle" format="string"/>
+    </declare-styleable>
+
 </resources>

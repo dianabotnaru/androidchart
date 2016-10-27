@@ -27,7 +27,6 @@
     <style name="RegisterItemLayout" >
         <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
-        <item name="fontName">@string/font.opensans.bold</item>
     </style>
 
 </resources>
