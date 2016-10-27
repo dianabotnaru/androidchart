@@ -45,12 +45,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_language"
+                    app:setDropdown="true"
                     app:itemTitle = "@string/register.profile.language" />
 
                 <com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_country"
+                    app:setDropdown="true"
                     app:itemTitle = "@string/register.profile.country" />
 
                 <com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout
@@ -85,7 +87,7 @@
                         android:text="@string/register.button.title"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:id="@+id/button"
+                        android:id="@+id/button_register_activate"
                         style="@style/ButtonBlue"
                         android:layout_weight="1" />
                 </LinearLayout>

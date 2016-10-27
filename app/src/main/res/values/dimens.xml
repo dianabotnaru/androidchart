@@ -14,5 +14,6 @@
     <dimen name="item_register_text_height">32dp</dimen>
     <dimen name="item_register_text_top_margin">8dp</dimen>
     <dimen name="item_register_text_left_padding">8dp</dimen>
+    <dimen name="item_register_input_dropdown_right_margin">10dp</dimen>
 
 </resources>

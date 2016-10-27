@@ -19,6 +19,10 @@ public class RegisterActivity extends BaseActivity {
         startActivity(new Intent(RegisterActivity.this, SplashActivity.class));
     }
 
+    @OnClick(R.id.button_register_activate)
+    void onRegisterActivate() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

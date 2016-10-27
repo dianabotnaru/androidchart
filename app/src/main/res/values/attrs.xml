@@ -8,4 +8,8 @@
         <attr name="itemTitle" format="string"/>
     </declare-styleable>
 
+    <declare-styleable name="SetDropdownText">
+        <attr name="setDropdown" format="boolean"/>
+    </declare-styleable>
+
 </resources>
