@@ -1,18 +1,17 @@
 package com.alcoholcountermeasuresystems.android.elan.views;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
-import com.alcoholcountermeasuresystems.android.elan.activities.RegisterActivity;
-import com.alcoholcountermeasuresystems.android.elan.activities.SplashActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,16 +23,35 @@ import butterknife.OnClick;
 
 public class ProfileInputLayout extends LinearLayout {
 
+
+    public interface OnDropDownButtonPressedListener {
+        void onDropDownButtonClicked();
+    }
+
+    public void setDropDownButtonPressedListener(OnDropDownButtonPressedListener eventListener) {
+        mListener = eventListener;
+    }
+
     @BindView(R.id.text_title)
     TextView mProfileItemTitleText;
+
+    @BindView(R.id.edittext_input)
+    EditText mProfileItemInputEditText;
 
     @BindView(R.id.button_profile_item_dropdown)
     ImageButton mProfileItemDropdownButton;
 
-    @OnClick(R.id.button_profile_item_dropdown)
-    void onButtonDropdownPressed() {
+    @BindView(R.id.layout_input)
+    RelativeLayout mInputLayout;
 
+    @OnClick(R.id.button_profile_item_dropdown)
+    void onButtonDropDownPressed() {
+        if (mListener!=null){
+            mListener.onDropDownButtonClicked();
+        }
     }
+
+    OnDropDownButtonPressedListener mListener;
 
     public ProfileInputLayout(Context context, AttributeSet attrs)
     {
@@ -45,8 +63,17 @@ public class ProfileInputLayout extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.item_register, this);
         ButterKnife.bind(this);
+
         onSetProfileItemTitle(context,attributeSet);
         onShowDropdownButton(context,attributeSet);
+//        mInputLayout.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                if (mListener!=null){
+//                    mListener.onDropDownButtonClicked();
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -75,6 +102,15 @@ public class ProfileInputLayout extends LinearLayout {
         boolean s = ta.getBoolean(R.styleable.SetDropdownText_setDropdown,false);
         if (s) {
             mProfileItemDropdownButton.setVisibility(View.VISIBLE);
+            mProfileItemInputEditText.setEnabled(false);
         }
+    }
+
+    public void setInputText(String inputtext){
+        mProfileItemInputEditText.setText(inputtext);
+    }
+
+    public String getInputText(){
+        return mProfileItemInputEditText.getText().toString();
     }
 }
