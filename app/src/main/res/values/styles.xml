@@ -21,7 +21,7 @@
     </style>
 
     <style name="ButtonBlue" parent="Button">
-        <item name="android:background">@drawable/button_blue_selector</item>
+        <item name="android:background">@drawable/selector_button_active</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
