@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MainToolbarTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="fontName">@string/font.opensans.bold</item>
+    </style>
+
+</resources>

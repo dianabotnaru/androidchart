@@ -8,5 +8,8 @@
     <color name="white">#FFFFFF</color>
     <color name="blue">#00b0d2</color>
     <color name="gray">#b2b4b2</color>
+    <color name="green">#1fbca6</color>
+    <color name="orange">#f27a35</color>
+    <color name="purple">#956bb9</color>
 
 </resources>

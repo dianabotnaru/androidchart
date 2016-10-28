@@ -2,6 +2,7 @@ package com.alcoholcountermeasuresystems.android.elan.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,6 +92,13 @@ public class ProfileInputLayout extends LinearLayout {
         CharSequence s = ta.getString(R.styleable.Title_itemTitle);
         if (s != null) {
             mProfileItemTitleText.setText(s);
+            onSetInputType(s.toString());
+        }
+    }
+
+    private void onSetInputType(String itemTitle){
+        if (itemTitle.equals(getResources().getString(R.string.register_profile_email))){
+            mProfileItemInputEditText.setInputType(InputType.TYPE_CLASS_TEXT| InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         }
     }
 

@@ -19,12 +19,7 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
 
         mHandler.postDelayed(() -> {
-            if (isRegistered){
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-            }
-            else {
-                startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
-            }
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish();
         }, 1000);
     }

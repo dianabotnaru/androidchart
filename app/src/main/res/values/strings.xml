@@ -22,4 +22,10 @@
     <string name="register.profile.location">Location</string>
     <string name="register.button.title">ACTIVATE</string>
 
+    <string name="home.title">DRIVESAFE™</string>
+    <string name="home.breath.test">BREATH TEST</string>
+    <string name="home.bac.estimation">BAC\nESTIMATION</string>
+    <string name="home.history">HISTORY</string>
+    <string name="home.information">INFORMATION</string>
+
 </resources>

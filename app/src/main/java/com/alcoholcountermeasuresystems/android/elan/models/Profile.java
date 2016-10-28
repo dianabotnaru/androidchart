@@ -21,8 +21,74 @@ public class Profile extends RealmObject {
 //    private String weightMetric: String = "" //  lb | kg
 //    private String isRegistered : Bool = false
 
+    /**
+     * Getters/Setters
+     */
+
     public Profile() {
     }
 
-    // TODO: Add getters/setters
+    public String getFirstName(){
+        return firstName;
+    }
+
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
+    }
+
+    public String getLastName(){
+        return lastName;
+    }
+
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public String getCountry(){
+        return country;
+    }
+
+    public void setCountry(String country){
+        this.country = country;
+    }
+
+    public String getLanguage(){
+        return language;
+    }
+
+    public void setLanguage(String language){
+        this.language = language;
+    }
+
+    public String getSerialNumber(){
+        return serialNumber;
+    }
+
+    public void setSerialNumber(String serialNumber){
+        this.serialNumber = serialNumber;
+    }
+
+    public String getPurchased(){
+        return purchased;
+    }
+
+    public void setPurchased(String purchased){
+        this.purchased = purchased;
+    }
+
+    public String getLocation(){
+        return location;
+    }
+
+    public void setLocation(String location){
+        this.location = location;
+    }
 }
