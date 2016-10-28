@@ -94,7 +94,7 @@
             <RelativeLayout
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:id="@+id/layout_information"
+                android:id="@+id/layout_history"
                 android:background="@drawable/shape_button_history"
                 android:layout_marginRight="5dp">
 
@@ -122,6 +122,7 @@
             <RelativeLayout
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                android:id="@+id/layout_information"
                 android:background="@drawable/shape_button_info"
                 android:layout_marginLeft="5dp">
 
@@ -157,10 +158,5 @@
             android:layout_margin="40dp" />
 
     </LinearLayout>
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar_main" />
-
 
 </LinearLayout>
