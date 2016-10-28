@@ -27,5 +27,7 @@
     <string name="home.bac.estimation">BAC\nESTIMATION</string>
     <string name="home.history">HISTORY</string>
     <string name="home.information">INFORMATION</string>
+    <string name="home.registered.button.title">Elan Registered</string>
+    <string name="home.notregistered.button.title">Please register your ELAN</string>
 
 </resources>
