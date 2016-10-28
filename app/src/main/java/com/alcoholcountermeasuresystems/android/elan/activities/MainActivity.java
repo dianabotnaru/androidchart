@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseInjectableActivity {
 
     @BindView(R.id.text_toolbar_title)
     TextView mToolbarTitleText;
@@ -32,8 +32,15 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.button_register)
     void onRegisterButtonPressed() {
+        startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+        //for QA purposes
         notRegistered=(!notRegistered);
         initRegisterState(notRegistered);
+    }
+
+    @OnClick(R.id.layout_information)
+    void onInformationPressed() {
+        startActivity(new Intent(MainActivity.this, InformationActivity.class));
     }
 
     @BindString(R.string.home_title)

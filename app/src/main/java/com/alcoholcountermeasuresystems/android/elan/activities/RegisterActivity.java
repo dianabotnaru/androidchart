@@ -16,7 +16,7 @@ import butterknife.OnClick;
  * Created by jordi on 26/10/16.
  */
 
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends BaseInjectableActivity {
 
     @BindView(R.id.layout_firstname)
     ProfileInputLayout mFirstNameLayout;

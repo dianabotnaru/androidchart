@@ -3,8 +3,21 @@
     <style name="MainToolbarTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textSize">@dimen/large_text_size</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:layout_gravity">start</item>
         <item name="fontName">@string/font.opensans.bold</item>
+    </style>
+
+    <style name="InfoDescriptionText" >
+        <item name="android:textSize">@dimen/medium2_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontName">@string/font.opensans.regular</item>
+        <item name="android:layout_marginTop">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+    </style>
+
+    <style name="InfoDisclaimerButton" parent="ButtonText" >
+        <item name="android:textColor">@color/blue  </item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
 </resources>

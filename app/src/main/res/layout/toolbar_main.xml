@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/register.toolbar.title"
         style="@style/MainToolbarTitle"
-        />
+        android:layout_marginLeft="@dimen/toolbar_title_margin_left" />
     <ImageButton
         android:id="@+id/button_action"
         android:layout_width="wrap_content"
