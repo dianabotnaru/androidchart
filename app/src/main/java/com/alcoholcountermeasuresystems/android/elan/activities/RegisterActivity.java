@@ -3,7 +3,7 @@ package com.alcoholcountermeasuresystems.android.elan.activities;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageButton;
+import android.support.v4.app.DialogFragment2;
 import android.widget.Toast;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
@@ -18,7 +18,7 @@ import butterknife.OnClick;
  * Created by jordi on 26/10/16.
  */
 
-public class RegisterActivity extends BaseInjectableActivity {
+public class RegisterActivity extends BaseInjectableActivity implements ScanNearbyDialogFragment.ScanNearbyDialogListener {
 
     @BindView(R.id.layout_firstname)
     ProfileInputLayout mFirstNameLayout;
@@ -65,6 +65,11 @@ public class RegisterActivity extends BaseInjectableActivity {
 
     @Override
     protected void injectComponents() {
+    }
+
+    @Override
+    public void onScanNearbyClicked(DialogFragment2 dialogFragment2) {
+        dialogFragment2.dismiss();
     }
 
     private void initViews(){
