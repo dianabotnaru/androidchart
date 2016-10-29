@@ -3,7 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="extra_text_size">20sp</dimen>
     <dimen name="large_text_size">18sp</dimen>
+    <dimen name="medium3_text_size">16sp</dimen>
     <dimen name="medium2_text_size">15sp</dimen>
     <dimen name="medium_text_size">14sp</dimen>
     <dimen name="small_text_size">12sp</dimen>
@@ -20,4 +22,10 @@
     <dimen name="item_register_input_dropdown_right_margin">10dp</dimen>
 
     <dimen name="infomation_description_margin_top">23dp</dimen>
+
+    <dimen name="dialog_padding_top">21dp</dimen>
+    <dimen name="dialog_padding_left">24dp</dimen>
+    <dimen name="dialog_padding_right">24dp</dimen>
+    <dimen name="dialog_padding_bottom">14dp</dimen>
+
 </resources>

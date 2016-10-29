@@ -11,6 +11,9 @@
     <string name="font.opensans.semibold">fonts/OpenSans-Semibold.ttf</string>
     <string name="font.opensans.semibolditalic">fonts/OpenSans-SemiboldItalic.ttf</string>
 
+    <string name="button.ok">OK</string>
+    <string name="button.cancel">CANCEL</string>
+
     <string name="register.toolbar.title">REGISTER</string>
     <string name="register.profile.firstname">First Name</string>
     <string name="register.profile.lastname">Last Name</string>
@@ -21,6 +24,9 @@
     <string name="register.profile.purchased">Purchased</string>
     <string name="register.profile.location">Location</string>
     <string name="register.button.title">ACTIVATE</string>
+
+    <string name="register.scan.dialog.title">Scan for nearby ELANs</string>
+    <string name="register.scan.dialog.description">Please ensure your ELAN is on and near your phone.</string>
 
     <string name="home.title">DRIVESAFE™</string>
     <string name="home.breath.test">BREATH TEST</string>

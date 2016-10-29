@@ -1,11 +1,13 @@
 package com.alcoholcountermeasuresystems.android.elan.activities;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
+import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.ScanNearbyDialogFragment;
 import com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout;
 
 import butterknife.BindView;
@@ -58,6 +60,7 @@ public class RegisterActivity extends BaseInjectableActivity {
         ButterKnife.bind(this);
         initViews();
         injectComponents();
+        showScanNearbyDialog();
     }
 
     @Override
@@ -71,5 +74,10 @@ public class RegisterActivity extends BaseInjectableActivity {
                 //do whatever you want to do when the event is performed.
             }
         });
+    }
+
+    private void showScanNearbyDialog(){
+        ScanNearbyDialogFragment dialogFragment = ScanNearbyDialogFragment.newInstance();
+        dialogFragment.show(getSupportFragmentManager(), ScanNearbyDialogFragment.TAG);
     }
 }
