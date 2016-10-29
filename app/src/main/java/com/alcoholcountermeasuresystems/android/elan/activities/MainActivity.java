@@ -3,6 +3,9 @@ package com.alcoholcountermeasuresystems.android.elan.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,10 +28,6 @@ public class MainActivity extends BaseInjectableActivity {
 
     @BindView(R.id.layout_breath_test)
     RelativeLayout mBreathTestLayout;
-
-    @OnClick(R.id.button_action)
-    void onToolbarActionPressed() {
-    }
 
     @OnClick(R.id.button_register)
     void onRegisterButtonPressed() {
@@ -64,9 +63,17 @@ public class MainActivity extends BaseInjectableActivity {
     }
 
     private void initViews(){
-        mToolbarTitleText.setText(mTitleString);
         initRegisterState(true);
+        initToolbar();
     }
+
+    private void initToolbar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        mToolbarTitleText.setText(mTitleString);
+    }
+
     private void initRegisterState(boolean notRegistered){
         mBreathTestLayout.setEnabled(!notRegistered);
         if (notRegistered){
@@ -79,6 +86,23 @@ public class MainActivity extends BaseInjectableActivity {
     @Override
     protected void injectComponents() {
         MainApplication.getAppComponent().inject(this);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        else if (id == R.id.action_edit) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

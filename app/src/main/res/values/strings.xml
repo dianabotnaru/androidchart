@@ -40,4 +40,7 @@
     <string name="infomation.description">Breath test results may be displayed on the ELAN tester in units of breath alcohol concentration (BrAC) or blood alcohol concentration (BAC).\n\nBrAC is directly proportional to BAC.\n\nEach person reacts uniquely to the consumption of alcohol and may become impaired at a point below the legal limit.\n\nBrAC/BAC may continue to rise for up to 2 hours after alcohol was last consumed.\n\nTake special care if a borderline result or a result close to the legal BrAC/BAC limit is indicated.\n\nIt may take 10 hours or more for an individual’s BrAC/BAC level to return to zero after a high BrAC/BAC level has been reached.\n\nIn this case, a further test should be carried out later in the day or on the following morning.</string>
     <string name="infomation.disclaimer"><u>DISCLAIMER</u></string>
 
+    <string name="menu.disclaimer">DISCLAIMER</string>
+    <string name="menu.contactus">CONTACT US</string>
+
 </resources>
