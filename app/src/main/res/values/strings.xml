@@ -51,4 +51,14 @@
     <string name="bac_disclaimer_title">BAC ESTIMATOR</string>
     <string name="bac_disclaimer_description">Before using the blood alcohol calculator you must click the \"I Accept\" button to acknowledge that you have read and accept the following warnings:\n\nThe blood alcohol concentration determined by the calculator may not reflect physiological and other factors such as age, disease states and meal times.\n\nIt is dangerous to drive a vehicle or operate machinery after drinking alchohol. If you do so you assume full risk of injury and death to yourself and others.</string>
 
+    <string name="bac_estimator_text">Please provide the following:</string>
+    <string name="bac_estimator_age">Age</string>
+    <string name="bac_estimator_gender">Gender</string>
+    <string name="bac_estimator_height">Height</string>
+    <string name="bac_estimator_weight">Weight</string>
+    <string name="bac_estimator_in">in</string>
+    <string name="bac_estimator_lbs">lbs</string>
+
+    <string name="bac_estimator_checkbox_gender_female">F</string>
+    <string name="bac_estimator_checkbox_gender_male">M</string>
 </resources>

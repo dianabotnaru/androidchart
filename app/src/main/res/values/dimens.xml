@@ -34,4 +34,11 @@
     <dimen name="bac_deisclaimer_button_width">105dp</dimen>
     <dimen name="bac_deisclaimer_button_height">48dp</dimen>
 
+    <dimen name="bac_estimator_horizontal_margin">24dp</dimen>
+    <dimen name="bac_estimator_margin_top">20dp</dimen>
+
+    <dimen name="edittext_height">32dp</dimen>
+    <dimen name="edittext_padding_left">10dp</dimen>
+    <dimen name="edittext_margin_top">6dp</dimen>
+
 </resources>

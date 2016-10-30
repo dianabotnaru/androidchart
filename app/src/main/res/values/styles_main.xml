@@ -47,4 +47,41 @@
         <item name="android:layout_height">@dimen/bac_deisclaimer_button_height</item>
     </style>
 
+    <style name="BacEstimatorLayout" >
+        <item name="android:layout_marginTop">@dimen/bac_estimator_margin_top</item>
+        <item name="android:layout_marginLeft">@dimen/bac_estimator_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/bac_estimator_horizontal_margin</item>
+    </style>
+
+    <style name="BacEstimatorElmentTitle" >
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="fontName">@string/font.opensans.semibold</item>
+    </style>
+
+    <style name="BacEstimatorElmentSmallTitle" >
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontName">@string/font.opensans.regular</item>
+    </style>
+
+
+    <style name="EditText" >
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontName">@string/font.opensans.regular</item>
+    </style>
+
+    <style name="BacEstimatorElmentEditText" parent="EditText" >
+        <item name="android:background">@drawable/shape_edittext</item>
+        <item name="android:layout_height">@dimen/edittext_height</item>
+        <item name="android:paddingLeft">@dimen/edittext_padding_left</item>
+        <item name="android:layout_marginTop">@dimen/edittext_margin_top</item>
+        <item name="android:inputType">number</item>
+    </style>
+
+    <style name="BacEstimatorCheckBoxText" parent="EditText" >
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
 </resources>
