@@ -10,6 +10,7 @@ import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseActivit
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by jordi on 30/10/16.
@@ -23,6 +24,14 @@ public class BacDisclaimerActivity extends BaseActivity {
     @BindString(R.string.bac_disclaimer_title)
     String mTitleString;
 
+    @OnClick(R.id.button_cancel)
+    void onCancelButtonPressed() {
+        onBackPressed();
+    }
+
+    @OnClick(R.id.button_accept)
+    void onAcceptButtonPressed() {
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

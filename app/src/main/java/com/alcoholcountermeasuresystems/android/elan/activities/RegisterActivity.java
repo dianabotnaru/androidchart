@@ -47,7 +47,7 @@ public class RegisterActivity extends BaseInjectableActivity implements ScanNear
 
     @OnClick(R.id.button_cancel)
     void onToolbarBackPressed() {
-        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+        onBackPressed();
     }
 
     @OnClick(R.id.button_register_activate)

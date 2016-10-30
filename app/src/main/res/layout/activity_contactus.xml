@@ -35,13 +35,12 @@
                 android:layout_marginLeft="12dp" />
 
             <TextView
-                android:text="TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/text_contact"
                 android:layout_marginLeft="12dp"
                 android:layout_toEndOf="@+id/image_contact"
-                style="@style/ContactUsText" />
+                style="@style/InfoTitleText" />
 
         </RelativeLayout>
 
@@ -51,18 +50,17 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/icn_contact"
+                app:srcCompat="@drawable/icn_version"
                 android:id="@+id/image_version"
                 android:layout_marginLeft="12dp" />
 
             <TextView
-                android:text="TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/text_version"
                 android:layout_marginLeft="12dp"
                 android:layout_toEndOf="@+id/image_version"
-                style="@style/ContactUsText" />
+                style="@style/InfoTitleText" />
 
         </RelativeLayout>
 
