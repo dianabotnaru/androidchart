@@ -43,4 +43,6 @@
     <string name="menu.disclaimer">DISCLAIMER</string>
     <string name="menu.contactus">CONTACT US</string>
 
+    <string name="contactus.description">For assistance please visit acs-corp.com or call your local authorized service provider.</string>
+
 </resources>
