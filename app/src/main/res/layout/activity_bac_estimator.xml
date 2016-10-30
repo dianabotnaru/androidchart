@@ -162,10 +162,10 @@
                             style="@style/BacEstimatorElmentSmallTitle"
                             android:layout_centerHorizontal="true" />
 
-                        <SeekBar
+                        <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/seekBar"
+                            android:id="@+id/switch_in"
                             android:layout_below="@+id/text_in"
                             android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true" />
@@ -214,13 +214,13 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="10dp" />
 
-                        <SeekBar
+                        <Switch
+                            android:id="@+id/switch_lbs"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/seekBar_lbs"
                             android:layout_below="@+id/text_lbs"
                             android:layout_marginTop="15dp"
-                            android:layout_alignParentRight="true" />
+                            android:layout_alignParentRight="true"
+                            android:layout_height="wrap_content" />
 
                     </RelativeLayout>
 
