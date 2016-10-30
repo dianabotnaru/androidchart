@@ -33,6 +33,10 @@
             android:name=".activities.ContactUsActivity"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".activities.BacDisclaimerActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

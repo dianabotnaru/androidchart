@@ -2,7 +2,7 @@
     <!--<string name="app_name">ELAN</string>-->
 
     <string name="font.opensans.bold">fonts/OpenSans-Bold.ttf</string>
-    <string name="font.opensans.bolditalic">fonts/OpenSans-BoldItalic.ttf</string>
+    <string name="font.opensans_bolditalic">fonts/OpenSans-BoldItalic.ttf</string>
     <string name="font.opensans.extrabold">fonts/OpenSans-ExtraBold.ttf</string>
     <string name="font.opensans.italic">fonts/OpenSans-Italic.ttf</string>
     <string name="font.opensans.light">fonts/OpenSans-Light.ttf</string>
@@ -13,6 +13,7 @@
 
     <string name="button.ok">OK</string>
     <string name="button.cancel">CANCEL</string>
+    <string name="button.accept">Accept</string>
 
     <string name="register.toolbar.title">REGISTER</string>
     <string name="register.profile.firstname">First Name</string>
@@ -44,5 +45,8 @@
     <string name="menu.contactus">CONTACT US</string>
 
     <string name="contactus.description">For assistance please visit acs-corp.com or call your local authorized service provider.</string>
+
+    <string name="bac.disclaimer.title">BAC ESTIMATOR</string>
+    <string name="bac.disclaimer.description">Before using the blood alcohol calculator you must click the \"I Accept\" button to acknowledge that you have read and accept the following warnings:\n\nThe blood alcohol concentration determined by the calculator may not reflect physiological and other factors such as age, disease states and meal times.\n\nIt is dangerous to drive a vehicle or operate machinery after drinking alchohol. If you do so you assume full risk of injury and death to yourself and others.</string>
 
 </resources>
