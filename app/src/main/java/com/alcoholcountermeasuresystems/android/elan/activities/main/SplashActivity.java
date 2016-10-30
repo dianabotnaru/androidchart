@@ -1,4 +1,4 @@
-package com.alcoholcountermeasuresystems.android.elan.activities;
+package com.alcoholcountermeasuresystems.android.elan.activities.main;
 
 import android.content.Intent;
 import android.os.Bundle;

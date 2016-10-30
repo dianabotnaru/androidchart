@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
+import com.alcoholcountermeasuresystems.android.elan.activities.main.MainActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.ScanNearbyDialogFragment;
 import com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout;
 
@@ -46,7 +47,7 @@ public class RegisterActivity extends BaseInjectableActivity implements ScanNear
 
     @OnClick(R.id.button_cancel)
     void onToolbarBackPressed() {
-        startActivity(new Intent(RegisterActivity.this, SplashActivity.class));
+        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
     }
 
     @OnClick(R.id.button_register_activate)

@@ -1,4 +1,4 @@
-package com.alcoholcountermeasuresystems.android.elan.activities;
+package com.alcoholcountermeasuresystems.android.elan.activities.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
+import com.alcoholcountermeasuresystems.android.elan.activities.ContactUsActivity;
+import com.alcoholcountermeasuresystems.android.elan.activities.InformationActivity;
+import com.alcoholcountermeasuresystems.android.elan.activities.RegisterActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 
 import butterknife.BindString;
