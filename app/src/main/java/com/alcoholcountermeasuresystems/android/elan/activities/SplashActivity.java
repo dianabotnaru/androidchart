@@ -6,6 +6,7 @@ import android.os.Handler;
 
 import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
+import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 
 public class SplashActivity extends BaseInjectableActivity {
 

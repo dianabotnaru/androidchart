@@ -1,12 +1,12 @@
 package com.alcoholcountermeasuresystems.android.elan.activities;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment2;
 import android.widget.Toast;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
+import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.ScanNearbyDialogFragment;
 import com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout;
 

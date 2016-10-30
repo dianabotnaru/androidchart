@@ -1,11 +1,8 @@
 package com.alcoholcountermeasuresystems.android.elan.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
@@ -16,24 +13,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by jordi on 28/10/16.
+ * Created by jordi on 30/10/16.
  */
 
-public class InformationActivity extends BaseActivity{
+public class ContactUsActivity extends BaseActivity {
 
     @BindView(R.id.text_toolbar_title)
     TextView mToolbarTitleText;
 
-    @BindView(R.id.button_action)
-    ImageButton mToolbarActionButton;
-
-    @BindString(R.string.infomation_title)
+    @BindString(R.string.menu_contactus)
     String mTitleString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_information);
+        setContentView(R.layout.activity_contactus);
         ButterKnife.bind(this);
         initViews();
     }
@@ -41,4 +35,5 @@ public class InformationActivity extends BaseActivity{
     private void initViews(){
         mToolbarTitleText.setText(mTitleString);
     }
+
 }

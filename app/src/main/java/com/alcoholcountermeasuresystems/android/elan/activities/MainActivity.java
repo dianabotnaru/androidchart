@@ -1,7 +1,6 @@
 package com.alcoholcountermeasuresystems.android.elan.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
+import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -96,10 +96,11 @@ public class MainActivity extends BaseInjectableActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_dedisclaimer) {
             return true;
         }
-        else if (id == R.id.action_edit) {
+        else if (id == R.id.action_contactus) {
+            startActivity(new Intent(MainActivity.this, ContactUsActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
