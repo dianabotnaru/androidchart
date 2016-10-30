@@ -27,51 +27,51 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_firstname"
-                    app:itemTitle = "@string/register.profile.firstname" />
+                    app:itemTitle = "@string/register_profile_firstname" />
 
                 <com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_lastname"
-                    app:itemTitle = "@string/register.profile.lastname" />
+                    app:itemTitle = "@string/register_profile_lastname" />
 
                 <com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_email"
-                    app:itemTitle = "@string/register.profile.email" />
+                    app:itemTitle = "@string/register_profile_email" />
 
                 <com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_language"
                     app:setDropdown="true"
-                    app:itemTitle = "@string/register.profile.language" />
+                    app:itemTitle = "@string/register_profile_language" />
 
                 <com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_country"
                     app:setDropdown="true"
-                    app:itemTitle = "@string/register.profile.country" />
+                    app:itemTitle = "@string/register_profile_country" />
 
                 <com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_serial"
-                    app:itemTitle = "@string/register.profile.serial" />
+                    app:itemTitle = "@string/register_profile_serial" />
 
                 <com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_purchased"
-                    app:itemTitle = "@string/register.profile.purchased" />
+                    app:itemTitle = "@string/register_profile_purchased" />
 
                 <com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_location"
-                    app:itemTitle = "@string/register.profile.location" />
+                    app:itemTitle = "@string/register_profile_location" />
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -84,7 +84,7 @@
                     android:layout_marginBottom="@dimen/blue_button_margin">
 
                     <Button
-                        android:text="@string/register.button.title"
+                        android:text="@string/register_button_title"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:id="@+id/button_register_activate"

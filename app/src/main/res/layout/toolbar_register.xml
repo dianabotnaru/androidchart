@@ -13,7 +13,7 @@
         android:id="@+id/text_toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/register.toolbar.title"
+        android:text="@string/register_toolbar_title"
         style="@style/RegisterToolbarTitle"
         />
     <ImageButton

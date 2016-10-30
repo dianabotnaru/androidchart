@@ -8,14 +8,14 @@
             style="@style/DialogTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/register.scan.dialog.title"/>
+            android:text="@string/register_scan_dialog_title"/>
 
         <TextView
             style="@style/DialogTitleDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/register.scan.dialog.description"/>
+            android:text="@string/register_scan_dialog_description"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:layout_marginTop="95dp">
 
             <Button
-                android:text="@string/button.cancel"
+                android:text="@string/button_cancel"
                 android:background="@android:color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
                 android:layout_toLeftOf="@+id/button_ok" />
 
             <Button
-                android:text="@string/button.ok"
+                android:text="@string/button_ok"
                 android:background="@android:color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

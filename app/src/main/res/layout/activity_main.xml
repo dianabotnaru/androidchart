@@ -42,7 +42,7 @@
                     android:layout_centerHorizontal="true" />
 
                 <TextView
-                    android:text="@string/home.breath.test"
+                    android:text="@string/home_breath_test"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/ButtonText"
@@ -70,7 +70,7 @@
                     android:layout_centerHorizontal="true" />
 
                 <TextView
-                    android:text="@string/home.bac.estimation"
+                    android:text="@string/home_bac_estimation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/ButtonText"
@@ -99,7 +99,7 @@
                 android:layout_marginRight="5dp">
 
                 <TextView
-                    android:text="@string/home.history"
+                    android:text="@string/home_history"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/ButtonText"
@@ -136,7 +136,7 @@
                     android:layout_centerHorizontal="true" />
 
                 <TextView
-                    android:text="@string/home.information"
+                    android:text="@string/home_information"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/ButtonText"

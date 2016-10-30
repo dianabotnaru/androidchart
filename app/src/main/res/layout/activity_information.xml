@@ -25,13 +25,13 @@
                 android:id="@+id/description_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/infomation.description"
+                android:text="@string/infomation_description"
                 style="@style/InfoDescriptionText"
                 />
         </ScrollView>
 
         <Button
-            android:text="@string/infomation.disclaimer"
+            android:text="@string/infomation_disclaimer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/disclaimer_button"

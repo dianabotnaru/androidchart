@@ -11,42 +11,42 @@
     <string name="font.opensans.semibold">fonts/OpenSans-Semibold.ttf</string>
     <string name="font.opensans.semibolditalic">fonts/OpenSans-SemiboldItalic.ttf</string>
 
-    <string name="button.ok">OK</string>
-    <string name="button.cancel">CANCEL</string>
-    <string name="button.accept">Accept</string>
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">CANCEL</string>
+    <string name="button_accept">ACCEPT</string>
 
-    <string name="register.toolbar.title">REGISTER</string>
-    <string name="register.profile.firstname">First Name</string>
-    <string name="register.profile.lastname">Last Name</string>
-    <string name="register.profile.email">Email</string>
-    <string name="register.profile.language">Language</string>
-    <string name="register.profile.country">Country</string>
-    <string name="register.profile.serial">Serial #</string>
-    <string name="register.profile.purchased">Purchased</string>
-    <string name="register.profile.location">Location</string>
-    <string name="register.button.title">ACTIVATE</string>
+    <string name="register_toolbar_title">REGISTER</string>
+    <string name="register_profile_firstname">First Name</string>
+    <string name="register_profile_lastname">Last Name</string>
+    <string name="register_profile_email">Email</string>
+    <string name="register_profile_language">Language</string>
+    <string name="register_profile_country">Country</string>
+    <string name="register_profile_serial">Serial #</string>
+    <string name="register_profile_purchased">Purchased</string>
+    <string name="register_profile_location">Location</string>
+    <string name="register_button_title">ACTIVATE</string>
 
-    <string name="register.scan.dialog.title">Scan for nearby ELANs</string>
-    <string name="register.scan.dialog.description">Please ensure your ELAN is on and near your phone.</string>
+    <string name="register_scan_dialog_title">Scan for nearby ELANs</string>
+    <string name="register_scan_dialog_description">Please ensure your ELAN is on and near your phone.</string>
 
-    <string name="home.title">DRIVESAFE™</string>
-    <string name="home.breath.test">BREATH TEST</string>
-    <string name="home.bac.estimation">BAC\nESTIMATION</string>
-    <string name="home.history">HISTORY</string>
-    <string name="home.information">INFORMATION</string>
-    <string name="home.registered.button.title">Elan Registered</string>
-    <string name="home.notregistered.button.title">Please register your ELAN</string>
+    <string name="home_title">DRIVESAFE™</string>
+    <string name="home_breath_test">BREATH TEST</string>
+    <string name="home_bac_estimation">BAC\nESTIMATION</string>
+    <string name="home_history">HISTORY</string>
+    <string name="home_information">INFORMATION</string>
+    <string name="home_registered_button_title">Elan Registered</string>
+    <string name="home_notregistered_button_title">Please register your ELAN</string>
 
-    <string name="infomation.title">INFORMATION</string>
-    <string name="infomation.description">Breath test results may be displayed on the ELAN tester in units of breath alcohol concentration (BrAC) or blood alcohol concentration (BAC).\n\nBrAC is directly proportional to BAC.\n\nEach person reacts uniquely to the consumption of alcohol and may become impaired at a point below the legal limit.\n\nBrAC/BAC may continue to rise for up to 2 hours after alcohol was last consumed.\n\nTake special care if a borderline result or a result close to the legal BrAC/BAC limit is indicated.\n\nIt may take 10 hours or more for an individual’s BrAC/BAC level to return to zero after a high BrAC/BAC level has been reached.\n\nIn this case, a further test should be carried out later in the day or on the following morning.</string>
-    <string name="infomation.disclaimer"><u>DISCLAIMER</u></string>
+    <string name="infomation_title">INFORMATION</string>
+    <string name="infomation_description">Breath test results may be displayed on the ELAN tester in units of breath alcohol concentration (BrAC) or blood alcohol concentration (BAC).\n\nBrAC is directly proportional to BAC.\n\nEach person reacts uniquely to the consumption of alcohol and may become impaired at a point below the legal limit.\n\nBrAC/BAC may continue to rise for up to 2 hours after alcohol was last consumed.\n\nTake special care if a borderline result or a result close to the legal BrAC/BAC limit is indicated.\n\nIt may take 10 hours or more for an individual’s BrAC/BAC level to return to zero after a high BrAC/BAC level has been reached.\n\nIn this case, a further test should be carried out later in the day or on the following morning.</string>
+    <string name="infomation_disclaimer"><u>DISCLAIMER</u></string>
 
-    <string name="menu.disclaimer">DISCLAIMER</string>
-    <string name="menu.contactus">CONTACT US</string>
+    <string name="menu_disclaimer">DISCLAIMER</string>
+    <string name="menu_contactus">CONTACT US</string>
 
-    <string name="contactus.description">For assistance please visit acs-corp.com or call your local authorized service provider.</string>
+    <string name="contactus_description">For assistance please visit acs-corp.com or call your local authorized service provider.</string>
 
-    <string name="bac.disclaimer.title">BAC ESTIMATOR</string>
-    <string name="bac.disclaimer.description">Before using the blood alcohol calculator you must click the \"I Accept\" button to acknowledge that you have read and accept the following warnings:\n\nThe blood alcohol concentration determined by the calculator may not reflect physiological and other factors such as age, disease states and meal times.\n\nIt is dangerous to drive a vehicle or operate machinery after drinking alchohol. If you do so you assume full risk of injury and death to yourself and others.</string>
+    <string name="bac_disclaimer_title">BAC ESTIMATOR</string>
+    <string name="bac_disclaimer_description">Before using the blood alcohol calculator you must click the \"I Accept\" button to acknowledge that you have read and accept the following warnings:\n\nThe blood alcohol concentration determined by the calculator may not reflect physiological and other factors such as age, disease states and meal times.\n\nIt is dangerous to drive a vehicle or operate machinery after drinking alchohol. If you do so you assume full risk of injury and death to yourself and others.</string>
 
 </resources>
