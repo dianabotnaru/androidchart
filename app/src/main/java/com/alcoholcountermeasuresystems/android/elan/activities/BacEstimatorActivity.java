@@ -1,8 +1,7 @@
 package com.alcoholcountermeasuresystems.android.elan.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageButton;
+import android.view.View;
 import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
@@ -17,33 +16,27 @@ import butterknife.OnClick;
  * Created by jordi on 30/10/16.
  */
 
-public class BacDisclaimerActivity extends BaseActivity {
-
+public class BacEstimatorActivity extends BaseActivity {
     @BindView(R.id.text_toolbar_title)
     TextView mToolbarTitleText;
+
+    @BindView(R.id.text_toolbar_next)
+    TextView mToolbarNextText;
 
     @BindString(R.string.bac_disclaimer_title)
     String mTitleString;
 
-    @OnClick(R.id.button_cancel)
-    void onCancelButtonPressed() {
-        onBackPressed();
-    }
-
-    @OnClick(R.id.button_accept)
-    void onAcceptButtonPressed() {
-        startActivity(new Intent(BacDisclaimerActivity.this, BacEstimatorActivity.class));
-        finish();
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bac_disclaimer);
+        setContentView(R.layout.activity_bac_estimator);
         ButterKnife.bind(this);
         initViews();
     }
 
     private void initViews(){
         mToolbarTitleText.setText(mTitleString);
+        mToolbarNextText.setVisibility(View.VISIBLE);
     }
+
 }

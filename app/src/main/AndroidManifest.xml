@@ -37,6 +37,10 @@
             android:name=".activities.BacDisclaimerActivity"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".activities.BacEstimatorActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

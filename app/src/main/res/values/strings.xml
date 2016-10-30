@@ -11,6 +11,8 @@
     <string name="font.opensans.semibold">fonts/OpenSans-Semibold.ttf</string>
     <string name="font.opensans.semibolditalic">fonts/OpenSans-SemiboldItalic.ttf</string>
 
+    <string name="toolbar_next">Next</string>
+
     <string name="button_ok">OK</string>
     <string name="button_cancel">CANCEL</string>
     <string name="button_accept">ACCEPT</string>
