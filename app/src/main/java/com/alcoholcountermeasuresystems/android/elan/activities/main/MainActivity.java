@@ -16,6 +16,7 @@ import com.alcoholcountermeasuresystems.android.elan.activities.ContactUsActivit
 import com.alcoholcountermeasuresystems.android.elan.activities.InformationActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.RegisterActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
+import com.alcoholcountermeasuresystems.android.elan.views.HomeButtonLayout;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -31,13 +32,18 @@ public class MainActivity extends BaseInjectableActivity {
     Button mRegisterButton;
 
     @BindView(R.id.layout_breath_test)
-    RelativeLayout mBreathTestLayout;
+    HomeButtonLayout mBreathTestLayout;
+
+    @OnClick(R.id.layout_breath_test)
+    void onBreathTestPressed() {
+
+    }
 
     @OnClick(R.id.button_register)
     void onRegisterButtonPressed() {
         startActivity(new Intent(MainActivity.this, RegisterActivity.class));
         //for QA purposes
-        notRegistered=(!notRegistered);
+        notRegistered = !notRegistered;
         initRegisterState(notRegistered);
     }
 
@@ -72,7 +78,8 @@ public class MainActivity extends BaseInjectableActivity {
     }
 
     private void initViews(){
-        initRegisterState(true);
+        notRegistered = true; //QA purpose
+        initRegisterState(notRegistered);
         initToolbar();
     }
 

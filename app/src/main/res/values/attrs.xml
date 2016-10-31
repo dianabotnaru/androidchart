@@ -4,12 +4,16 @@
         <attr name="fontName" format="string"/>
     </declare-styleable>
 
-    <declare-styleable name="Title">
-        <attr name="itemTitle" format="string"/>
+    <declare-styleable name="Label">
+        <attr name="title" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="SetDropdownText">
         <attr name="setDropdown" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="Homebutton">
+        <attr name="buttonicon" format="integer"/>
     </declare-styleable>
 
 </resources>

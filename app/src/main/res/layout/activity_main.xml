@@ -5,7 +5,6 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.alcoholcountermeasuresystems.android.elan.activities.MainActivity"
     android:orientation="vertical">
 
     <include
@@ -25,62 +24,23 @@
             android:gravity="center"
             android:layout_marginTop="20dp">
 
-            <RelativeLayout
+            <com.alcoholcountermeasuresystems.android.elan.views.HomeButtonLayout
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:id="@+id/layout_breath_test"
-                android:background="@drawable/selector_layout_breath_test"
-                android:layout_marginRight="5dp">
+                android:layout_marginRight="5dp"
+                android:background="@drawable/shape_button_start_active"
+                app:buttonicon="@drawable/icn_start_enable"
+                app:title = "@string/home_breath_test"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/icn_start_enable"
-                    android:id="@+id/imageView"
-                    android:layout_marginTop="24dp"
-                    android:layout_centerVertical="false"
-                    android:layout_centerHorizontal="true" />
-
-                <TextView
-                    android:text="@string/home_breath_test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/ButtonText"
-                    android:id="@+id/textView"
-                    android:layout_below="@+id/imageView"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="14dp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
+            <com.alcoholcountermeasuresystems.android.elan.views.HomeButtonLayout
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:id="@+id/layout_bac_estimation"
+                android:layout_marginLeft="5dp"
                 android:background="@drawable/shape_button_bac"
-                android:layout_marginLeft="5dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/icn_bac"
-                    android:id="@+id/imageView_bac"
-                    android:layout_marginTop="24dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-
-                <TextView
-                    android:text="@string/home_bac_estimation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/ButtonText"
-                    android:id="@+id/textView_bac"
-                    android:layout_marginTop="14dp"
-                    android:layout_below="@+id/imageView_bac"
-                    android:layout_centerHorizontal="true" />
-
-            </RelativeLayout>
-
+                app:title = "@string/home_bac_estimation"
+                app:buttonicon="@drawable/icn_bac"/>
 
         </LinearLayout>
 
@@ -91,62 +51,23 @@
             android:gravity="center"
             android:layout_marginTop="10dp">
 
-            <RelativeLayout
+            <com.alcoholcountermeasuresystems.android.elan.views.HomeButtonLayout
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:id="@+id/layout_history"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/shape_button_history"
-                android:layout_marginRight="5dp">
+                app:title = "@string/home_history"
+                app:buttonicon="@drawable/icn_history"/>
 
-                <TextView
-                    android:text="@string/home_history"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/ButtonText"
-                    android:id="@+id/textView_history"
-                    android:layout_marginTop="14dp"
-                    android:layout_below="@+id/imageView_history"
-                    android:layout_centerHorizontal="true" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/icn_history"
-                    android:id="@+id/imageView_history"
-                    android:layout_marginTop="24dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
+            <com.alcoholcountermeasuresystems.android.elan.views.HomeButtonLayout
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:id="@+id/layout_information"
+                android:layout_marginLeft="5dp"
                 android:background="@drawable/shape_button_info"
-                android:layout_marginLeft="5dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/icn_info"
-                    android:id="@+id/imageView_info"
-                    android:layout_marginTop="24dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-
-                <TextView
-                    android:text="@string/home_information"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/ButtonText"
-                    android:id="@+id/textView_info"
-                    android:layout_marginTop="14dp"
-                    android:layout_below="@+id/imageView_info"
-                    android:layout_centerHorizontal="true" />
-
-            </RelativeLayout>
-
+                app:title = "@string/home_information"
+                app:buttonicon="@drawable/icn_info"/>
 
         </LinearLayout>
 

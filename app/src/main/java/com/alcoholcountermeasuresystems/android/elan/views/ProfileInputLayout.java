@@ -62,7 +62,7 @@ public class ProfileInputLayout extends LinearLayout {
     public ProfileInputLayout(Context context, AttributeSet attributeSet, int defStyleAttr) {
         super(context, attributeSet, defStyleAttr);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.item_register, this);
+        inflater.inflate(R.layout.layout_register_item, this);
         ButterKnife.bind(this);
 
         onSetProfileItemTitle(context,attributeSet);
@@ -85,11 +85,11 @@ public class ProfileInputLayout extends LinearLayout {
     }
 
     private void onSetProfileItemTitle(Context context,AttributeSet attributeSet){
-        TypedArray ta = context.obtainStyledAttributes(attributeSet, R.styleable.Title, 0, 0);
+        TypedArray ta = context.obtainStyledAttributes(attributeSet, R.styleable.Label, 0, 0);
         if (ta == null) {
             return;
         }
-        CharSequence s = ta.getString(R.styleable.Title_itemTitle);
+        CharSequence s = ta.getString(R.styleable.Label_title);
         if (s != null) {
             mProfileItemTitleText.setText(s);
             onSetInputType(s.toString());
