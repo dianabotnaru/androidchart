@@ -4,10 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
 
+import java.text.DateFormat;
+import java.util.Date;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by jordi on 31/10/16.
@@ -15,9 +21,31 @@ import butterknife.ButterKnife;
 
 public class DatePickUpLayout extends RelativeLayout {
 
+    public interface DatePickUpListener {
+        void onForwardDate();
+        void onBackDate();
+    }
+
+    @BindView(R.id.text_date)
+    TextView mDateText;
+
+    @OnClick(R.id.layout_history)
+    void onForwardButtonPressed() {
+        if (datePickUplistener != null)
+            datePickUplistener.onForwardDate();
+    }
+
+    @OnClick(R.id.imageButton_back)
+    void onBackButtonPressed() {
+        if (datePickUplistener != null)
+            datePickUplistener.onBackDate();
+    }
+    private DatePickUpListener datePickUplistener;
+
     public DatePickUpLayout(Context context, AttributeSet attrs)
     {
         this(context, attrs, 0);
+        this.datePickUplistener = null;
     }
 
     public DatePickUpLayout(Context context, AttributeSet attributeSet, int defStyleAttr) {
@@ -27,4 +55,12 @@ public class DatePickUpLayout extends RelativeLayout {
         ButterKnife.bind(this);
     }
 
+    public void setDatePickUpListener(DatePickUpListener listener) {
+        this.datePickUplistener = listener;
+    }
+
+    public void setDateText(Date date){
+        String currentDateTimeString = DateFormat.getDateInstance().format(date);
+        mDateText.setText(currentDateTimeString);
+    }
 }
