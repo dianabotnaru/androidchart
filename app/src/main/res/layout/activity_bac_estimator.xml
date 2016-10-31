@@ -84,7 +84,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/checkBox_gender_male"
-                                android:layout_toRightOf="@+id/text_male" />
+                                android:layout_toRightOf="@+id/text_male"
+                                android:layout_marginLeft="12dp" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -98,7 +99,8 @@
                                 android:id="@+id/text_female"
                                 android:text="@string/bac_estimator_checkbox_gender_female"
                                 style="@style/BacEstimatorCheckBoxText"
-                                android:layout_toLeftOf="@+id/checkBox_gender_female"/>
+                                android:layout_toLeftOf="@+id/checkBox_gender_female"
+                                android:layout_marginRight="12dp" />
 
                             <CheckBox
                                 android:layout_width="wrap_content"
@@ -167,7 +169,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/switch_in"
                             android:layout_below="@+id/text_in"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true" />
 
                     </RelativeLayout>
@@ -218,7 +220,7 @@
                             android:id="@+id/switch_lbs"
                             android:layout_width="wrap_content"
                             android:layout_below="@+id/text_lbs"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="10dp"
                             android:layout_alignParentRight="true"
                             android:layout_height="wrap_content" />
 
