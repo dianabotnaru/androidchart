@@ -61,4 +61,6 @@
 
     <string name="bac_estimator_checkbox_gender_female">F</string>
     <string name="bac_estimator_checkbox_gender_male">M</string>
+
+    <string name="history_title">HISTORY</string>
 </resources>

@@ -8,39 +8,35 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar_main" />
 
-
-    <RelativeLayout
+    <ScrollView android:id="@+id/textAreaScroller"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/ActivityLayoutMargin">
+        style="@style/ActivityLayoutMargin"
+        android:scrollbars="none">
 
-        <ScrollView android:id="@+id/textAreaScroller"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/description_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/infomation_description"
-                style="@style/InfoDescriptionText"
-                />
-        </ScrollView>
+                style="@style/InfoDescriptionText"/>
+            <Button
+                android:text="@string/infomation_disclaimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/disclaimer_button"
+                android:layout_gravity="center_horizontal"
+                style="@style/InfoDisclaimerButton"
+                android:layout_marginTop="36dp"
+                android:layout_marginBottom="16dp"/>
 
-        <Button
-            android:text="@string/infomation_disclaimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/disclaimer_button"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            style="@style/InfoDisclaimerButton"
-            />
+        </LinearLayout>
 
-    </RelativeLayout>
+    </ScrollView>
 
 </LinearLayout>

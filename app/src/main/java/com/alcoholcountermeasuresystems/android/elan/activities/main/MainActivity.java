@@ -13,6 +13,7 @@ import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.BacDisclaimerActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.ContactUsActivity;
+import com.alcoholcountermeasuresystems.android.elan.activities.HistoryActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.InformationActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.RegisterActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
@@ -47,14 +48,19 @@ public class MainActivity extends BaseInjectableActivity {
         initRegisterState(notRegistered);
     }
 
-    @OnClick(R.id.layout_information)
-    void onInformationPressed() {
-        startActivity(new Intent(MainActivity.this, InformationActivity.class));
-    }
-
     @OnClick(R.id.layout_bac_estimation)
     void onBacEstimationPressed() {
         startActivity(new Intent(MainActivity.this, BacDisclaimerActivity.class));
+    }
+
+    @OnClick(R.id.layout_history)
+    void onHistoryPressed() {
+        startActivity(new Intent(MainActivity.this, HistoryActivity.class));
+    }
+
+    @OnClick(R.id.layout_information)
+    void onInformationPressed() {
+        startActivity(new Intent(MainActivity.this, InformationActivity.class));
     }
 
     @BindString(R.string.home_title)
