@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".activities.AddDrinkActivity">
+
+    <item android:id="@+id/action_help" android:title="@string/menu_help"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_dedisclaimer_adddrink" android:title="@string/menu_disclaimer"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>

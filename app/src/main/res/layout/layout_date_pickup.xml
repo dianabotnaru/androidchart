@@ -13,7 +13,6 @@
         android:id="@+id/imageButton_back" />
 
     <TextView
-        android:text="Tue, Jun 28, 2016"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_date"

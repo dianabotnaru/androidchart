@@ -1,5 +1,6 @@
 package com.alcoholcountermeasuresystems.android.elan.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.BacEstimatorOneFragment;
+import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.ScanNearbyDialogFragment;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -27,6 +29,11 @@ public class BacEstimatorActivity extends BaseActivity {
 
     @BindString(R.string.bac_disclaimer_title)
     String mTitleString;
+
+    @OnClick(R.id.text_toolbar_next)
+    void onOkClicked() {
+        startActivity(new Intent(BacEstimatorActivity.this, AddDrinkActivity.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
