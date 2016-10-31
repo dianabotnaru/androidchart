@@ -24,8 +24,8 @@
     <dimen name="infomation_description_margin_top">23dp</dimen>
 
     <dimen name="dialog_padding_top">21dp</dimen>
-    <dimen name="dialog_padding_left">24dp</dimen>
-    <dimen name="dialog_padding_right">24dp</dimen>
+    <dimen name="dialog_padding_left">16dp</dimen>
+    <dimen name="dialog_padding_right">16dp</dimen>
     <dimen name="dialog_padding_bottom">14dp</dimen>
 
     <dimen name="contactus_information_layout_width">200dp</dimen>

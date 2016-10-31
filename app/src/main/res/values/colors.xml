@@ -14,4 +14,5 @@
     <color name="purple">#956bb9</color>
     <color name="red">#b94a48</color>
 
+    <color name="colorDialogText">#deffffff</color>
 </resources>
