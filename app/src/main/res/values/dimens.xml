@@ -41,4 +41,5 @@
     <dimen name="edittext_padding_left">10dp</dimen>
     <dimen name="edittext_margin_top">6dp</dimen>
 
+    <dimen name="history_layout_vertical_padding">10dp</dimen>
 </resources>
