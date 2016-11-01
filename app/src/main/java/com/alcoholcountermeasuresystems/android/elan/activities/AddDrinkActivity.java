@@ -24,7 +24,7 @@ public class AddDrinkActivity extends BaseActivity {
     @BindView(R.id.text_toolbar_title)
     TextView mToolbarTitleText;
 
-    @BindString(R.string.home_title)
+    @BindString(R.string.bac_disclaimer_title)
     String mTitleString;
 
     @Override

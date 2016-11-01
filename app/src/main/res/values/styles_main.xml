@@ -38,7 +38,7 @@
     <style name="ContactUsInformationLayout" >
         <item name="android:layout_width">@dimen/contactus_information_layout_width</item>
         <item name="android:layout_height">@dimen/contactus_information_layout_height</item>
-        <item name="android:background">@drawable/shape_layout_contactus_information</item>
+        <item name="android:background">@drawable/shape_layout_black</item>
         <item name="android:gravity">center_vertical</item>
     </style>
 
@@ -96,6 +96,17 @@
 
     <style name="HistoryDatePickUpText" parent="ButtonText">
         <item name="fontName">@string/font.opensans.regular</item>
+    </style>
+
+    <style name="AddDrinkSelectDateLayout" >
+        <item name="android:background">@drawable/shape_layout_black</item>
+        <item name="android:layout_marginTop">@dimen/main_item_top_margin</item>
+        <item name="android:layout_height">@dimen/main_normal_button_height</item>
+    </style>
+
+    <style name="AddDrinkButton" parent="ButtonBlue" >
+        <item name="android:background">@drawable/selector_button_active</item>
+        <item name="android:layout_marginTop">@dimen/main_item_top_margin</item>
     </style>
 
 </resources>

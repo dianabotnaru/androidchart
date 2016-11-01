@@ -72,8 +72,8 @@
         </LinearLayout>
 
         <Button
-            android:layout_width="205dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/main_normal_button_width"
+            android:layout_height="@dimen/main_normal_button_height"
             style="@style/ButtonBlue"
             android:id="@+id/button_register"
             android:layout_margin="40dp" />

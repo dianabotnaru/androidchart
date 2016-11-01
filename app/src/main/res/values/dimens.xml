@@ -15,6 +15,8 @@
     <dimen name="blue_button_height">36dp</dimen>
     <dimen name="blue_button_margin">30dp</dimen>
 
+    <dimen name="main_item_top_margin">21dp</dimen>
+
     <dimen name="item_register_title_top_margin">16dp</dimen>
     <dimen name="item_register_text_height">32dp</dimen>
     <dimen name="item_register_text_top_margin">8dp</dimen>
@@ -42,4 +44,7 @@
     <dimen name="edittext_margin_top">6dp</dimen>
 
     <dimen name="history_layout_vertical_padding">10dp</dimen>
+
+    <dimen name="main_normal_button_width">205dp</dimen>
+    <dimen name="main_normal_button_height">48dp</dimen>
 </resources>
