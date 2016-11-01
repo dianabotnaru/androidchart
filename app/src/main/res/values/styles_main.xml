@@ -8,7 +8,7 @@
 
     <style name="MainToolbarNext">
         <item name="android:textSize">@dimen/medium_text_size</item>
-        <item name="android:textColor">@color/blue</item>
+        <item name="android:textColor">@color/color_button_next</item>
         <item name="fontName">@string/font.opensans.semibold</item>
     </style>
 

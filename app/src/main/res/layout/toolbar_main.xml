@@ -24,13 +24,15 @@
         android:background="@drawable/button_toolbar_open"
         android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/text_toolbar_next"
+    <Button
+        android:id="@+id/button_toolbar_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         style="@style/MainToolbarNext"
         android:text="@string/toolbar_next"
         android:layout_marginRight="17dp"
+        android:enabled="false"
+        android:background="@android:color/transparent"
         android:visibility="gone" />
 </android.support.v7.widget.Toolbar>

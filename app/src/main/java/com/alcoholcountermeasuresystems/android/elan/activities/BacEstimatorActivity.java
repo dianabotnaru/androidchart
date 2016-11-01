@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
@@ -20,17 +21,17 @@ import butterknife.OnClick;
  * Created by jordi on 30/10/16.
  */
 
-public class BacEstimatorActivity extends BaseActivity {
+public class BacEstimatorActivity extends BaseActivity implements BacEstimatorOneFragment.BacEstimatorOneFragmentListener{
     @BindView(R.id.text_toolbar_title)
     TextView mToolbarTitleText;
 
-    @BindView(R.id.text_toolbar_next)
-    TextView mToolbarNextText;
+    @BindView(R.id.button_toolbar_next)
+    Button mToolbarNextButton;
 
     @BindString(R.string.bac_disclaimer_title)
     String mTitleString;
 
-    @OnClick(R.id.text_toolbar_next)
+    @OnClick(R.id.button_toolbar_next)
     void onOkClicked() {
         startActivity(new Intent(BacEstimatorActivity.this, AddDrinkActivity.class));
     }
@@ -45,11 +46,15 @@ public class BacEstimatorActivity extends BaseActivity {
 
     private void initViews(){
         mToolbarTitleText.setText(mTitleString);
-        mToolbarNextText.setVisibility(View.VISIBLE);
+        mToolbarNextButton.setVisibility(View.VISIBLE);
         BacEstimatorOneFragment fragment = new BacEstimatorOneFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.layout_bac_estimator1_content, fragment)
                 .commit();
+    }
 
+    @Override
+    public void onCompletedEstimatorSetting(boolean isCompleted){
+        mToolbarNextButton.setEnabled(isCompleted);
     }
 }
