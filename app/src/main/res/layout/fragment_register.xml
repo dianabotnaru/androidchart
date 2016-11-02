@@ -55,7 +55,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_serial"
-                    app:title = "@string/register_profile_serial" />
+                    app:title = "@string/register_profile_serial"
+                    app:focus = "false" />
 
                 <com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout
                     android:layout_width="match_parent"
@@ -84,6 +85,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:id="@+id/button_register_activate"
+                        android:enabled="false"
                         style="@style/ButtonBlue"
                         android:layout_weight="1" />
                 </LinearLayout>

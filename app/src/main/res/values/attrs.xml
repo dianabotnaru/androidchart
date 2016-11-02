@@ -8,6 +8,10 @@
         <attr name="title" format="string"/>
     </declare-styleable>
 
+    <declare-styleable name="EditText">
+        <attr name="focus" format="boolean"/>
+    </declare-styleable>
+
     <declare-styleable name="SetDropdownText">
         <attr name="setDropdown" format="boolean"/>
     </declare-styleable>

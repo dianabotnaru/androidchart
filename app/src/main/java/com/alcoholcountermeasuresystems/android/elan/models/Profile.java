@@ -91,4 +91,8 @@ public class Profile extends RealmObject {
     public void setLocation(String location){
         this.location = location;
     }
+
+    public void save() {
+        //TODO: save profile model in local
+    }
 }

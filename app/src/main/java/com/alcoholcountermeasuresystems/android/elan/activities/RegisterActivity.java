@@ -24,7 +24,7 @@ import butterknife.OnClick;
  * Created by jordi on 26/10/16.
  */
 
-public class RegisterActivity extends BaseInjectableActivity implements ScanNearbyDialogFragment.ScanNearbyDialogListener {
+public class RegisterActivity extends BaseInjectableActivity implements ScanNearbyDialogFragment.ScanNearbyDialogListener,RegisterFragment.RegisterFragmentListener {
 
 
     @OnClick(R.id.button_cancel)
@@ -49,6 +49,7 @@ public class RegisterActivity extends BaseInjectableActivity implements ScanNear
 
     @Override
     public void onScanNearbyClicked(DialogFragment2 dialogFragment2) {
+        // Todo insert code for nearby scan
         dialogFragment2.dismiss();
     }
 
@@ -62,5 +63,14 @@ public class RegisterActivity extends BaseInjectableActivity implements ScanNear
     private void showScanNearbyDialog(){
         ScanNearbyDialogFragment dialogFragment = ScanNearbyDialogFragment.newInstance();
         dialogFragment.show(getSupportFragmentManager(), ScanNearbyDialogFragment.TAG);
+    }
+
+    @Override
+    public void onActivate(Profile profile) {
+        //Todo  integrateion backend API for register
+
+        profile.save(); //save profile information in local
+        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+        finish();
     }
 }

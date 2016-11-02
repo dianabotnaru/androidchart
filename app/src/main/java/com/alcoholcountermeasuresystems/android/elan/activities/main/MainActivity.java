@@ -43,9 +43,6 @@ public class MainActivity extends BaseInjectableActivity {
     @OnClick(R.id.button_register)
     void onRegisterButtonPressed() {
         startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-        //for QA purposes
-        notRegistered = !notRegistered;
-        initRegisterState(notRegistered);
     }
 
     @OnClick(R.id.layout_bac_estimation)
@@ -73,7 +70,7 @@ public class MainActivity extends BaseInjectableActivity {
     String mNotRegisteredButtonString;
 
 
-    private boolean notRegistered; //QA purpose
+    private boolean isLoggedIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +81,9 @@ public class MainActivity extends BaseInjectableActivity {
     }
 
     private void initViews(){
-        notRegistered = true; //QA purpose
-        initRegisterState(notRegistered);
+        //Todo insert code to detect log in state
+        isLoggedIn = false; //QA purpose
+        initRegisterState(isLoggedIn);
         initToolbar();
     }
 
@@ -96,14 +94,14 @@ public class MainActivity extends BaseInjectableActivity {
         mToolbarTitleText.setText(mTitleString);
     }
 
-    private void initRegisterState(boolean notRegistered){
-        mBreathTestLayout.setEnabled(!notRegistered);
-        if (notRegistered){
-            mRegisterButton.setText(mNotRegisteredButtonString);
-        }else {
+    private void initRegisterState(boolean isLoggedIn){
+        mBreathTestLayout.setEnabled(isLoggedIn);
+        if (isLoggedIn){
             mRegisterButton.setText(mRegisteredButtonString);
+        }else {
+            mRegisterButton.setText(mNotRegisteredButtonString);
         }
-        mRegisterButton.setEnabled(notRegistered);
+        mRegisterButton.setEnabled(!isLoggedIn);
     }       
     @Override
     protected void injectComponents() {
