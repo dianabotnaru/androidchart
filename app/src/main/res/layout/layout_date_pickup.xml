@@ -4,14 +4,6 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     style="@style/HistoryDatePickUpLayout">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/icn_back_blue"
-        android:layout_centerVertical="true"
-        android:id="@+id/imageButton_back" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,13 +13,43 @@
         style="@style/HistoryDatePickUpText"/>
 
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/icn_forward_blue"
-        android:id="@+id/imageButton_forward"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layout_back"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/icn_back_blue"
+                android:layout_centerVertical="true"
+                android:id="@+id/imageButton_back" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layout_forward"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/icn_forward_blue"
+                android:id="@+id/imageButton_forward"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -29,13 +29,13 @@ public class DatePickUpLayout extends RelativeLayout {
     @BindView(R.id.text_date)
     TextView mDateText;
 
-    @OnClick(R.id.imageButton_forward)
+    @OnClick(R.id.layout_forward)
     void onForwardButtonPressed() {
         if (datePickUplistener != null)
             datePickUplistener.onForwardDate();
     }
 
-    @OnClick(R.id.imageButton_back)
+    @OnClick(R.id.layout_back)
     void onBackButtonPressed() {
         if (datePickUplistener != null)
             datePickUplistener.onBackDate();
