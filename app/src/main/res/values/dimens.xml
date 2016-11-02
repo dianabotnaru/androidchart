@@ -30,14 +30,18 @@
     <dimen name="dialog_padding_right">16dp</dimen>
     <dimen name="dialog_padding_bottom">14dp</dimen>
 
-    <dimen name="contactus_information_layout_width">200dp</dimen>
-    <dimen name="contactus_information_layout_height">48dp</dimen>
+    <dimen name="main_information_layout_width">200dp</dimen>
+    <dimen name="main_information_layout_height">48dp</dimen>
 
     <dimen name="bac_deisclaimer_button_width">105dp</dimen>
     <dimen name="bac_deisclaimer_button_height">48dp</dimen>
 
     <dimen name="bac_estimator_horizontal_margin">24dp</dimen>
     <dimen name="bac_estimator_margin_top">20dp</dimen>
+
+    <dimen name="bac_estimation_vertical_margin">14dp</dimen>
+    <dimen name="bac_estimation_top_margin">24dp</dimen>
+    <dimen name="bac_estimation_bottom_margin">27dp</dimen>
 
     <dimen name="edittext_height">32dp</dimen>
     <dimen name="edittext_padding_left">10dp</dimen>

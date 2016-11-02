@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_main" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/BacEstimationLayout">
+
+        <RelativeLayout
+            style="@style/MainInformationLayout"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/text_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_date"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                style="@style/HistoryDatePickUpText"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/text_units"
+            android:layout_below="@+id/text_layout"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp">
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bac_estimation_units"
+            android:id="@+id/text_units"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/button_add_drink"
+            style="@style/BacEstimationUnitsText"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:text="@string/add_drink_button"
+            android:layout_width="@dimen/main_normal_button_width"
+            android:layout_height="@dimen/main_normal_button_height"
+            android:id="@+id/button_add_drink"
+            android:background="@drawable/shape_button_blue"
+            style="@style/ButtonText"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+
+</LinearLayout>

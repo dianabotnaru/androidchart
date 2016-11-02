@@ -74,4 +74,8 @@
     <string name="add_drink_percentage_unit">%</string>
     <string name="add_drink_ml">mL</string>
     <string name="add_drink_button">Add Drink</string>
+
+    <string name="bac_estimation_title">BAC ESTIMATION</string>
+    <string name="bac_estimation_units">Units: g/dL</string>
+
 </resources>

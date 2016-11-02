@@ -33,7 +33,7 @@ public class BacEstimatorActivity extends BaseActivity implements BacEstimatorOn
 
     @OnClick(R.id.button_toolbar_next)
     void onOkClicked() {
-        startActivity(new Intent(BacEstimatorActivity.this, AddDrinkActivity.class));
+        startActivity(new Intent(BacEstimatorActivity.this, BacEstimationActivity.class));
     }
 
     @Override
