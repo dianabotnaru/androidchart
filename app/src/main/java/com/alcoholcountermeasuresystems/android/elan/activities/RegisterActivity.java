@@ -3,14 +3,17 @@ package com.alcoholcountermeasuresystems.android.elan.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment2;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.main.MainActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.ScanNearbyDialogFragment;
+import com.alcoholcountermeasuresystems.android.elan.models.Profile;
 import com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -54,6 +57,8 @@ public class RegisterActivity extends BaseInjectableActivity implements ScanNear
     void onRegisterActivate() {
     }
 
+    private Profile mProfile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +80,14 @@ public class RegisterActivity extends BaseInjectableActivity implements ScanNear
 
     private void initViews(){
         mCountryLayout.setDropDownButtonPressedListener(new ProfileInputLayout.OnDropDownButtonPressedListener() {
-            public void onDropDownButtonClicked() {
+            public void onDropDownButtonClicked(){
                 Toast.makeText(getApplicationContext(), "country dropdown button clicked", Toast.LENGTH_SHORT).show();
+                //do whatever you want to do when the event is performed.
+            }
+        });
+        mLanguageLayout.setDropDownButtonPressedListener(new ProfileInputLayout.OnDropDownButtonPressedListener() {
+            public void onDropDownButtonClicked(){
+                Toast.makeText(getApplicationContext(), "Language dropdown button clicked", Toast.LENGTH_SHORT).show();
                 //do whatever you want to do when the event is performed.
             }
         });

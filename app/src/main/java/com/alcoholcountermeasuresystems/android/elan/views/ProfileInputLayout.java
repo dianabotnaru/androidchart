@@ -42,10 +42,7 @@ public class ProfileInputLayout extends LinearLayout {
     @BindView(R.id.button_profile_item_dropdown)
     ImageButton mProfileItemDropdownButton;
 
-    @BindView(R.id.layout_input)
-    RelativeLayout mInputLayout;
-
-    @OnClick(R.id.button_profile_item_dropdown)
+    @OnClick(R.id.layout_input)
     void onButtonDropDownPressed() {
         if (mListener!=null){
             mListener.onDropDownButtonClicked();
@@ -67,14 +64,6 @@ public class ProfileInputLayout extends LinearLayout {
 
         onSetProfileItemTitle(context,attributeSet);
         onShowDropdownButton(context,attributeSet);
-//        mInputLayout.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                if (mListener!=null){
-//                    mListener.onDropDownButtonClicked();
-//                }
-//            }
-//        });
     }
 
     @Override
@@ -110,7 +99,7 @@ public class ProfileInputLayout extends LinearLayout {
         boolean s = ta.getBoolean(R.styleable.SetDropdownText_setDropdown,false);
         if (s) {
             mProfileItemDropdownButton.setVisibility(View.VISIBLE);
-            mProfileItemInputEditText.setEnabled(false);
+            mProfileItemInputEditText.setFocusable(false);
         }
     }
 

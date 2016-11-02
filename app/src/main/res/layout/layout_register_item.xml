@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     style="@style/RegisterItemLayout"
     android:layout_height="wrap_content">
@@ -14,8 +15,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/layout_input"
         android:layout_marginTop="@dimen/item_register_text_top_margin">
+        >
 
         <EditText
             android:layout_width="match_parent"
@@ -24,16 +25,26 @@
             android:ems="10"
             android:id="@+id/edittext_input"/>
 
-        <ImageButton
-            android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/icn_dropdown"
-            android:id="@+id/button_profile_item_dropdown"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="@dimen/item_register_input_dropdown_right_margin"
+        <RelativeLayout
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:id="@+id/layout_input"
             android:layout_centerVertical="true"
-            android:visibility="gone" />
+            android:layout_alignParentRight="true">
+
+            <ImageButton
+                android:text="Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/icn_dropdown"
+                android:id="@+id/button_profile_item_dropdown"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/item_register_input_dropdown_right_margin"
+                android:layout_centerVertical="true"
+                android:visibility="gone" />
+        </RelativeLayout>
+
     </RelativeLayout>
 
 </LinearLayout>
