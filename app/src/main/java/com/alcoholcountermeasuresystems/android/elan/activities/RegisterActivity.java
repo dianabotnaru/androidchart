@@ -67,9 +67,8 @@ public class RegisterActivity extends BaseInjectableActivity implements ScanNear
 
     @Override
     public void onActivate(Profile profile) {
-        //Todo  integrateion backend API for register
 
-        profile.save(); //save profile information in local
+        profile.save(); //save profile information
         startActivity(new Intent(RegisterActivity.this, MainActivity.class));
         finish();
     }

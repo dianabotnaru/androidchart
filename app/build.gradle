@@ -118,4 +118,7 @@ dependencies {
 
     //Fonts Setting Function
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
+
+    //Chart
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0'
 }
