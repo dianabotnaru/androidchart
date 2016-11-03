@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseActivity;
+import com.alcoholcountermeasuresystems.android.elan.views.BacEstimationChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.LineData;
@@ -33,7 +34,7 @@ public class BacEstimationActivity extends BaseActivity {
     TextView mDateText;
 
     @BindView(R.id.linchart_bac)
-    LineChart mBacLineChart;
+    BacEstimationChart mBacLineChart;
 
     @BindString(R.string.bac_estimation_title)
     String mTitleString;
@@ -49,25 +50,10 @@ public class BacEstimationActivity extends BaseActivity {
         setContentView(R.layout.activity_bac_estimation);
         ButterKnife.bind(this);
         initViews();
-        setLineChartDatas();
     }
 
     private void initViews(){
         mToolbarTitleText.setText(mTitleString);
         mDateText.setText(DateFormat.getDateInstance().format(new Date()));
-    }
-//todo remove this function QA purpose
-    private void setLineChartDatas(){
-        ArrayList entries = new ArrayList();
-        entries.add(new BarEntry(4f, 0));
-        entries.add(new BarEntry(8f, 1));
-        entries.add(new BarEntry(6f, 2));
-        entries.add(new BarEntry(12f, 3));
-        entries.add(new BarEntry(18f, 4));
-        entries.add(new BarEntry(9f, 5));
-
-        LineDataSet dataset = new LineDataSet(entries,"");
-        LineData data = new LineData(dataset);
-        mBacLineChart.setData(data);
     }
 }

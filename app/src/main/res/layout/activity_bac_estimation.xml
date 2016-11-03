@@ -36,7 +36,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp">
 
-            <com.github.mikephil.charting.charts.LineChart
+            <com.alcoholcountermeasuresystems.android.elan.views.BacEstimationChart
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 style="@style/BacEstimationChart"
