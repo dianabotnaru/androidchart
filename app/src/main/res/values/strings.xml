@@ -79,4 +79,7 @@
     <string name="bac_estimation_units">Units: g/dL</string>
 
     <string name="bac_estimation_chart_legend">Blood Alcohol Content</string>
+
+    <string name="main_register_dialog_title">Please register your ELAN</string>
+    <string name="main_register_dialog_description">You need to register Elan to enable full functionality of the app.</string>
 </resources>

@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.fragments.base.BaseInjectableFragment;
-import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.ScanNearbyDialogFragment;
 import com.alcoholcountermeasuresystems.android.elan.models.Profile;
 import com.alcoholcountermeasuresystems.android.elan.utils.Internals;
 
@@ -36,6 +35,10 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
     }
 
     private Profile profile; //QA purpose
+
+    private static int AGE_MAX_VALUE = 100;
+    private static int HELIGHT_MAX_VALUE = 100;
+    private static int WEIGHT_MAX_VALUE = 100;
 
     @BindView(R.id.edittext_age)
     EditText mAgeEditText;
@@ -81,6 +84,9 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
             public void onTextChanged(CharSequence s, int start, int before,
                                       int count) {
                 if(!s.equals("")) {
+                    if (Internals.getStringfromInt(mAgeEditText.getText().toString())>100){
+                        mAgeEditText.setText("100");
+                    }
                     onCompletedEstimatorSetting();
                 }
             }

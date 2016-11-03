@@ -2,6 +2,7 @@ package com.alcoholcountermeasuresystems.android.elan.activities.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment2;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,12 +12,13 @@ import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
-import com.alcoholcountermeasuresystems.android.elan.activities.BacDisclaimerActivity;
+import com.alcoholcountermeasuresystems.android.elan.activities.BacEstimationActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.ContactUsActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.HistoryActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.InformationActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.RegisterActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
+import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.WarningDialogFragment;
 import com.alcoholcountermeasuresystems.android.elan.views.HomeButtonLayout;
 
 import butterknife.BindString;
@@ -24,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseInjectableActivity {
+public class MainActivity extends BaseInjectableActivity implements WarningDialogFragment.WarningDialogListener {
 
     @BindView(R.id.text_toolbar_title)
     TextView mToolbarTitleText;
@@ -47,7 +49,7 @@ public class MainActivity extends BaseInjectableActivity {
 
     @OnClick(R.id.layout_bac_estimation)
     void onBacEstimationPressed() {
-        startActivity(new Intent(MainActivity.this, BacDisclaimerActivity.class));
+        startActivity(new Intent(MainActivity.this, BacEstimationActivity.class));
     }
 
     @OnClick(R.id.layout_history)
@@ -69,6 +71,9 @@ public class MainActivity extends BaseInjectableActivity {
     @BindString(R.string.home_notregistered_button_title)
     String mNotRegisteredButtonString;
 
+    @BindString(R.string.main_register_dialog_description)
+    String mRegisterScanNearbyDescription;
+
 
     private boolean isLoggedIn;
 
@@ -85,6 +90,9 @@ public class MainActivity extends BaseInjectableActivity {
         isLoggedIn = false; //QA purpose
         initRegisterState(isLoggedIn);
         initToolbar();
+        if (!isLoggedIn){
+            showRegisterDialog();
+        }
     }
 
     private void initToolbar(){
@@ -124,6 +132,17 @@ public class MainActivity extends BaseInjectableActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showRegisterDialog(){
+        WarningDialogFragment dialogFragment = WarningDialogFragment.newInstance(mNotRegisteredButtonString,mRegisterScanNearbyDescription);
+        dialogFragment.show(getSupportFragmentManager(), WarningDialogFragment.TAG);
+    }
+
+    @Override
+    public void onDialogOkButtonClicked(DialogFragment2 dialogFragment2) {
+        // Todo insert code for nearby scan
+        dialogFragment2.dismiss();
     }
 
 }

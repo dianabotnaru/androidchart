@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.BacEstimatorOneFragment;
-import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.ScanNearbyDialogFragment;
 
 import butterknife.BindString;
 import butterknife.BindView;

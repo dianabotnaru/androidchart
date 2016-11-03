@@ -7,14 +7,10 @@ import android.widget.TextView;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseActivity;
 import com.alcoholcountermeasuresystems.android.elan.views.BacEstimationChart;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -35,7 +31,7 @@ public class BacEstimationActivity extends BaseActivity {
     @BindView(R.id.text_date)
     TextView mDateText;
 
-    @BindView(R.id.linchart_bac)
+    @BindView(R.id.linechart_bac)
     BacEstimationChart mBacLineChart;
 
     @BindString(R.string.bac_estimation_title)
@@ -60,18 +56,18 @@ public class BacEstimationActivity extends BaseActivity {
 
     private void initViews(){
         mToolbarTitleText.setText(mTitleString);
-        mDateText.setText(DateFormat.getDateInstance().format(new Date()));
+        mDateText.setText(new SimpleDateFormat("EE").format(new Date())+", "+DateFormat.getDateInstance().format(new Date()));
     }
 
     //QA purpose set chart datas
     private void initChart(){
         ArrayList entries = new ArrayList();
-        entries.add(new Entry(1451660400, 0));
-        entries.add(new Entry(1451685600, 0.0040f));
-        entries.add(new Entry(1451721600, 0.0080f));
-        entries.add(new Entry(1451743200,0.0120f));
-        entries.add(new Entry(1451761200,0.0160f));
-        entries.add(new Entry(1451785200,0.0200f));
+        entries.add(new Entry(1451685600, 0));
+        entries.add(new Entry(1451721600, 0.0040f));
+        entries.add(new Entry(1451743200, 0.0080f));
+        entries.add(new Entry(1451761200,0.0120f));
+        entries.add(new Entry(1451785200,0.0160f));
+        entries.add(new Entry(1451821200,0.0200f));
         mBacLineChart.setLineChartDatas(mLegendString,entries);
     }
 }

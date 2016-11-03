@@ -11,9 +11,8 @@ import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.main.MainActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.RegisterFragment;
-import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.ScanNearbyDialogFragment;
+import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.WarningDialogFragment;
 import com.alcoholcountermeasuresystems.android.elan.models.Profile;
-import com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -24,13 +23,19 @@ import butterknife.OnClick;
  * Created by jordi on 26/10/16.
  */
 
-public class RegisterActivity extends BaseInjectableActivity implements ScanNearbyDialogFragment.ScanNearbyDialogListener,RegisterFragment.RegisterFragmentListener {
+public class RegisterActivity extends BaseInjectableActivity implements WarningDialogFragment.WarningDialogListener,RegisterFragment.RegisterFragmentListener {
 
 
     @OnClick(R.id.button_cancel)
     void onToolbarBackPressed() {
         onBackPressed();
     }
+
+    @BindString(R.string.register_scan_dialog_title)
+    String mRegisterScanNearbyTitle;
+
+    @BindString(R.string.register_scan_dialog_description)
+    String mRegisterScanNearbyDescription;
 
     private Profile mProfile;
 
@@ -48,7 +53,7 @@ public class RegisterActivity extends BaseInjectableActivity implements ScanNear
     }
 
     @Override
-    public void onScanNearbyClicked(DialogFragment2 dialogFragment2) {
+    public void onDialogOkButtonClicked(DialogFragment2 dialogFragment2) {
         // Todo insert code for nearby scan
         dialogFragment2.dismiss();
     }
@@ -61,8 +66,8 @@ public class RegisterActivity extends BaseInjectableActivity implements ScanNear
     }
 
     private void showScanNearbyDialog(){
-        ScanNearbyDialogFragment dialogFragment = ScanNearbyDialogFragment.newInstance();
-        dialogFragment.show(getSupportFragmentManager(), ScanNearbyDialogFragment.TAG);
+        WarningDialogFragment dialogFragment = WarningDialogFragment.newInstance(mRegisterScanNearbyTitle,mRegisterScanNearbyDescription);
+        dialogFragment.show(getSupportFragmentManager(), WarningDialogFragment.TAG);
     }
 
     @Override

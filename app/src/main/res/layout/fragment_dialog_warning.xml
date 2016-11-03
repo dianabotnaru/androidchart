@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dialog_height"
+    style="@style/DialogLayout">
+
+    <TextView
+        style="@style/DialogTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_dialog_title"
+        android:text="@string/register_scan_dialog_title"/>
+
+    <TextView
+        style="@style/DialogTitleDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:id="@+id/text_dialog_description"
+        android:text="@string/register_scan_dialog_description"
+        android:layout_below="@+id/text_dialog_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:text="@string/button_cancel"
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_cancel"
+            style="@style/ButtonCancel"
+            android:layout_toLeftOf="@+id/button_ok" />
+
+        <Button
+            android:text="@string/button_ok"
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_ok"
+            style="@style/ButtonOK"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+</RelativeLayout>
+
