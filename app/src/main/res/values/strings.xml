@@ -78,4 +78,5 @@
     <string name="bac_estimation_title">BAC ESTIMATION</string>
     <string name="bac_estimation_units">Units: g/dL</string>
 
+    <string name="bac_estimation_chart_legend">Blood Alcohol Content</string>
 </resources>
