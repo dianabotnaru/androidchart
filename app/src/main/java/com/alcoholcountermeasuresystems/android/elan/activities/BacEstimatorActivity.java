@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.BacEstimatorOneFragment;
+import com.alcoholcountermeasuresystems.android.elan.models.ProfileForBac;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -32,14 +33,18 @@ public class BacEstimatorActivity extends BaseActivity implements BacEstimatorOn
 
     @OnClick(R.id.button_toolbar_next)
     void onOkClicked() {
+        //Todo save ProfileForbac in local
         startActivity(new Intent(BacEstimatorActivity.this, BacEstimationActivity.class));
     }
+
+    private ProfileForBac profileForBac;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bac_estimator);
         ButterKnife.bind(this);
+        profileForBac = new ProfileForBac();
         initViews();
     }
 
@@ -53,7 +58,10 @@ public class BacEstimatorActivity extends BaseActivity implements BacEstimatorOn
     }
 
     @Override
-    public void onCompletedEstimatorSetting(boolean isCompleted){
+    public void onCompletedEstimatorSetting(boolean isCompleted, ProfileForBac profileForBac){
         mToolbarNextButton.setEnabled(isCompleted);
+        if(profileForBac!= null){
+            this.profileForBac = profileForBac;
+        }
     }
 }

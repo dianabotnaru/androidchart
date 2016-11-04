@@ -7,12 +7,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
-import com.alcoholcountermeasuresystems.android.elan.activities.BacEstimationActivity;
+import com.alcoholcountermeasuresystems.android.elan.activities.BacDisclaimerActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.ContactUsActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.HistoryActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.InformationActivity;
@@ -49,7 +48,7 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
 
     @OnClick(R.id.layout_bac_estimation)
     void onBacEstimationPressed() {
-        startActivity(new Intent(MainActivity.this, BacEstimationActivity.class));
+        startActivity(new Intent(MainActivity.this, BacDisclaimerActivity.class));
     }
 
     @OnClick(R.id.layout_history)
