@@ -5,17 +5,38 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.fragments.base.BaseInjectableFragment;
+import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.DateTimePickerFragment;
 
+
+import butterknife.BindString;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by jordi on 31/10/16.
  */
 
 public class AddDrinkFragment extends BaseInjectableFragment{
+
+    @BindView(R.id.text_description)
+    TextView mDescriptionText;
+
+    @BindString(R.string.add_drink_description)
+    String mDisableDescriptionString;
+
+    @BindString(R.string.add_drink_enable_description)
+    String mEnableDescriptionString;
+
+    @OnClick(R.id.layout_select_date_time)
+    void onOkClicked() {
+        DateTimePickerFragment dialogFragment = DateTimePickerFragment.newInstance();
+        dialogFragment.show(getFragmentManager(), DateTimePickerFragment.TAG);
+    }
 
     @Override
     protected void injectComponents() {}

@@ -66,6 +66,7 @@
     <string name="history_title">HISTORY</string>
 
     <string name="add_drink_description">Please add a drink to estimate your BAC levels.</string>
+    <string name="add_drink_enable_description">Manually add alcohol consumption in case you don’t have the breathalyzer.</string>
     <string name="add_drink_volume_consumed">Volume consumed</string>
     <string name="add_drink_percentage">Percentage</string>
     <string name="add_drink_question">When did you drink alcohol?</string>
