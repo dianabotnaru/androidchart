@@ -12,6 +12,10 @@ import com.alcoholcountermeasuresystems.android.elan.fragments.base.BaseInjectab
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.DateTimePickerFragment;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +29,9 @@ public class AddDrinkFragment extends BaseInjectableFragment{
 
     @BindView(R.id.text_description)
     TextView mDescriptionText;
+
+    @BindView(R.id.text_select_date_time)
+    TextView mSelectDateTimeText;
 
     @BindString(R.string.add_drink_description)
     String mDisableDescriptionString;
@@ -54,4 +61,9 @@ public class AddDrinkFragment extends BaseInjectableFragment{
         super.onAttach(context);
     }
 
+    public void setDateTimeTextview(Date date){
+        String dateString = new SimpleDateFormat("EE").format(date)+", "+ DateFormat.getDateInstance().format(date);
+        String timeString = DateFormat.getTimeInstance().format(date);
+        mSelectDateTimeText.setText(dateString+" "+timeString);
+    }
 }

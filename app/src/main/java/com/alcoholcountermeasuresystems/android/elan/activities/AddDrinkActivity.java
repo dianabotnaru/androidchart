@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.AddDrinkFragment;
+import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.DateTimePickerFragment;
+
+import java.util.Date;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -19,7 +22,7 @@ import butterknife.ButterKnife;
  * Created by jordi on 31/10/16.
  */
 
-public class AddDrinkActivity extends BaseActivity {
+public class AddDrinkActivity extends BaseActivity implements DateTimePickerFragment.DateTimePickerListener{
 
     @BindView(R.id.text_toolbar_title)
     TextView mToolbarTitleText;
@@ -28,7 +31,7 @@ public class AddDrinkActivity extends BaseActivity {
     String mTitleString;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_drink);
         ButterKnife.bind(this);
@@ -68,4 +71,12 @@ public class AddDrinkActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onSelectDateTime(Date date) {
+        AddDrinkFragment addDrinkFragment = (AddDrinkFragment)
+                getSupportFragmentManager().findFragmentById(R.id.layout_add_drink_content);
+        if (addDrinkFragment != null) {
+            addDrinkFragment.setDateTimeTextview(date);
+        }
+    }
 }
