@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
@@ -33,6 +37,15 @@ public class AddDrinkFragment extends BaseInjectableFragment{
     @BindView(R.id.text_select_date_time)
     TextView mSelectDateTimeText;
 
+    @BindView(R.id.button_add_drink)
+    Button mAddDrinkButton;
+
+    @BindView(R.id.layout_select_date_time)
+    RelativeLayout mSelectDateTimeLayout;
+
+    @BindView(R.id.checkBox_now)
+    CheckBox mNowCheckBox;
+
     @BindString(R.string.add_drink_description)
     String mDisableDescriptionString;
 
@@ -45,6 +58,8 @@ public class AddDrinkFragment extends BaseInjectableFragment{
         dialogFragment.show(getFragmentManager(), DateTimePickerFragment.TAG);
     }
 
+    private Date selectedDate;
+
     @Override
     protected void injectComponents() {}
 
@@ -53,6 +68,7 @@ public class AddDrinkFragment extends BaseInjectableFragment{
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_add_drink, container, false);
         mUnbinder = ButterKnife.bind(this, view);
+        initNowCheckBox();
         return view;
     }
 
@@ -61,9 +77,39 @@ public class AddDrinkFragment extends BaseInjectableFragment{
         super.onAttach(context);
     }
 
+    private void initNowCheckBox(){
+        mNowCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                                     @Override
+                                                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                         if (isChecked){
+                                                             enableAddDrink(true);
+                                                             mSelectDateTimeLayout.setVisibility(View.GONE);
+                                                         }else{
+                                                             if (selectedDate == null){
+                                                                 enableAddDrink(false);
+                                                             }
+                                                             mSelectDateTimeLayout.setVisibility(View.VISIBLE);
+                                                         }
+                                                     }
+                                                 }
+        );
+    }
+
     public void setDateTimeTextview(Date date){
+        selectedDate = date;
+        mAddDrinkButton.setEnabled(true);
         String dateString = new SimpleDateFormat("EE").format(date)+", "+ DateFormat.getDateInstance().format(date);
         String timeString = DateFormat.getTimeInstance().format(date);
         mSelectDateTimeText.setText(dateString+" "+timeString);
+    }
+
+    private void enableAddDrink(boolean isEnabled){
+        mAddDrinkButton.setEnabled(isEnabled);
+        if (isEnabled){
+            mDescriptionText.setText(mEnableDescriptionString);
+        }else{
+            mDescriptionText.setText(mDisableDescriptionString);
+        }
     }
 }
