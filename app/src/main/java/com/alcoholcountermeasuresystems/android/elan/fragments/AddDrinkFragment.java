@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.fragments.base.BaseInjectableFragment;
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.DateTimePickerFragment;
+import com.alcoholcountermeasuresystems.android.elan.utils.DateUtils;
 
 
 import java.text.DateFormat;
@@ -99,9 +100,7 @@ public class AddDrinkFragment extends BaseInjectableFragment{
     public void setDateTimeTextview(Date date){
         selectedDate = date;
         mAddDrinkButton.setEnabled(true);
-        String dateString = new SimpleDateFormat("EE").format(date)+", "+ DateFormat.getDateInstance().format(date);
-        String timeString = DateFormat.getTimeInstance().format(date);
-        mSelectDateTimeText.setText(dateString+" "+timeString);
+        mSelectDateTimeText.setText(DateUtils.getStringFromdate(date));
     }
 
     private void enableAddDrink(boolean isEnabled){

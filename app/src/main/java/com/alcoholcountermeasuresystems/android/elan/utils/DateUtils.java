@@ -1,7 +1,10 @@
 package com.alcoholcountermeasuresystems.android.elan.utils;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by jordi on 31/10/16.
@@ -27,4 +30,10 @@ public class DateUtils {
         return newDate;
     }
 
+    public static String getStringFromdate(Date date){
+        String dateString;
+        Format formatter = new SimpleDateFormat("EE MMM dd,yyyy hh:mm aa", Locale.ENGLISH);
+        dateString = formatter.format(date);
+        return dateString;
+    }
 }
