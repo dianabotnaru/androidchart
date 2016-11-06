@@ -50,7 +50,7 @@ public class BacEstimationChart extends LineChart {
     private void initXAxis(){
         XAxis xAxis = this.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),getContext().getResources().getString(R.string.font_opensans_regular));
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/OpenSans-Regular.ttf");
         xAxis.setTypeface(tf);
         xAxis.setTextSize(12f);
         xAxis.setTextColor(Color.WHITE);
@@ -61,7 +61,7 @@ public class BacEstimationChart extends LineChart {
 
     private void initYAxis() {
         YAxis yAxis = this.getAxisLeft();
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),getContext().getResources().getString(R.string.font_opensans_regular));
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/OpenSans-Regular.ttf");
         yAxis.setTypeface(tf);
         yAxis.setTextSize(12f);
         yAxis.setTextColor(Color.WHITE);
@@ -73,7 +73,7 @@ public class BacEstimationChart extends LineChart {
         Legend legend = getLegend();
         legend.setTextColor(Color.WHITE);
         legend.setForm(Legend.LegendForm.CIRCLE);
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),getContext().getResources().getString(R.string.font_opensans_regular));
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/OpenSans-Regular.ttf");
         legend.setTypeface(tf);
         legend.setTextColor(ContextCompat.getColor(getContext(), R.color.gray));
         legend.setTextSize(12f);

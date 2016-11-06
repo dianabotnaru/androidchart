@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_main" />
@@ -9,7 +10,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         style="@style/HistoryLayout">
 
         <com.alcoholcountermeasuresystems.android.elan.views.DatePickUpLayout
@@ -18,5 +19,34 @@
             android:id="@+id/layout_date_pickup"
             android:background="@drawable/shape_button_start_inactive"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        style="@style/HistoryChartLayout"
+
+        android:layout_marginTop="20dp">
+
+        <com.alcoholcountermeasuresystems.android.elan.views.BacEstimationChart
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/BacEstimationChart"
+            android:id="@+id/linechart_history" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bac_estimation_units"
+        android:id="@+id/text_units"
+        style="@style/BacEstimationUnitsText"
+        android:layout_marginTop="10dp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listView_history"/>
 
 </LinearLayout>

@@ -104,6 +104,23 @@
         <item name="fontName">@string/font.opensans.regular</item>
     </style>
 
+    <style name="HistoryChartLayout" >
+        <item name="android:layout_marginLeft">14dp</item>
+        <item name="android:layout_marginRight">14dp</item>
+        <item name="android:layout_height">332dp</item>
+    </style>
+
+    <style name="HistoryListViewText" >
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontName">@string/font.opensans.semibold</item>
+    </style>
+
+    <style name="HistoryListViewItemLayout" >
+        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+    </style>
+
     <style name="AddDrinkSelectDateLayout" >
         <item name="android:background">@drawable/shape_layout_black</item>
         <item name="android:layout_marginTop">@dimen/main_item_top_margin</item>
