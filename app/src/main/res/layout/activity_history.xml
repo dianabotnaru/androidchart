@@ -44,9 +44,19 @@
         style="@style/BacEstimationUnitsText"
         android:layout_marginTop="10dp" />
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/colorDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="27dp">
+    </LinearLayout>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:divider="@color/colorDivider"
+        android:dividerHeight="1dp"
         android:id="@+id/listView_history"/>
-
 </LinearLayout>

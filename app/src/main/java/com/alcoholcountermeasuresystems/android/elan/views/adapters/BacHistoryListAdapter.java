@@ -1,23 +1,17 @@
 package com.alcoholcountermeasuresystems.android.elan.views.adapters;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.models.BAC;
-import com.alcoholcountermeasuresystems.android.elan.utils.Internals;
+import com.alcoholcountermeasuresystems.android.elan.utils.DateUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -65,10 +59,10 @@ public class BacHistoryListAdapter extends BaseAdapter {
         }
 
         BAC bac = getItem(position);
-        holder.mBacData.setText(String.valueOf(bac.getVolumeConsumption())+"ml @ "+String.valueOf(bac.getPercentageConsumption()));
+        holder.mBacData.setText(String.valueOf(bac.getVolumeConsumption())+"ml @ "+String.valueOf(bac.getPercentageConsumption())+"%");
+        holder.mDate.setText(DateUtils.getTimeStringFromdate(bac.getTimeStamp()));
         return convertView;
     }
-
 
     public void setItems(List<BAC> bacs) {
         mBacs.clear();
@@ -94,5 +88,4 @@ public class BacHistoryListAdapter extends BaseAdapter {
             ButterKnife.bind(this, view);
         }
     }
-
 }

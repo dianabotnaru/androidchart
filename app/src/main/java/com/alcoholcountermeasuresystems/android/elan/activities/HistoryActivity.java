@@ -78,6 +78,7 @@ public class HistoryActivity extends BaseActivity {
     }
 
     private void initChart(){
+        mHistoryLineChart.getLegend().setEnabled(false);
         ArrayList entries = new ArrayList();
         entries.add(new Entry(1451721600, 0.0040f));
         mHistoryLineChart.setLineChartDatas("",entries);
@@ -89,7 +90,8 @@ public class HistoryActivity extends BaseActivity {
         for (int i= 0; i<2;i++){
             BAC bac= new BAC();
             bac.setVolumeConsumption(110);
-            bac.setPercentageConsumption(110);
+            bac.setPercentageConsumption(50);
+            bac.setTimestamp(mSelectDate);
             bacdatas.add(bac);
         }
         return bacdatas;

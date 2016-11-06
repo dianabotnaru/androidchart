@@ -15,4 +15,6 @@
     <color name="red">#b94a48</color>
 
     <color name="colorDialogText">#deffffff</color>
+    <color name="colorDivider">#212427</color>
+
 </resources>

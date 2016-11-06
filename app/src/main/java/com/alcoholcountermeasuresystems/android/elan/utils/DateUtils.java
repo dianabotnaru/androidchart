@@ -36,4 +36,11 @@ public class DateUtils {
         dateString = formatter.format(date);
         return dateString;
     }
+
+    public static String getTimeStringFromdate(Date date){
+        String timeString;
+        Format formatter = new SimpleDateFormat("hh:mm aa", Locale.ENGLISH);
+        timeString = formatter.format(date);
+        return timeString;
+    }
 }

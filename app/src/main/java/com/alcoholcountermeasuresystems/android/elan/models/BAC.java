@@ -2,12 +2,14 @@ package com.alcoholcountermeasuresystems.android.elan.models;
 
 import org.joda.time.DateTime;
 
+import java.util.Date;
+
 import io.realm.RealmObject;
 
 public class BAC extends RealmObject {
 
     private String id;
-//    private DateTime timestamp;
+    private Date timestamp;
     private double bacDataPoint;
     private double volumeConsumption;
     private double percentageConsumption;
@@ -17,6 +19,15 @@ public class BAC extends RealmObject {
     }
 
     // TODO: Getters/Setters
+
+    public Date getTimeStamp(){
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp){
+        this.timestamp = timestamp;
+    }
+
     public double getBacDataPoint(){
         return bacDataPoint;
     }
