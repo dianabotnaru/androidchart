@@ -3,11 +3,19 @@ package com.alcoholcountermeasuresystems.android.elan.managers;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.alcoholcountermeasuresystems.android.elan.models.BAC;
 import com.alcoholcountermeasuresystems.android.elan.models.Profile;
 import com.alcoholcountermeasuresystems.android.elan.utils.Internals;
 
+import org.joda.time.DateTime;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
 
 public class RealmStore {
 
@@ -49,6 +57,7 @@ public class RealmStore {
         RealmConfiguration config = new RealmConfiguration.Builder()
                 .name(mDatabaseName + ".realm")
                 .schemaVersion(0)
+                .deleteRealmIfMigrationNeeded()
                 .build();
 
         if (deleteOnInit) {
@@ -91,6 +100,33 @@ public class RealmStore {
         Realm realm = Realm.getDefaultInstance();
         Profile savedProfile = realm.where(Profile.class).findFirst();
         return savedProfile;
+    }
+
+    public void addBac(@NonNull BAC bac) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.insertOrUpdate(bac);
+        realm.commitTransaction();
+    }
+
+    public List<BAC> retrieveBacs(@NonNull DateTime day) {
+        Realm realm = Realm.getDefaultInstance();
+
+        int startTimestamp = (int) (day.withTimeAtStartOfDay().getMillis() / 1000);
+        int endTimestamp = (int) (day.plusDays(1).withTimeAtStartOfDay().getMillis() / 1000);
+        RealmResults<BAC> results = realm.where(BAC.class)
+                .between("timestamp", startTimestamp, endTimestamp)
+                .findAll();
+
+        return mapToBacs(results);
+    }
+
+    private List<BAC> mapToBacs(RealmResults<BAC> realmResults) {
+        List<BAC> bacs = new ArrayList<>(realmResults.size());
+        for (BAC bac : realmResults) {
+//            bacs.add(new BAC(hr.getTimestamp(), (int) hr.getHeartRate()));
+        }
+        return bacs;
     }
 
     /***

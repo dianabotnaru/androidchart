@@ -31,7 +31,7 @@ public class DateTimePickerFragment extends BaseDialogFragment {
     public static final String TAG = DateTimePickerFragment.class.getCanonicalName();
 
     public interface DateTimePickerListener {
-        void onSelectDateTime(LocalDateTime date);
+        void onSelectDateTime(DateTime date);
     }
 
     private  int mYear,mMonth,mDay,mHour,mMinute;
@@ -92,9 +92,9 @@ public class DateTimePickerFragment extends BaseDialogFragment {
         calendar.set(Calendar.DAY_OF_MONTH, mDay);
         calendar.set(Calendar.HOUR_OF_DAY,mHour);
         calendar.set(Calendar.MINUTE,mMinute);
-        LocalDateTime localDateTime = new LocalDateTime(calendar);
+        DateTime dateTime = new DateTime(calendar);
         try{
-            ((DateTimePickerListener) getActivity()).onSelectDateTime(localDateTime);
+            ((DateTimePickerListener) getActivity()).onSelectDateTime(dateTime);
         }catch (ClassCastException cce){
             throw new ClassCastException("DateTimePickerListener getTargetFragment is not set");
         }

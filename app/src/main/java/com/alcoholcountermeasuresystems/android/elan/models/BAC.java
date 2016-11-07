@@ -17,6 +17,7 @@ public class BAC extends RealmObject {
     private double volumeConsumption;
     private double percentageConsumption;
     private boolean isFromDevice;
+    private String consumptionMetric;
 
     public BAC() {
     }
@@ -43,7 +44,7 @@ public class BAC extends RealmObject {
         return volumeConsumption;
     }
 
-    public void setVolumeConsumption(double bacDataPoint){
+    public void setVolumeConsumption(double volumeConsumption){
         this.volumeConsumption = volumeConsumption;
     }
 
@@ -53,6 +54,13 @@ public class BAC extends RealmObject {
 
     public void setPercentageConsumption(double percentageConsumption){
         this.percentageConsumption = percentageConsumption;
+    }
+    public void setConsumptionMetric(String consumptionMetric){
+        this.consumptionMetric = consumptionMetric;
+    }
+
+    public String getConsumptionMetric(){
+        return consumptionMetric;
     }
 
     public boolean getIsFromDevice(){

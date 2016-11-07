@@ -7,15 +7,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
-import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseActivity;
+import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.AddDrinkFragment;
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.DateTimePickerFragment;
+import com.alcoholcountermeasuresystems.android.elan.managers.RealmStore;
+import com.alcoholcountermeasuresystems.android.elan.models.BAC;
 
-import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
+import org.joda.time.DateTime;
 
-import java.util.Date;
+import javax.inject.Inject;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -25,7 +27,10 @@ import butterknife.ButterKnife;
  * Created by jordi on 31/10/16.
  */
 
-public class AddDrinkActivity extends BaseActivity implements DateTimePickerFragment.DateTimePickerListener{
+public class AddDrinkActivity extends BaseInjectableActivity implements DateTimePickerFragment.DateTimePickerListener,AddDrinkFragment.AddDrinkFragmentListener{
+
+    @Inject
+    RealmStore mRealmStore;
 
     @BindView(R.id.text_toolbar_title)
     TextView mToolbarTitleText;
@@ -39,6 +44,11 @@ public class AddDrinkActivity extends BaseActivity implements DateTimePickerFrag
         setContentView(R.layout.activity_add_drink);
         ButterKnife.bind(this);
         initViews();
+    }
+
+    @Override
+    protected void injectComponents() {
+        MainApplication.getAppComponent().inject(this);
     }
 
     private void initToolbar(){
@@ -75,11 +85,15 @@ public class AddDrinkActivity extends BaseActivity implements DateTimePickerFrag
     }
 
     @Override
-    public void onSelectDateTime(LocalDateTime localDateTime) {
+    public void onSelectDateTime(DateTime dateTime) {
         AddDrinkFragment addDrinkFragment = (AddDrinkFragment)
                 getSupportFragmentManager().findFragmentById(R.id.layout_add_drink_content);
         if (addDrinkFragment != null) {
-            addDrinkFragment.setDateTimeTextview(localDateTime);
+            addDrinkFragment.setDateTimeTextview(dateTime);
         }
+    }
+
+    public void onAddDrink(BAC bac){
+        mRealmStore.addBac(bac);
     }
 }

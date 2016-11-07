@@ -82,7 +82,7 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
         mAgeEditText.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(!s.equals("")) {
-                    if (Internals.getStringfromInt(mAgeEditText.getText().toString())>AGE_MAX_VALUE){
+                    if (Internals.getIntfromString(mAgeEditText.getText().toString())>AGE_MAX_VALUE){
                         mAgeEditText.setText(Integer.toString(AGE_MAX_VALUE));
                     }
                     onCompletedEstimatorSetting();
@@ -101,12 +101,12 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
             public void onTextChanged(CharSequence s, int start, int before,int count) {
                 if(!s.equals("")) {
                     if (mInSwitch.isChecked()){
-                        if (Internals.getStringfromInt(mHeightEditText.getText().toString())>HELIGHT_INCH_MAX_VALUE){
+                        if (Internals.getIntfromString(mHeightEditText.getText().toString())>HELIGHT_INCH_MAX_VALUE){
                             mHeightEditText.setText(Integer.toString(HELIGHT_INCH_MAX_VALUE));
                         }
                     }
                     else {
-                        if (Internals.getStringfromInt(mHeightEditText.getText().toString())>HELIGHT_CENTIMETER_MAX_VALUE){
+                        if (Internals.getIntfromString(mHeightEditText.getText().toString())>HELIGHT_CENTIMETER_MAX_VALUE){
                             mHeightEditText.setText(Integer.toString(HELIGHT_CENTIMETER_MAX_VALUE));
                         }
                     }
@@ -126,11 +126,11 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(!s.equals("")) {
                     if(mlbsSwitch.isChecked()){
-                        if (Internals.getStringfromInt(mWeightEditText.getText().toString())>WEIGHT_LBS_MAX_VALUE){
+                        if (Internals.getIntfromString(mWeightEditText.getText().toString())>WEIGHT_LBS_MAX_VALUE){
                             mWeightEditText.setText(Integer.toString(WEIGHT_LBS_MAX_VALUE));
                         }
                     }else{
-                        if (Internals.getStringfromInt(mWeightEditText.getText().toString())>WEIGHT_KG_MAX_VALUE){
+                        if (Internals.getIntfromString(mWeightEditText.getText().toString())>WEIGHT_KG_MAX_VALUE){
                             mWeightEditText.setText(Integer.toString(WEIGHT_KG_MAX_VALUE));
                         }
                     }
@@ -182,9 +182,9 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
     }
 
     private boolean isCompletedEdit() {
-        return ((Internals.getStringfromInt(mAgeEditText.getText().toString())>0) &&
-                (Internals.getStringfromInt(mHeightEditText.getText().toString())>0) &&
-                (Internals.getStringfromInt(mWeightEditText.getText().toString())>0))&&
+        return ((Internals.getIntfromString(mAgeEditText.getText().toString())>0) &&
+                (Internals.getIntfromString(mHeightEditText.getText().toString())>0) &&
+                (Internals.getIntfromString(mWeightEditText.getText().toString())>0))&&
                 (mFemaleCheckBox.isChecked()||mMaleCheckBox.isChecked());
     }
 

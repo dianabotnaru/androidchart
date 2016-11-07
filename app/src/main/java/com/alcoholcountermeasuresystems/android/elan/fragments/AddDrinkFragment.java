@@ -2,26 +2,27 @@ package com.alcoholcountermeasuresystems.android.elan.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.fragments.base.BaseInjectableFragment;
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.DateTimePickerFragment;
+import com.alcoholcountermeasuresystems.android.elan.models.BAC;
 import com.alcoholcountermeasuresystems.android.elan.utils.DateUtils;
+import com.alcoholcountermeasuresystems.android.elan.utils.Internals;
 
-
-import org.joda.time.LocalDateTime;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.joda.time.DateTime;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -34,11 +35,21 @@ import butterknife.OnClick;
 
 public class AddDrinkFragment extends BaseInjectableFragment{
 
+    public interface AddDrinkFragmentListener {
+        void onAddDrink(BAC bac);
+    }
+
     @BindView(R.id.text_description)
     TextView mDescriptionText;
 
     @BindView(R.id.text_select_date_time)
     TextView mSelectDateTimeText;
+
+    @BindView(R.id.edittext_volume_consumed)
+    EditText mVolumeConsumedEditText;
+
+    @BindView(R.id.edittext_percentage)
+    EditText mPercentageEditText;
 
     @BindView(R.id.button_add_drink)
     Button mAddDrinkButton;
@@ -48,6 +59,9 @@ public class AddDrinkFragment extends BaseInjectableFragment{
 
     @BindView(R.id.checkBox_now)
     CheckBox mNowCheckBox;
+
+    @BindView(R.id.switch_consumed_matric)
+    Switch mConsumedMatricSwitch;
 
     @BindString(R.string.add_drink_description)
     String mDisableDescriptionString;
@@ -61,7 +75,16 @@ public class AddDrinkFragment extends BaseInjectableFragment{
         dialogFragment.show(getFragmentManager(), DateTimePickerFragment.TAG);
     }
 
-    private Date selectedDate;
+    @OnClick(R.id.button_add_drink)
+    void onAddDrinkButtonPressed() {
+        try{
+            ((AddDrinkFragment.AddDrinkFragmentListener) getActivity()).onAddDrink(setBacModel());
+        }catch (ClassCastException cce){
+            throw new ClassCastException("ScanNearbyDialogListener getTargetFragment is not set");
+        }
+    }
+
+    private DateTime selectedDate;
 
     @Override
     protected void injectComponents() {}
@@ -71,7 +94,7 @@ public class AddDrinkFragment extends BaseInjectableFragment{
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_add_drink, container, false);
         mUnbinder = ButterKnife.bind(this, view);
-        initNowCheckBox();
+        initViews();
         return view;
     }
 
@@ -80,37 +103,91 @@ public class AddDrinkFragment extends BaseInjectableFragment{
         super.onAttach(context);
     }
 
+    private void initViews(){
+        initNowCheckBox();
+        initEditText();
+    }
+
     private void initNowCheckBox(){
         mNowCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                                                      @Override
                                                      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                                          if (isChecked){
-                                                             enableAddDrink(true);
                                                              mSelectDateTimeLayout.setVisibility(View.GONE);
                                                          }else{
-                                                             if (selectedDate == null){
-                                                                 enableAddDrink(false);
-                                                             }
                                                              mSelectDateTimeLayout.setVisibility(View.VISIBLE);
                                                          }
+                                                         enableAddDrink();
                                                      }
                                                  }
         );
     }
 
-    public void setDateTimeTextview(LocalDateTime localDateTime){
-        selectedDate = localDateTime.toDate();
-        mAddDrinkButton.setEnabled(true);
-        mSelectDateTimeText.setText(DateUtils.getStringFromdate(selectedDate));
+    public void setDateTimeTextview(DateTime dateTime){
+        selectedDate = dateTime;
+        mSelectDateTimeText.setText(DateUtils.getStringFromdate(dateTime.toDate()));
+        enableAddDrink();
     }
 
-    private void enableAddDrink(boolean isEnabled){
-        mAddDrinkButton.setEnabled(isEnabled);
-        if (isEnabled){
+    private void enableAddDrink(){
+        mAddDrinkButton.setEnabled(isCompletedEdit());
+        if (isCompletedEdit()){
             mDescriptionText.setText(mEnableDescriptionString);
         }else{
             mDescriptionText.setText(mDisableDescriptionString);
         }
+    }
+
+    private boolean isCompletedEdit() {
+        return ((Internals.getDoublefromString(mVolumeConsumedEditText.getText().toString())>0) &&
+                (Internals.getDoublefromString(mPercentageEditText.getText().toString())>0) &&
+                (mNowCheckBox.isChecked()||(selectedDate != null)));
+    }
+
+    private void initEditText(){
+        mVolumeConsumedEditText.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(!s.equals("")) {
+                    enableAddDrink();
+                }
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        mPercentageEditText.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(!s.equals("")) {
+                    enableAddDrink();
+                }
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+            public void afterTextChanged(Editable s) {
+            }
+        });
+    }
+
+    private BAC setBacModel(){
+        BAC bac = new BAC();
+        bac.setVolumeConsumption(Internals.getDoublefromString(mVolumeConsumedEditText.getText().toString()));
+        bac.setPercentageConsumption(Internals.getDoublefromString(mPercentageEditText.getText().toString()));
+        if (mConsumedMatricSwitch.isChecked()){
+            bac.setConsumptionMetric("ml");
+        }else {
+            bac.setConsumptionMetric("oz");
+        }
+        if (mNowCheckBox.isChecked()){
+            DateTime nowTime = new DateTime();
+            bac.setTimestamp((int) (nowTime.withTimeAtStartOfDay().getMillis() / 1000));
+        }else {
+            bac.setTimestamp((int) (selectedDate.withTimeAtStartOfDay().getMillis() / 1000));
+        }
+        return bac;
     }
 }

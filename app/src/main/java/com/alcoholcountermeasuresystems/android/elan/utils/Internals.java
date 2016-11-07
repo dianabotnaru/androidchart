@@ -11,7 +11,7 @@ public class Internals {
         return a == b || (a != null && a.equals(b));
     }
 
-    public static int getStringfromInt(String s){
+    public static int getIntfromString(String s){
         int intValue = 0;
         try {
             intValue = Integer.parseInt(s);
@@ -21,5 +21,17 @@ public class Internals {
         }
         return intValue;
     }
+
+    public static double getDoublefromString(String s){
+        double doubleValue = 0;
+        try {
+            doubleValue = Double.parseDouble(s);
+        } catch(NumberFormatException nfe) {
+            System.out.println("Could not parse " + nfe);
+            return 0;
+        }
+        return doubleValue;
+    }
+
 }
 
