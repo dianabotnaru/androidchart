@@ -60,7 +60,7 @@ public class BacHistoryListAdapter extends BaseAdapter {
 
         BAC bac = getItem(position);
         holder.mBacData.setText(String.valueOf(bac.getVolumeConsumption())+"ml @ "+String.valueOf(bac.getPercentageConsumption())+"%");
-        holder.mDate.setText(DateUtils.getTimeStringFromdate(bac.getTimeStamp()));
+//        holder.mDate.setText(DateUtils.getTimeStringFromdate(bac.getTimeStamp()));
         return convertView;
     }
 

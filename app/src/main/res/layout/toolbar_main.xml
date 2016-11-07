@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         style="@style/MainToolbarTitle"
         android:layout_marginLeft="@dimen/toolbar_title_margin_left" />
+
     <ImageButton
         android:id="@+id/button_action"
         android:layout_width="wrap_content"
@@ -31,7 +32,6 @@
         android:layout_gravity="end"
         style="@style/MainToolbarNext"
         android:text="@string/toolbar_next"
-        android:layout_marginRight="17dp"
         android:enabled="false"
         android:background="@android:color/transparent"
         android:visibility="gone" />

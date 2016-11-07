@@ -17,6 +17,8 @@ import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.DateTimeP
 import com.alcoholcountermeasuresystems.android.elan.utils.DateUtils;
 
 
+import org.joda.time.LocalDateTime;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -97,10 +99,10 @@ public class AddDrinkFragment extends BaseInjectableFragment{
         );
     }
 
-    public void setDateTimeTextview(Date date){
-        selectedDate = date;
+    public void setDateTimeTextview(LocalDateTime localDateTime){
+        selectedDate = localDateTime.toDate();
         mAddDrinkButton.setEnabled(true);
-        mSelectDateTimeText.setText(DateUtils.getStringFromdate(date));
+        mSelectDateTimeText.setText(DateUtils.getStringFromdate(selectedDate));
     }
 
     private void enableAddDrink(boolean isEnabled){

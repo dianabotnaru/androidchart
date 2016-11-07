@@ -12,6 +12,9 @@ import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseActivit
 import com.alcoholcountermeasuresystems.android.elan.fragments.AddDrinkFragment;
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.DateTimePickerFragment;
 
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
+
 import java.util.Date;
 
 import butterknife.BindString;
@@ -72,11 +75,11 @@ public class AddDrinkActivity extends BaseActivity implements DateTimePickerFrag
     }
 
     @Override
-    public void onSelectDateTime(Date date) {
+    public void onSelectDateTime(LocalDateTime localDateTime) {
         AddDrinkFragment addDrinkFragment = (AddDrinkFragment)
                 getSupportFragmentManager().findFragmentById(R.id.layout_add_drink_content);
         if (addDrinkFragment != null) {
-            addDrinkFragment.setDateTimeTextview(date);
+            addDrinkFragment.setDateTimeTextview(localDateTime);
         }
     }
 }

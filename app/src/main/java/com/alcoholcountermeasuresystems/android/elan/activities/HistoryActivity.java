@@ -91,7 +91,7 @@ public class HistoryActivity extends BaseActivity {
             BAC bac= new BAC();
             bac.setVolumeConsumption(110);
             bac.setPercentageConsumption(50);
-            bac.setTimestamp(mSelectDate);
+//            bac.setTimestamp(mSelectDate);
             bacdatas.add(bac);
         }
         return bacdatas;

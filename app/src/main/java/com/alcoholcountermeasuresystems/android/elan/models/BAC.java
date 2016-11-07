@@ -5,11 +5,14 @@ import org.joda.time.DateTime;
 import java.util.Date;
 
 import io.realm.RealmObject;
+import io.realm.annotations.Index;
+import io.realm.annotations.PrimaryKey;
 
 public class BAC extends RealmObject {
 
-    private String id;
-    private Date timestamp;
+    @Index
+    @PrimaryKey
+    private int timestamp;
     private double bacDataPoint;
     private double volumeConsumption;
     private double percentageConsumption;
@@ -20,11 +23,11 @@ public class BAC extends RealmObject {
 
     // TODO: Getters/Setters
 
-    public Date getTimeStamp(){
+    public int getTimeStamp(){
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp){
+    public void setTimestamp(int timestamp){
         this.timestamp = timestamp;
     }
 

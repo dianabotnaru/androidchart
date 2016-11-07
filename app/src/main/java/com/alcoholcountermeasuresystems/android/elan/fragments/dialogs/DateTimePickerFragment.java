@@ -12,6 +12,7 @@ import android.widget.TimePicker;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.fragments.base.BaseDialogFragment;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 
@@ -30,8 +31,10 @@ public class DateTimePickerFragment extends BaseDialogFragment {
     public static final String TAG = DateTimePickerFragment.class.getCanonicalName();
 
     public interface DateTimePickerListener {
-        void onSelectDateTime(Date date);
+        void onSelectDateTime(LocalDateTime date);
     }
+
+    private  int mYear,mMonth,mDay,mHour,mMinute;
 
     @BindView(R.id.date_picker)
     DatePicker mDatePicker;
@@ -62,11 +65,9 @@ public class DateTimePickerFragment extends BaseDialogFragment {
     private void initTimePicker(){
         mTimeicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                LocalDate localDate = new LocalDate(mDatePicker.getYear(),mDatePicker.getMonth()+1,mDatePicker.getDayOfMonth());
-                Date date = localDate.toDate();
-                date.setHours(hourOfDay);
-                date.setMinutes(minute);
-                setDateAndTime(date);
+                mHour = hourOfDay;
+                mMinute = minute;
+                setDateAndTime();
             }
         });
     }
@@ -77,17 +78,23 @@ public class DateTimePickerFragment extends BaseDialogFragment {
                 new DatePicker.OnDateChangedListener(){
                     @Override
                     public void onDateChanged(DatePicker view, int year, int monthOfYear,int dayOfMonth) {
-                        LocalDate localDate = new LocalDate(year, monthOfYear, dayOfMonth);
-                        Date date = localDate.toDate();
-                        date.setHours(mTimeicker.getCurrentHour());
-                        date.setMinutes(mTimeicker.getCurrentMinute());
-                        setDateAndTime(date);
+                        mYear = year;
+                        mMonth = monthOfYear;
+                        mDay = dayOfMonth;
+                        setDateAndTime();
                     }});
     }
 
-    private void setDateAndTime(Date date){
+    private void setDateAndTime(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, mYear);
+        calendar.set(Calendar.MONTH, mMonth);
+        calendar.set(Calendar.DAY_OF_MONTH, mDay);
+        calendar.set(Calendar.HOUR_OF_DAY,mHour);
+        calendar.set(Calendar.MINUTE,mMinute);
+        LocalDateTime localDateTime = new LocalDateTime(calendar);
         try{
-            ((DateTimePickerListener) getActivity()).onSelectDateTime(date);
+            ((DateTimePickerListener) getActivity()).onSelectDateTime(localDateTime);
         }catch (ClassCastException cce){
             throw new ClassCastException("DateTimePickerListener getTargetFragment is not set");
         }

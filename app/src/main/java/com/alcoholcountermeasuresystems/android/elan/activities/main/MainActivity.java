@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
+import com.alcoholcountermeasuresystems.android.elan.activities.AddDrinkActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.BacDisclaimerActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.ContactUsActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.HistoryActivity;
@@ -79,9 +80,6 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
     @BindString(R.string.main_register_dialog_description)
     String mRegisterScanNearbyDescription;
 
-
-    private boolean isLoggedIn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,14 +89,9 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
     }
 
     private void initViews(){
-        if (mRealmStore.getProfile() == null){
-            isLoggedIn = false;
-        }else {
-            isLoggedIn = true;
-        }
-        initRegisterState(isLoggedIn);
+        initRegisterState(isLoggedin());
         initToolbar();
-        if (!isLoggedIn){
+        if (!isLoggedin()){
             showRegisterDialog();
         }
     }
@@ -133,6 +126,7 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_dedisclaimer) {
+            startActivity(new Intent(MainActivity.this, AddDrinkActivity.class));
             return true;
         }
         else if (id == R.id.action_contactus) {
@@ -153,4 +147,13 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
         dialogFragment2.dismiss();
     }
 
+    private boolean isLoggedin(){
+        boolean loggedIn;
+        if (mRealmStore.getProfile() == null){
+            loggedIn = false;
+        }else {
+            loggedIn = true;
+        }
+        return loggedIn;
+    }
 }
