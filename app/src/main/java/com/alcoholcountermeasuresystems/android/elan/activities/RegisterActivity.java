@@ -7,12 +7,16 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.main.MainActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.RegisterFragment;
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.WarningDialogFragment;
+import com.alcoholcountermeasuresystems.android.elan.managers.RealmStore;
 import com.alcoholcountermeasuresystems.android.elan.models.Profile;
+
+import javax.inject.Inject;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -25,6 +29,8 @@ import butterknife.OnClick;
 
 public class RegisterActivity extends BaseInjectableActivity implements WarningDialogFragment.WarningDialogListener,RegisterFragment.RegisterFragmentListener {
 
+    @Inject
+    RealmStore mRealmStore;
 
     @OnClick(R.id.button_cancel)
     void onToolbarBackPressed() {
@@ -37,8 +43,6 @@ public class RegisterActivity extends BaseInjectableActivity implements WarningD
     @BindString(R.string.register_scan_dialog_description)
     String mRegisterScanNearbyDescription;
 
-    private Profile mProfile;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,11 +54,12 @@ public class RegisterActivity extends BaseInjectableActivity implements WarningD
 
     @Override
     protected void injectComponents() {
+        MainApplication.getAppComponent().inject(this);
     }
 
     @Override
     public void onDialogOkButtonClicked(DialogFragment2 dialogFragment2) {
-        // Todo insert code for nearby scan
+        // Todo insert code for Elan scan
         dialogFragment2.dismiss();
     }
 
@@ -72,8 +77,7 @@ public class RegisterActivity extends BaseInjectableActivity implements WarningD
 
     @Override
     public void onActivate(Profile profile) {
-
-        profile.save(); //save profile information
+        mRealmStore.addProfile(profile);
         startActivity(new Intent(RegisterActivity.this, MainActivity.class));
         finish();
     }

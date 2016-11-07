@@ -18,7 +18,10 @@ import com.alcoholcountermeasuresystems.android.elan.activities.InformationActiv
 import com.alcoholcountermeasuresystems.android.elan.activities.RegisterActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.WarningDialogFragment;
+import com.alcoholcountermeasuresystems.android.elan.managers.RealmStore;
 import com.alcoholcountermeasuresystems.android.elan.views.HomeButtonLayout;
+
+import javax.inject.Inject;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -26,6 +29,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseInjectableActivity implements WarningDialogFragment.WarningDialogListener {
+
+    @Inject
+    RealmStore mRealmStore;
 
     @BindView(R.id.text_toolbar_title)
     TextView mToolbarTitleText;
@@ -85,8 +91,11 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
     }
 
     private void initViews(){
-        //Todo insert code to detect log in state
-        isLoggedIn = false; //QA purpose
+        if (mRealmStore.getProfile() == null){
+            isLoggedIn = false;
+        }else {
+            isLoggedIn = true;
+        }
         initRegisterState(isLoggedIn);
         initToolbar();
         if (!isLoggedIn){

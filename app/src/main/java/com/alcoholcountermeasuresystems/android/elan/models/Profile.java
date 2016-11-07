@@ -1,5 +1,6 @@
 package com.alcoholcountermeasuresystems.android.elan.models;
 
+import io.realm.Realm;
 import io.realm.RealmObject;
 
 public class Profile extends RealmObject {
@@ -90,9 +91,5 @@ public class Profile extends RealmObject {
 
     public void setLocation(String location){
         this.location = location;
-    }
-
-    public void save() {
-        //TODO: save profile model in local
     }
 }

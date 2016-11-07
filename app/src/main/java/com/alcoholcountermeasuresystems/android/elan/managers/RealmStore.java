@@ -3,6 +3,7 @@ package com.alcoholcountermeasuresystems.android.elan.managers;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.alcoholcountermeasuresystems.android.elan.models.Profile;
 import com.alcoholcountermeasuresystems.android.elan.utils.Internals;
 
 import io.realm.Realm;
@@ -78,6 +79,18 @@ public class RealmStore {
             }
             singleton = realmStore;
         }
+    }
+    public void addProfile(@NonNull Profile profile) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.insertOrUpdate(profile);
+        realm.commitTransaction();
+    }
+
+    public Profile getProfile(){
+        Realm realm = Realm.getDefaultInstance();
+        Profile savedProfile = realm.where(Profile.class).findFirst();
+        return savedProfile;
     }
 
     /***
