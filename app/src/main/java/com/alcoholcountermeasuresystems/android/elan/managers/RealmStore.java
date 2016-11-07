@@ -112,8 +112,8 @@ public class RealmStore {
     public List<BAC> retrieveBacs(@NonNull DateTime day) {
         Realm realm = Realm.getDefaultInstance();
 
-        int startTimestamp = (int) (day.withTimeAtStartOfDay().getMillis() / 1000);
-        int endTimestamp = (int) (day.plusDays(1).withTimeAtStartOfDay().getMillis() / 1000);
+        int startTimestamp = (int) (day.minusHours(4).withTimeAtStartOfDay().getMillis() / 1000);
+        int endTimestamp = (int) (day.plusHours(4).withTimeAtStartOfDay().getMillis() / 1000);
         RealmResults<BAC> results = realm.where(BAC.class)
                 .between("timestamp", startTimestamp, endTimestamp)
                 .findAll();
@@ -124,7 +124,12 @@ public class RealmStore {
     private List<BAC> mapToBacs(RealmResults<BAC> realmResults) {
         List<BAC> bacs = new ArrayList<>(realmResults.size());
         for (BAC bac : realmResults) {
-//            bacs.add(new BAC(hr.getTimestamp(), (int) hr.getHeartRate()));
+            BAC newBac = new BAC();
+            newBac.setTimestamp(bac.getTimeStamp());
+            newBac.setConsumptionMetric(bac.getConsumptionMetric());
+            newBac.setVolumeConsumption(bac.getVolumeConsumption());
+            newBac.setPercentageConsumption(bac.getPercentageConsumption());
+            bacs.add(newBac);
         }
         return bacs;
     }

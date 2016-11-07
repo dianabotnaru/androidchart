@@ -4,15 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
-import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseActivity;
+import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
+import com.alcoholcountermeasuresystems.android.elan.managers.RealmStore;
+import com.alcoholcountermeasuresystems.android.elan.models.BAC;
 import com.alcoholcountermeasuresystems.android.elan.views.BacEstimationChart;
 import com.github.mikephil.charting.data.Entry;
+
+import org.joda.time.DateTime;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -23,7 +31,10 @@ import butterknife.OnClick;
  * Created by jordi on 02/11/16.
  */
 
-public class BacEstimationActivity extends BaseActivity {
+public class BacEstimationActivity extends BaseInjectableActivity {
+
+    @Inject
+    RealmStore mRealmStore;
 
     @BindView(R.id.text_toolbar_title)
     TextView mToolbarTitleText;
@@ -54,20 +65,23 @@ public class BacEstimationActivity extends BaseActivity {
         initChart();//set chart datas
     }
 
+    @Override
+    protected void injectComponents() {
+        MainApplication.getAppComponent().inject(this);
+    }
+
     private void initViews(){
         mToolbarTitleText.setText(mTitleString);
         mDateText.setText(new SimpleDateFormat("EE").format(new Date())+", "+DateFormat.getDateInstance().format(new Date()));
     }
 
-    //QA purpose set chart datas
     private void initChart(){
+        List<BAC> Bacs = mRealmStore.retrieveBacs(new DateTime());
         ArrayList entries = new ArrayList();
-        entries.add(new Entry(1451685600, 0));
-        entries.add(new Entry(1451721600, 0.0040f));
-        entries.add(new Entry(1451743200, 0.0080f));
-        entries.add(new Entry(1451761200,0.0120f));
-        entries.add(new Entry(1451785200,0.0160f));
-        entries.add(new Entry(1451821200,0.0200f));
+        for (BAC bac : Bacs) {
+            entries.add(new Entry(bac.getTimeStamp(), (float)(bac.getPercentageConsumption()/100)));
+
+        }
         mBacLineChart.setLineChartDatas(mLegendString,entries);
     }
 }

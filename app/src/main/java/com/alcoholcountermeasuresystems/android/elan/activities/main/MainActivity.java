@@ -126,7 +126,7 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_dedisclaimer) {
-            startActivity(new Intent(MainActivity.this, AddDrinkActivity.class));
+            startActivity(new Intent(MainActivity.this, BacDisclaimerActivity.class));
             return true;
         }
         else if (id == R.id.action_contactus) {
