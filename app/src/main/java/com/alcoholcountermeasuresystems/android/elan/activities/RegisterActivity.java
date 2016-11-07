@@ -12,6 +12,7 @@ import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.main.MainActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.RegisterFragment;
+import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.CountryPickerDialog;
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.WarningDialogFragment;
 import com.alcoholcountermeasuresystems.android.elan.managers.RealmStore;
 import com.alcoholcountermeasuresystems.android.elan.models.Profile;
@@ -27,7 +28,7 @@ import butterknife.OnClick;
  * Created by jordi on 26/10/16.
  */
 
-public class RegisterActivity extends BaseInjectableActivity implements WarningDialogFragment.WarningDialogListener,RegisterFragment.RegisterFragmentListener {
+public class RegisterActivity extends BaseInjectableActivity implements WarningDialogFragment.WarningDialogListener,RegisterFragment.RegisterFragmentListener,CountryPickerDialog.CountryPickerDialogListener {
 
     @Inject
     RealmStore mRealmStore;
@@ -80,5 +81,15 @@ public class RegisterActivity extends BaseInjectableActivity implements WarningD
         mRealmStore.addProfile(profile);
         startActivity(new Intent(RegisterActivity.this, MainActivity.class));
         finish();
+    }
+
+    @Override
+    public void onCountryPicker(DialogFragment2 dialogFragment2, String countryName) {
+        RegisterFragment registerFragment = (RegisterFragment)
+                getSupportFragmentManager().findFragmentById(R.id.layout_register_content);
+        if (registerFragment != null) {
+            registerFragment.setCountryName(countryName);
+        }
+        dialogFragment2.dismiss();
     }
 }

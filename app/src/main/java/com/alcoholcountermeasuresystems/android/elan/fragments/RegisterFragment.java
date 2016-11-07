@@ -78,11 +78,8 @@ public class RegisterFragment extends BaseInjectableFragment {
     private void initViews(){
         mCountryLayout.setDropDownButtonPressedListener(new ProfileInputLayout.OnDropDownButtonPressedListener() {
             public void onDropDownButtonClicked(){
-                //Todo insert code to show country list menu and remove below line
                 CountryPickerDialog dialogFragment = CountryPickerDialog.newInstance();
                 dialogFragment.show(getFragmentManager(), CountryPickerDialog.TAG);
-
-                Toast.makeText(getContext(), "country dropdown button clicked", Toast.LENGTH_SHORT).show();
             }
         });
         mLanguageLayout.setDropDownButtonPressedListener(new ProfileInputLayout.OnDropDownButtonPressedListener() {
@@ -127,7 +124,7 @@ public class RegisterFragment extends BaseInjectableFragment {
                 (!mEmailLayout.getInputText().equals(""))&&
                 (RegexUtils.validateEmail(mEmailLayout.getInputText()))&& // check email validation
 //                (!mLanguageLayout.getInputText().equals(""))&&
-//                (!mCountryLayout.getInputText().equals(""))&&
+                (!mCountryLayout.getInputText().equals(""))&&
                 (!mSerialLayout.getInputText().equals(""))&&
                 (!mPurchasedLayout.getInputText().equals(""))&&
                 (!mLocationLayout.getInputText().equals("")));
@@ -151,6 +148,10 @@ public class RegisterFragment extends BaseInjectableFragment {
         // Todo remove below line This is for QA.
         String serialNumber = "1111-1111-1111-1111";
         mSerialLayout.setInputText(serialNumber);
+    }
+
+    public void setCountryName(String countryName){
+        mCountryLayout.setInputText(countryName);
     }
 
     @Override
