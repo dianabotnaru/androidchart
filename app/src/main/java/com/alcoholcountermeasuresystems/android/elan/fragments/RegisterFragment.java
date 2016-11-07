@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.fragments.base.BaseInjectableFragment;
+import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.CountryPickerDialog;
 import com.alcoholcountermeasuresystems.android.elan.models.Profile;
 import com.alcoholcountermeasuresystems.android.elan.utils.RegexUtils;
 import com.alcoholcountermeasuresystems.android.elan.views.ProfileInputLayout;
@@ -78,6 +79,9 @@ public class RegisterFragment extends BaseInjectableFragment {
         mCountryLayout.setDropDownButtonPressedListener(new ProfileInputLayout.OnDropDownButtonPressedListener() {
             public void onDropDownButtonClicked(){
                 //Todo insert code to show country list menu and remove below line
+                CountryPickerDialog dialogFragment = CountryPickerDialog.newInstance();
+                dialogFragment.show(getFragmentManager(), CountryPickerDialog.TAG);
+
                 Toast.makeText(getContext(), "country dropdown button clicked", Toast.LENGTH_SHORT).show();
             }
         });

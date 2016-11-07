@@ -29,7 +29,7 @@
                 android:text="@string/infomation_disclaimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/disclaimer_button"
+                android:id="@+id/button_discalimer"
                 android:layout_gravity="center_horizontal"
                 style="@style/InfoDisclaimerButton"
                 android:layout_marginTop="36dp"

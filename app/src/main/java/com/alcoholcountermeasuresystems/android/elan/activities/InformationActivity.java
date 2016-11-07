@@ -14,6 +14,7 @@ import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseActivit
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by jordi on 28/10/16.
@@ -29,6 +30,12 @@ public class InformationActivity extends BaseActivity{
 
     @BindString(R.string.infomation_title)
     String mTitleString;
+
+    @OnClick(R.id.button_discalimer)
+    void onDisclaimerButtonPressed() {
+        startActivity(new Intent(InformationActivity.this, BacDisclaimerActivity.class));
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
