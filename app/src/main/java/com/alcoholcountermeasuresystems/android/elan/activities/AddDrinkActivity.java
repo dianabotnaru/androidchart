@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
@@ -95,5 +96,6 @@ public class AddDrinkActivity extends BaseInjectableActivity implements DateTime
 
     public void onAddDrink(BAC bac){
         mRealmStore.addBac(bac);
+        Toast.makeText(this, "Added Drink Successufully", Toast.LENGTH_SHORT).show();
     }
 }

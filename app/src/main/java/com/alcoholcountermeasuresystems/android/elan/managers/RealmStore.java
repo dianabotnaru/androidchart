@@ -105,7 +105,10 @@ public class RealmStore {
     public void addBac(@NonNull BAC bac) {
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        realm.insertOrUpdate(bac);
+        BAC cachedBac = realm.createObject(BAC.class);
+        cachedBac.setTimestamp(bac.getTimeStamp());
+        cachedBac.setVolumeConsumption(bac.getVolumeConsumption());
+        cachedBac.setPercentageConsumption(bac.getPercentageConsumption());
         realm.commitTransaction();
     }
 

@@ -13,8 +13,12 @@ import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
+
 import com.github.mikephil.charting.data.LineDataSet;
+
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 
@@ -23,8 +27,6 @@ import java.util.ArrayList;
  */
 
 public class BacEstimationChart extends LineChart {
-
-    private LineDataSet dataset;
 
     public BacEstimationChart(Context context, AttributeSet attrs)
     {
@@ -36,15 +38,33 @@ public class BacEstimationChart extends LineChart {
         initChart();
     }
 
-    public void setLineChartDatas(String dataSetLabel, ArrayList entries){
-        dataset = new LineDataSet(entries,"");
+    public void setLineChartDatas(String dataSetLabel, ArrayList yValues){
+
+        LineDataSet dataset = new LineDataSet(setXValuesWithTime(new DateTime()), "Test set");
         dataset.setColor(ContextCompat.getColor(getContext(), R.color.blue));
         dataset.setCircleColor(ContextCompat.getColor(getContext(), R.color.blue));
         dataset.setCircleColorHole(ContextCompat.getColor(getContext(), R.color.blue));
         dataset.setDrawValues(false);
         dataset.setLabel(dataSetLabel);
+
         LineData data = new LineData(dataset);
         this.setData(data);
+    }
+
+    public ArrayList setXValuesWithTime(DateTime nowDateTime){
+        ArrayList entries = new ArrayList();
+        for(int i = 0; i<3 ;i++){
+            float startTimestamp = (float) (nowDateTime.plusHours(i*2).withTimeAtStartOfDay().getMillis() / 1000);
+            entries.add(new Entry(startTimestamp, 0.5f));
+        }
+        return entries;
+    }
+
+    public void initChart(){
+        initXAxis();
+        initYAxis();
+        initLegend();
+        initDescription();
     }
 
     private void initXAxis(){
@@ -57,6 +77,10 @@ public class BacEstimationChart extends LineChart {
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(true);
         xAxis.setValueFormatter(new HourAxisValueFormatter());
+        DateTime nowDateTime = new DateTime();
+        xAxis.setAxisMinimum((float) (nowDateTime.minusHours(12).withTimeAtStartOfDay().getMillis() / 1000));
+        xAxis.setAxisMaximum((float) (nowDateTime.plusHours(12).withTimeAtStartOfDay().getMillis() / 1000));
+        xAxis.setLabelCount(6);
     }
 
     private void initYAxis() {
@@ -84,12 +108,5 @@ public class BacEstimationChart extends LineChart {
         Description description = new Description();
         description.setText("");
         setDescription(description);
-    }
-
-    public void initChart(){
-        initXAxis();
-        initYAxis();
-        initLegend();
-        initDescription();
     }
 }

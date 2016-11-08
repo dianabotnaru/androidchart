@@ -10,8 +10,6 @@ import io.realm.annotations.PrimaryKey;
 
 public class BAC extends RealmObject {
 
-    @Index
-    @PrimaryKey
     private int timestamp;
     private double bacDataPoint;
     private double volumeConsumption;
