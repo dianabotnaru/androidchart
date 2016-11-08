@@ -1,6 +1,7 @@
 package com.alcoholcountermeasuresystems.android.elan.activities;
 
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment2;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 import com.alcoholcountermeasuresystems.android.elan.fragments.AddDrinkFragment;
 import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.DateTimePickerFragment;
+import com.alcoholcountermeasuresystems.android.elan.fragments.dialogs.WarningDialogFragment;
 import com.alcoholcountermeasuresystems.android.elan.managers.RealmStore;
 import com.alcoholcountermeasuresystems.android.elan.models.BAC;
 
@@ -28,7 +30,7 @@ import butterknife.ButterKnife;
  * Created by jordi on 31/10/16.
  */
 
-public class AddDrinkActivity extends BaseInjectableActivity implements DateTimePickerFragment.DateTimePickerListener,AddDrinkFragment.AddDrinkFragmentListener{
+public class AddDrinkActivity extends BaseInjectableActivity implements DateTimePickerFragment.DateTimePickerListener,AddDrinkFragment.AddDrinkFragmentListener,WarningDialogFragment.WarningDialogListener{
 
     @Inject
     RealmStore mRealmStore;
@@ -96,6 +98,12 @@ public class AddDrinkActivity extends BaseInjectableActivity implements DateTime
 
     public void onAddDrink(BAC bac){
         mRealmStore.addBac(bac);
-        Toast.makeText(this, "Added Drink Successufully", Toast.LENGTH_SHORT).show();
+        WarningDialogFragment dialogFragment = WarningDialogFragment.newInstance("Added Drink Successfully","New Drink Added",true);
+        dialogFragment.show(getSupportFragmentManager(), WarningDialogFragment.TAG);
+    }
+
+    @Override
+    public void onDialogOkButtonClicked(DialogFragment2 dialogFragment2) {
+        dialogFragment2.dismiss();
     }
 }

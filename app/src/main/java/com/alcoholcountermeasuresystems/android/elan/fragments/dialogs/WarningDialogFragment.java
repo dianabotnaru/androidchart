@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.DialogFragment2;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
@@ -23,9 +25,14 @@ public class WarningDialogFragment extends BaseDialogFragment {
 
     private static String KEY_TITLE_STRING = "title";
     private static String KEY_DESCRIPTION_STRING = "description";
+    private static String KEY_HIDDEN_CANCEL = "hidden_cancel_button";
 
     private String mTitleString;
     private String mDescriptionString;
+    private boolean mIsHiddenCancelButton;
+
+    @BindView(R.id.button_cancel)
+    Button mCancelButton;
 
     @BindView(R.id.text_dialog_title)
     TextView mDialogTitleText;
@@ -56,10 +63,11 @@ public class WarningDialogFragment extends BaseDialogFragment {
     public WarningDialogFragment() {
     }
 
-    public static WarningDialogFragment newInstance(String title,String description) {
+    public static WarningDialogFragment newInstance(String title,String description,boolean isHiddenCancel) {
         Bundle arguments = new Bundle();
         arguments.putString(KEY_TITLE_STRING, title);
         arguments.putString(KEY_DESCRIPTION_STRING, description);
+        arguments.putBoolean(KEY_HIDDEN_CANCEL, isHiddenCancel);
 
         WarningDialogFragment dialog = new WarningDialogFragment();
         dialog.setArguments(arguments);
@@ -72,6 +80,8 @@ public class WarningDialogFragment extends BaseDialogFragment {
         Bundle arguments = getArguments();
         mTitleString = arguments.getString(KEY_TITLE_STRING);
         mDescriptionString = arguments.getString(KEY_DESCRIPTION_STRING);
+        mDescriptionString = arguments.getString(KEY_DESCRIPTION_STRING);
+        mIsHiddenCancelButton = arguments.getBoolean(KEY_HIDDEN_CANCEL);
     }
 
     @Override
@@ -87,6 +97,9 @@ public class WarningDialogFragment extends BaseDialogFragment {
     private void initViews(){
         mDialogTitleText.setText(mTitleString);
         mDialogDescriptionText.setText(mDescriptionString);
+        if (mIsHiddenCancelButton){
+            mCancelButton.setVisibility(View.GONE);
+        }
     }
 
     @Override

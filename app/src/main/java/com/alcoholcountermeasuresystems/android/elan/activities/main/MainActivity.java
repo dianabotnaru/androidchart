@@ -13,6 +13,7 @@ import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.AddDrinkActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.BacDisclaimerActivity;
+import com.alcoholcountermeasuresystems.android.elan.activities.BacEstimationActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.ContactUsActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.HistoryActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.InformationActivity;
@@ -55,7 +56,7 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
 
     @OnClick(R.id.layout_bac_estimation)
     void onBacEstimationPressed() {
-        startActivity(new Intent(MainActivity.this, BacDisclaimerActivity.class));
+        startActivity(new Intent(MainActivity.this, BacEstimationActivity.class));
     }
 
     @OnClick(R.id.layout_history)
@@ -137,7 +138,7 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
     }
 
     private void showRegisterDialog(){
-        WarningDialogFragment dialogFragment = WarningDialogFragment.newInstance(mNotRegisteredButtonString,mRegisterScanNearbyDescription);
+        WarningDialogFragment dialogFragment = WarningDialogFragment.newInstance(mNotRegisteredButtonString,mRegisterScanNearbyDescription,false);
         dialogFragment.show(getSupportFragmentManager(), WarningDialogFragment.TAG);
     }
 

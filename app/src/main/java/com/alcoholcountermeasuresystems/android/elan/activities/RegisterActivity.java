@@ -72,7 +72,7 @@ public class RegisterActivity extends BaseInjectableActivity implements WarningD
     }
 
     private void showScanNearbyDialog(){
-        WarningDialogFragment dialogFragment = WarningDialogFragment.newInstance(mRegisterScanNearbyTitle,mRegisterScanNearbyDescription);
+        WarningDialogFragment dialogFragment = WarningDialogFragment.newInstance(mRegisterScanNearbyTitle,mRegisterScanNearbyDescription,false);
         dialogFragment.show(getSupportFragmentManager(), WarningDialogFragment.TAG);
     }
 
