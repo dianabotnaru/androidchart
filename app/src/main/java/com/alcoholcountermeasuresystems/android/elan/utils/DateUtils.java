@@ -1,5 +1,7 @@
 package com.alcoholcountermeasuresystems.android.elan.utils;
 
+import org.joda.time.DateTime;
+
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,6 +13,8 @@ import java.util.Locale;
  */
 
 public class DateUtils {
+
+    public static long reference_timestamp = (new DateTime()).withTimeAtStartOfDay().getMillis()/1000;
 
     public static Date incrementDate(Date date) {
         Date newDate;

@@ -1,8 +1,11 @@
 package com.alcoholcountermeasuresystems.android.elan.views.formatter;
 
+import com.alcoholcountermeasuresystems.android.elan.utils.DateUtils;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
+
+import org.joda.time.DateTime;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -37,7 +40,8 @@ public class HourAxisValueFormatter implements IAxisValueFormatter
 
     private String getHour(long timestamp){
         try{
-            mDate.setTime(timestamp*1000);
+            DateTime dateTime = new DateTime(DateUtils.reference_timestamp*1000);
+            mDate.setTime(DateUtils.reference_timestamp*1000);
             return mDataFormat.format(mDate);
         }
         catch(Exception ex){

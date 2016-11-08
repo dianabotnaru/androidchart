@@ -39,25 +39,16 @@ public class BacEstimationChart extends LineChart {
     }
 
     public void setLineChartDatas(String dataSetLabel, ArrayList yValues){
-
-        LineDataSet dataset = new LineDataSet(setXValuesWithTime(new DateTime()), "Test set");
-        dataset.setColor(ContextCompat.getColor(getContext(), R.color.blue));
-        dataset.setCircleColor(ContextCompat.getColor(getContext(), R.color.blue));
-        dataset.setCircleColorHole(ContextCompat.getColor(getContext(), R.color.blue));
-        dataset.setDrawValues(false);
-        dataset.setLabel(dataSetLabel);
-
-        LineData data = new LineData(dataset);
-        this.setData(data);
-    }
-
-    public ArrayList setXValuesWithTime(DateTime nowDateTime){
-        ArrayList entries = new ArrayList();
-        for(int i = 0; i<3 ;i++){
-            float startTimestamp = (float) (nowDateTime.plusHours(i*2).withTimeAtStartOfDay().getMillis() / 1000);
-            entries.add(new Entry(startTimestamp, 0.5f));
+        if (yValues.size()>0){
+            LineDataSet dataset = new LineDataSet(yValues, "Test set");
+            dataset.setColor(ContextCompat.getColor(getContext(), R.color.blue));
+            dataset.setCircleColor(ContextCompat.getColor(getContext(), R.color.blue));
+            dataset.setCircleColorHole(ContextCompat.getColor(getContext(), R.color.blue));
+            dataset.setDrawValues(false);
+            dataset.setLabel(dataSetLabel);
+            LineData data = new LineData(dataset);
+            this.setData(data);
         }
-        return entries;
     }
 
     public void initChart(){
@@ -77,9 +68,8 @@ public class BacEstimationChart extends LineChart {
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(true);
         xAxis.setValueFormatter(new HourAxisValueFormatter());
-        DateTime nowDateTime = new DateTime();
-        xAxis.setAxisMinimum((float) (nowDateTime.minusHours(12).withTimeAtStartOfDay().getMillis() / 1000));
-        xAxis.setAxisMaximum((float) (nowDateTime.plusHours(12).withTimeAtStartOfDay().getMillis() / 1000));
+        xAxis.setAxisMinimum((float) 0);
+        xAxis.setAxisMaximum((float) 5);
         xAxis.setLabelCount(6);
     }
 

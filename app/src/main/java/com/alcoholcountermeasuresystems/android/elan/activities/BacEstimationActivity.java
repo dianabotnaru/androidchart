@@ -9,6 +9,7 @@ import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 import com.alcoholcountermeasuresystems.android.elan.managers.RealmStore;
 import com.alcoholcountermeasuresystems.android.elan.models.BAC;
+import com.alcoholcountermeasuresystems.android.elan.utils.DateUtils;
 import com.alcoholcountermeasuresystems.android.elan.views.BacEstimationChart;
 import com.github.mikephil.charting.data.Entry;
 
@@ -79,8 +80,7 @@ public class BacEstimationActivity extends BaseInjectableActivity {
         List<BAC> Bacs = mRealmStore.retrieveBacs(new DateTime());
         ArrayList entries = new ArrayList();
         for (BAC bac : Bacs) {
-            entries.add(new Entry(bac.getTimeStamp(), (float)(bac.getPercentageConsumption()/100)));
-
+            entries.add(new Entry(bac.getTimeStamp()/DateUtils.reference_timestamp, (float)(bac.getPercentageConsumption()/100)));
         }
         mBacLineChart.setLineChartDatas(mLegendString,entries);
     }
