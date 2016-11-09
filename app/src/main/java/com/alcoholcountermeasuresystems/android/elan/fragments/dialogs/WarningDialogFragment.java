@@ -41,7 +41,7 @@ public class WarningDialogFragment extends BaseDialogFragment {
     TextView mDialogDescriptionText;
 
     public interface WarningDialogListener {
-        void onDialogOkButtonClicked(DialogFragment2 dialogFragment2);
+        void onDialogOkButtonClicked(WarningDialogFragment dialogFragment2);
     }
 
     @OnClick(R.id.button_ok)

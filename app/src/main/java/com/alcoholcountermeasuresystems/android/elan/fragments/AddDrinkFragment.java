@@ -44,6 +44,7 @@ public class AddDrinkFragment extends BaseInjectableFragment{
 
     public interface AddDrinkFragmentListener {
         void onAddDrink(BAC bac);
+        void onDeleteEntry();
     }
 
     @BindView(R.id.text_description)
@@ -99,6 +100,15 @@ public class AddDrinkFragment extends BaseInjectableFragment{
     void onAddDrinkButtonPressed() {
         try{
             ((AddDrinkFragment.AddDrinkFragmentListener) getActivity()).onAddDrink(setBacModel());
+        }catch (ClassCastException cce){
+            throw new ClassCastException("ScanNearbyDialogListener getTargetFragment is not set");
+        }
+    }
+
+    @OnClick(R.id.button_delete_entry)
+    void onDeleteEntryButtonPressed() {
+        try{
+            ((AddDrinkFragment.AddDrinkFragmentListener) getActivity()).onDeleteEntry();
         }catch (ClassCastException cce){
             throw new ClassCastException("ScanNearbyDialogListener getTargetFragment is not set");
         }

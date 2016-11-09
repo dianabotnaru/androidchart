@@ -59,7 +59,7 @@ public class RegisterActivity extends BaseInjectableActivity implements WarningD
     }
 
     @Override
-    public void onDialogOkButtonClicked(DialogFragment2 dialogFragment2) {
+    public void onDialogOkButtonClicked(WarningDialogFragment dialogFragment2) {
         // Todo insert code for Elan scan
         dialogFragment2.dismiss();
     }

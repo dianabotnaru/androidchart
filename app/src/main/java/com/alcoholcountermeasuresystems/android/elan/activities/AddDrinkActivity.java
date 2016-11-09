@@ -48,7 +48,16 @@ public class AddDrinkActivity extends BaseInjectableActivity implements DateTime
     @BindString(R.string.bac_disclaimer_title)
     String mTitleString;
 
+    @BindString(R.string.add_drink_delete_entry_dialog_title)
+    String mDeleteDialogTitleString;
+
+    @BindString(R.string.add_drink_delete_entry_dialog_description)
+    String mDeleteDialogDescriptionString;
+
     private boolean isComeFromHistory = false;
+
+    private WarningDialogFragment addDrinkConfirmDialog;
+    private WarningDialogFragment DeleteConfirmConfirmDialog;
 
     public BAC mBac;
 
@@ -109,14 +118,25 @@ public class AddDrinkActivity extends BaseInjectableActivity implements DateTime
         }
     }
 
+    @Override
     public void onAddDrink(BAC bac){
         mRealmStore.addBac(bac);
-        WarningDialogFragment dialogFragment = WarningDialogFragment.newInstance("Added Drink Successfully","New Drink Added",true);
-        dialogFragment.show(getSupportFragmentManager(), WarningDialogFragment.TAG);
+        addDrinkConfirmDialog = WarningDialogFragment.newInstance("Added Drink Successfully","New Drink Added",true);
+        addDrinkConfirmDialog.show(getSupportFragmentManager(), WarningDialogFragment.TAG);
     }
 
     @Override
-    public void onDialogOkButtonClicked(DialogFragment2 dialogFragment2) {
+    public void onDeleteEntry(){
+        DeleteConfirmConfirmDialog = WarningDialogFragment.newInstance(mDeleteDialogTitleString,mDeleteDialogDescriptionString,false);
+        DeleteConfirmConfirmDialog.show(getSupportFragmentManager(), WarningDialogFragment.TAG);
+    }
+
+
+    @Override
+    public void onDialogOkButtonClicked(WarningDialogFragment dialogFragment2) {
+        if (dialogFragment2 == DeleteConfirmConfirmDialog){
+            deleteEntry();
+        }
         dialogFragment2.dismiss();
     }
 
@@ -129,5 +149,9 @@ public class AddDrinkActivity extends BaseInjectableActivity implements DateTime
             startActivity(new Intent(AddDrinkActivity.this, BacEstimationActivity.class));
         }
         finish();
+    }
+
+    private void deleteEntry(){
+        // todo delete entry from realm
     }
 }

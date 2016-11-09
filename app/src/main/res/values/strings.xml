@@ -79,6 +79,8 @@
     <string name="add_drink_save_drink_button">Save Drink</string>
     <string name="add_drink_edit_drink_button">Edit Drink</string>
     <string name="add_drink_delete_entry_button">Delete Entry</string>
+    <string name="add_drink_delete_entry_dialog_title">Delete Entry</string>
+    <string name="add_drink_delete_entry_dialog_description">Are you sure you want to delete this entry?</string>
 
     <string name="bac_estimation_title">BAC ESTIMATION</string>
     <string name="bac_estimation_units">Units: g/dL</string>
