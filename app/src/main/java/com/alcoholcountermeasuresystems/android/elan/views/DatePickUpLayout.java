@@ -7,9 +7,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
+import com.alcoholcountermeasuresystems.android.elan.utils.DateUtils;
 
-import java.text.DateFormat;
-import java.util.Date;
+import org.joda.time.DateTime;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,8 +59,7 @@ public class DatePickUpLayout extends RelativeLayout {
         this.datePickUplistener = listener;
     }
 
-    public void setDateText(Date date){
-        String currentDateTimeString = DateFormat.getDateInstance().format(date);
-        mDateText.setText(currentDateTimeString);
+    public void setDateText(DateTime date){
+        mDateText.setText(DateUtils.getDateStringFromDateTime(date));
     }
 }

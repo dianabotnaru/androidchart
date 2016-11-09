@@ -1,6 +1,8 @@
 package com.alcoholcountermeasuresystems.android.elan.utils;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -39,10 +41,15 @@ public class DateUtils {
         return dateString;
     }
 
-    public static String getTimeStringFromdate(Date date){
-        String timeString;
-        Format formatter = new SimpleDateFormat("hh:mm aa", Locale.ENGLISH);
-        timeString = formatter.format(date);
-        return timeString;
+    public static String getTimeStringFromTimeStamp(long timeStamp){
+        DateTime dateTime = new DateTime(timeStamp*1000);
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm a");
+        return formatter.print(dateTime);
     }
+
+    public static String getDateStringFromDateTime(DateTime dateTime ){
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("EE MMM dd,yyyy");
+        return formatter.print(dateTime);
+    }
+
 }

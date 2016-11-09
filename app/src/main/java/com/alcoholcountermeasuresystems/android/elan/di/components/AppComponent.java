@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import com.alcoholcountermeasuresystems.android.elan.MainApplication;
 import com.alcoholcountermeasuresystems.android.elan.activities.AddDrinkActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.BacEstimationActivity;
+import com.alcoholcountermeasuresystems.android.elan.activities.HistoryActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.RegisterActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.main.SplashActivity;
 import com.alcoholcountermeasuresystems.android.elan.activities.main.MainActivity;
@@ -31,6 +32,7 @@ public interface AppComponent {
     void inject(RegisterActivity activity);
     void inject(AddDrinkActivity activity);
     void inject(BacEstimationActivity activity);
+    void inject(HistoryActivity activity);
 
     MainApplication application();
 

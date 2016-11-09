@@ -126,6 +126,17 @@ public class RealmStore {
         return mapToBacs(results);
     }
 
+    public List<BAC> retrieveBacsforDay(@NonNull DateTime day) {
+
+        Realm realm = Realm.getDefaultInstance();
+        long startTimestamp =  (day.withTimeAtStartOfDay().getMillis() / 1000);
+        long endTimestamp =  (day.withTimeAtStartOfDay().plusHours(24).getMillis() / 1000);
+        RealmResults<BAC> results = realm.where(BAC.class)
+                .between("timestamp", startTimestamp, endTimestamp)
+                .findAll();
+        return mapToBacs(results);
+    }
+
     private List<BAC> mapToBacs(RealmResults<BAC> realmResults) {
         List<BAC> bacs = new ArrayList<>(realmResults.size());
         for (BAC bac : realmResults) {
