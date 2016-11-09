@@ -1,5 +1,6 @@
 package com.alcoholcountermeasuresystems.android.elan.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment2;
 import android.support.v4.app.FragmentTransaction;
@@ -105,5 +106,12 @@ public class AddDrinkActivity extends BaseInjectableActivity implements DateTime
     @Override
     public void onDialogOkButtonClicked(DialogFragment2 dialogFragment2) {
         dialogFragment2.dismiss();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(AddDrinkActivity.this, BacEstimationActivity.class));
+        finish();
     }
 }

@@ -55,6 +55,7 @@ public class BacEstimationActivity extends BaseInjectableActivity {
     @OnClick(R.id.button_add_drink)
     void onOkClicked() {
         startActivity(new Intent(BacEstimationActivity.this, AddDrinkActivity.class));
+        finish();
     }
 
     @Override

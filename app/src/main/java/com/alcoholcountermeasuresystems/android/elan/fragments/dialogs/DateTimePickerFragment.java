@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment2;
 import android.view.Window;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
@@ -13,8 +12,7 @@ import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.fragments.base.BaseDialogFragment;
 
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
+import org.joda.time.DateTimeZone;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -57,6 +55,7 @@ public class DateTimePickerFragment extends BaseDialogFragment {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.fragment_date_time_picker_dialog);
         mUnbinder = ButterKnife.bind(this, dialog.getWindow().getDecorView());
+        initDate();
         initTimePicker();
         initDatePicker();
         return dialog;
@@ -98,6 +97,15 @@ public class DateTimePickerFragment extends BaseDialogFragment {
         }catch (ClassCastException cce){
             throw new ClassCastException("DateTimePickerListener getTargetFragment is not set");
         }
+    }
+
+    private void initDate(){
+        DateTime  dateTime = new DateTime();
+        mYear = dateTime.getYear();
+        mMonth = dateTime.getMonthOfYear()-1;
+        mDay = dateTime.getDayOfMonth();
+        mHour = dateTime.getHourOfDay();
+        mMinute = dateTime.getMinuteOfHour();
     }
 
 }
