@@ -152,6 +152,7 @@ public class AddDrinkActivity extends BaseInjectableActivity implements DateTime
     }
 
     private void deleteEntry(){
-        // todo delete entry from realm
+        mRealmStore.deleteEntry(mBac);
+        onBackPressed();
     }
 }

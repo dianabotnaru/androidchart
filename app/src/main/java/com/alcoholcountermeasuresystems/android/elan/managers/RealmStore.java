@@ -154,6 +154,16 @@ public class RealmStore {
         return bacs;
     }
 
+    public void deleteEntry(BAC bac){
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        RealmResults<BAC> results = realm.where(BAC.class)
+                .equalTo("timestamp", bac.getTimeStamp())
+                .findAll();
+        results.deleteAllFromRealm();
+        realm.commitTransaction();
+    }
+
     private  void sortbyFileSize(List<BAC> Bacs)
     {
         Collections.sort(Bacs, new Comparator<BAC>() {
