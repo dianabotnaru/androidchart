@@ -111,6 +111,9 @@ public class RealmStore {
         cachedBac.setTimestamp(bac.getTimeStamp());
         cachedBac.setVolumeConsumption(bac.getVolumeConsumption());
         cachedBac.setPercentageConsumption(bac.getPercentageConsumption());
+        cachedBac.setConsumptionMetric(bac.getConsumptionMetric());
+        cachedBac.setBacDataPoint(bac.getBacDataPoint());
+        cachedBac.setIsFromDevice(bac.getIsFromDevice());
         realm.commitTransaction();
     }
 

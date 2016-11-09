@@ -8,7 +8,9 @@ public enum MeasurementUnit {
     GramsPerDecilitre("g/dL"),
     GramsPerLitre("g/L"),
     MilligramsPerDeciLitre("mg/dL"),
-    MilligramsPerLitre("mg/L");
+    MilligramsPerLitre("mg/L"),
+    Milliter("ml"),
+    FluidOunce("oz");
 
     private final String mName;
 

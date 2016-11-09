@@ -56,7 +56,7 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
 
     @OnClick(R.id.layout_bac_estimation)
     void onBacEstimationPressed() {
-        startActivity(new Intent(MainActivity.this, BacEstimationActivity.class));
+        startActivity(new Intent(MainActivity.this, BacDisclaimerActivity.class));
     }
 
     @OnClick(R.id.layout_history)

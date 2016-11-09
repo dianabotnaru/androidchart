@@ -1,5 +1,8 @@
 package com.alcoholcountermeasuresystems.android.elan.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.joda.time.DateTime;
 
 import java.util.Date;
@@ -8,7 +11,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class BAC extends RealmObject {
+public class BAC extends RealmObject implements Parcelable {
 
     private long timestamp;
     private double bacDataPoint;
@@ -73,4 +76,36 @@ public class BAC extends RealmObject {
         this.isFromDevice = isFromDevice;
     }
 
+    public static final Parcelable.Creator<BAC> CREATOR = new Parcelable.Creator<BAC>() {
+
+        public BAC createFromParcel(Parcel in) {
+            return new BAC(in);
+        }
+
+        public BAC[] newArray(int size) {
+            return new BAC[size];
+        }
+    };
+
+    public BAC(Parcel in) {
+        this.timestamp = in.readLong();
+        this.bacDataPoint = in.readDouble();
+        this.volumeConsumption = in.readDouble();
+        this.percentageConsumption = in.readDouble();
+        this.consumptionMetric = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(timestamp);
+        dest.writeDouble(bacDataPoint);
+        dest.writeDouble(volumeConsumption);
+        dest.writeDouble(percentageConsumption);
+        dest.writeString(consumptionMetric);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 }

@@ -167,6 +167,25 @@
             android:id="@+id/button_add_drink"
             android:enabled="false"
             style="@style/AddDrinkButton"/>
+
+        <Button
+            android:text="@string/add_drink_edit_drink_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_edit_drink"
+            android:layout_marginTop="25dp"
+            style="@style/HistoryBlueTextColorButton"
+            android:visibility="gone" />
+
+        <Button
+            android:text="@string/add_drink_delete_entry_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_delete_entry"
+                android:layout_marginTop="32dp"
+            style="@style/HistoryBlueTextColorButton"
+            android:visibility="gone" />
+
     </LinearLayout>
 
 </LinearLayout>

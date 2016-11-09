@@ -30,9 +30,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        style="@style/MainToolbarNext"
+        style="@style/BlueTextColorButton"
         android:text="@string/toolbar_next"
         android:enabled="false"
-        android:background="@android:color/transparent"
         android:visibility="gone" />
 </android.support.v7.widget.Toolbar>

@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,11 +22,16 @@ import com.alcoholcountermeasuresystems.android.elan.models.BAC;
 
 import org.joda.time.DateTime;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.alcoholcountermeasuresystems.android.elan.data.enums.BundleKey.KeyBac;
+import static com.alcoholcountermeasuresystems.android.elan.data.enums.BundleKey.KeyIsComeHistory;
 
 /**
  * Created by jordi on 31/10/16.
@@ -42,11 +48,17 @@ public class AddDrinkActivity extends BaseInjectableActivity implements DateTime
     @BindString(R.string.bac_disclaimer_title)
     String mTitleString;
 
+    private boolean isComeFromHistory = false;
+
+    public BAC mBac;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_drink);
         ButterKnife.bind(this);
+        isComeFromHistory = getIntent().getBooleanExtra(KeyIsComeHistory.toString(),false);
+        mBac = getIntent().getParcelableExtra(KeyBac.toString());
         initViews();
     }
 
@@ -63,7 +75,7 @@ public class AddDrinkActivity extends BaseInjectableActivity implements DateTime
     }
 
     private void initViews(){
-        AddDrinkFragment fragment = new AddDrinkFragment();
+        AddDrinkFragment fragment = AddDrinkFragment.newInstance(mBac,isComeFromHistory);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.layout_add_drink_content, fragment)
                 .commit();
@@ -111,7 +123,11 @@ public class AddDrinkActivity extends BaseInjectableActivity implements DateTime
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(AddDrinkActivity.this, BacEstimationActivity.class));
+        if (isComeFromHistory){
+            startActivity(new Intent(AddDrinkActivity.this, HistoryActivity.class));
+        }else {
+            startActivity(new Intent(AddDrinkActivity.this, BacEstimationActivity.class));
+        }
         finish();
     }
 }

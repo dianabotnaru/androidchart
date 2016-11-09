@@ -1,6 +1,9 @@
 package com.alcoholcountermeasuresystems.android.elan.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,6 +27,9 @@ import javax.inject.Inject;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.alcoholcountermeasuresystems.android.elan.data.enums.BundleKey.KeyBac;
+import static com.alcoholcountermeasuresystems.android.elan.data.enums.BundleKey.KeyIsComeHistory;
 
 /**
  * Created by jordi on 31/10/16.
@@ -49,6 +55,7 @@ public class HistoryActivity extends BaseInjectableActivity {
     @BindString(R.string.history_title)
     String mTitleString;
 
+    List<BAC> mHistoryBacs;
     private BacHistoryListAdapter mBacListAdapter;
 
     private DateTime mSelectDate;
@@ -100,19 +107,34 @@ public class HistoryActivity extends BaseInjectableActivity {
 //        mHistoryLineChart.setLineChartDatas("",entries);
     }
 
-    private List<BAC> getBacDatas(){
-        List<BAC> Bacs = mRealmStore.retrieveBacsforDay(mSelectDate);
-        return Bacs;
+    private void getBacDatas(){
+        mHistoryBacs = mRealmStore.retrieveBacsforDay(mSelectDate);
     }
 
     private void initBacHistoryListView(){
+        getBacDatas();
         mBacListAdapter = new BacHistoryListAdapter(this);
-        mBacListAdapter.setItems(getBacDatas());
+        mBacListAdapter.setItems(mHistoryBacs);
         mHistoryListView.setAdapter(mBacListAdapter);
+        mHistoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                BAC bac = mHistoryBacs.get(position);
+                Intent intent = new Intent(HistoryActivity.this, AddDrinkActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putParcelable(KeyBac.toString(), bac);
+                mBundle.putBoolean(KeyIsComeHistory.toString(),true);
+                intent.putExtras(mBundle);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void refreshListView(){
-        mBacListAdapter.setItems(getBacDatas());
+        getBacDatas();
+        mBacListAdapter.setItems(mHistoryBacs);
         mBacListAdapter.notifyDataSetChanged();
     }
 }

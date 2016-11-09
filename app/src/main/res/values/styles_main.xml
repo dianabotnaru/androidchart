@@ -6,10 +6,11 @@
         <item name="fontName">@string/font.opensans.bold</item>
     </style>
 
-    <style name="MainToolbarNext">
+    <style name="BlueTextColorButton">
         <item name="android:textSize">@dimen/medium_text_size</item>
         <item name="android:textColor">@color/color_button_next</item>
         <item name="fontName">@string/font.opensans.semibold</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <style name="ActivityLayoutMargin" >
@@ -119,6 +120,14 @@
     <style name="HistoryListViewItemLayout" >
         <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+    </style>
+
+    <style name="HistoryBlueTextColorButton">
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="fontName">@string/font.opensans.bold</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="AddDrinkSelectDateLayout" >
