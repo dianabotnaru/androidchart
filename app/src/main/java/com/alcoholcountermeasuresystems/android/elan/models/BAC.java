@@ -10,7 +10,7 @@ import io.realm.annotations.PrimaryKey;
 
 public class BAC extends RealmObject {
 
-    private int timestamp;
+    private long timestamp;
     private double bacDataPoint;
     private double volumeConsumption;
     private double percentageConsumption;
@@ -22,11 +22,11 @@ public class BAC extends RealmObject {
 
     // TODO: Getters/Setters
 
-    public int getTimeStamp(){
+    public long getTimeStamp(){
         return timestamp;
     }
 
-    public void setTimestamp(int timestamp){
+    public void setTimestamp(long timestamp){
         this.timestamp = timestamp;
     }
 

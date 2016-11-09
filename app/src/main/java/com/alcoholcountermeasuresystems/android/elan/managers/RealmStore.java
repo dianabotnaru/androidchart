@@ -115,8 +115,8 @@ public class RealmStore {
     public List<BAC> retrieveBacs(@NonNull DateTime day) {
         Realm realm = Realm.getDefaultInstance();
 
-        int startTimestamp = (int) (day.minusHours(4).withTimeAtStartOfDay().getMillis() / 1000);
-        int endTimestamp = (int) (day.plusHours(4).withTimeAtStartOfDay().getMillis() / 1000);
+        long startTimestamp =  (day.minusHours(12).getMillis() / 1000);
+        long endTimestamp =  (day.plusHours(12).getMillis() / 1000);
         RealmResults<BAC> results = realm.where(BAC.class)
                 .between("timestamp", startTimestamp, endTimestamp)
                 .findAll();

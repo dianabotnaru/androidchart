@@ -14,8 +14,6 @@ import java.util.Locale;
 
 public class DateUtils {
 
-    public static long reference_timestamp = (new DateTime()).withTimeAtStartOfDay().getMillis()/1000;
-
     public static Date incrementDate(Date date) {
         Date newDate;
         Calendar c = Calendar.getInstance();

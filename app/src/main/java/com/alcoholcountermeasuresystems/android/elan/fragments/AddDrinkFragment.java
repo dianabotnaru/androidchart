@@ -184,9 +184,9 @@ public class AddDrinkFragment extends BaseInjectableFragment{
         }
         if (mNowCheckBox.isChecked()){
             DateTime nowTime = new DateTime();
-            bac.setTimestamp((int) (nowTime.withTimeAtStartOfDay().getMillis() / 1000));
+            bac.setTimestamp(nowTime.getMillis() / 1000);
         }else {
-            bac.setTimestamp((int) (selectedDate.withTimeAtStartOfDay().getMillis() / 1000));
+            bac.setTimestamp(selectedDate.getMillis() / 1000);
         }
         return bac;
     }

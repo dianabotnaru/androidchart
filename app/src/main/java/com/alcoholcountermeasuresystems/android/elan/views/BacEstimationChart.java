@@ -13,12 +13,9 @@ import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 
 import com.github.mikephil.charting.data.LineDataSet;
-
-import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 
@@ -69,7 +66,7 @@ public class BacEstimationChart extends LineChart {
         xAxis.setDrawGridLines(true);
         xAxis.setValueFormatter(new HourAxisValueFormatter());
         xAxis.setAxisMinimum((float) 0);
-        xAxis.setAxisMaximum((float) 5);
+        xAxis.setAxisMaximum((float) 6);
         xAxis.setLabelCount(6);
     }
 
