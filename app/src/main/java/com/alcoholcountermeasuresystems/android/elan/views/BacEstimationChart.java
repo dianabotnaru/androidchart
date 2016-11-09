@@ -7,17 +7,21 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
+import com.alcoholcountermeasuresystems.android.elan.models.BAC;
+import com.alcoholcountermeasuresystems.android.elan.utils.ChartUtils;
 import com.alcoholcountermeasuresystems.android.elan.views.formatter.HourAxisValueFormatter;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 
 import com.github.mikephil.charting.data.LineDataSet;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jordi on 03/11/16.
@@ -35,9 +39,9 @@ public class BacEstimationChart extends LineChart {
         initChart();
     }
 
-    public void setLineChartDatas(String dataSetLabel, ArrayList yValues){
-        if (yValues.size()>0){
-            LineDataSet dataset = new LineDataSet(yValues, "Test set");
+    public void setLineChartDatas(String dataSetLabel, List<BAC> bacs){
+        if (bacs.size()>0){
+            LineDataSet dataset = new LineDataSet(getEntriesForChart(bacs), "Test set");
             dataset.setColor(ContextCompat.getColor(getContext(), R.color.blue));
             dataset.setCircleColor(ContextCompat.getColor(getContext(), R.color.blue));
             dataset.setCircleColorHole(ContextCompat.getColor(getContext(), R.color.blue));
@@ -95,5 +99,25 @@ public class BacEstimationChart extends LineChart {
         Description description = new Description();
         description.setText("");
         setDescription(description);
+    }
+
+    private ArrayList getEntriesForChart(List<BAC> bacs){
+        ArrayList  yValues = new ArrayList();
+        for (int i = 0; i<=24;i++){
+            long timestamp = ChartUtils.getMiniumXAxisValue()+i*ChartUtils.getTimeStampforOneHour();
+            yValues.add(new Entry(ChartUtils.getXAxisValueFromTimeStamp(timestamp), getYValueForTimeStamp(bacs,timestamp)));
+        }
+        return yValues;
+    }
+
+    private float getYValueForTimeStamp(List<BAC> bacs,long timeStamp){
+        float yValue = 0;
+        for (BAC bac : bacs) {
+            long bacTimeStamp = bac.getTimeStamp();
+            if ((bacTimeStamp<timeStamp)&&(bacTimeStamp+ChartUtils.getTimeStampforOneHour()>timeStamp)){
+                yValue = (float) bac.getPercentageConsumption()/100;
+            }
+        }
+        return yValue;
     }
 }

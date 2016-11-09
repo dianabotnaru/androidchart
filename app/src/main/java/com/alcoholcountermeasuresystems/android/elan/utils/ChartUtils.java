@@ -28,6 +28,10 @@ public class ChartUtils {
         return intevalTimeStamp;
     }
 
+    public static long getTimeStampforOneHour(){
+        return getUnitTimeStampforXAxis()/4;
+    }
+
     public static long getMiniumXAxisValue(){
         DateTime nowDate = new DateTime();
         long miniumTimeStamp = nowDate.minusHours(12).getMillis() / 1000;
@@ -39,5 +43,4 @@ public class ChartUtils {
         long maxiumTimeStamp = nowDate.plusHours(12).getMillis() / 1000;
         return maxiumTimeStamp;
     }
-
 }
