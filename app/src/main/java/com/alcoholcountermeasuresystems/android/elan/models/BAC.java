@@ -26,6 +26,10 @@ public class BAC extends RealmObject {
         return timestamp;
     }
 
+    public int getTimeStampIntValue(){
+        return (int)timestamp;
+    }
+
     public void setTimestamp(long timestamp){
         this.timestamp = timestamp;
     }

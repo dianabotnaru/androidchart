@@ -10,6 +10,8 @@ import com.alcoholcountermeasuresystems.android.elan.utils.Internals;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -134,7 +136,17 @@ public class RealmStore {
             newBac.setPercentageConsumption(bac.getPercentageConsumption());
             bacs.add(newBac);
         }
+        sortbyFileSize(bacs);
         return bacs;
+    }
+
+    private  void sortbyFileSize(List<BAC> Bacs)
+    {
+        Collections.sort(Bacs, new Comparator<BAC>() {
+            public int compare(BAC o1, BAC o2) {
+                return o1.getTimeStampIntValue() - o2.getTimeStampIntValue();
+            }
+        });
     }
 
     /***
