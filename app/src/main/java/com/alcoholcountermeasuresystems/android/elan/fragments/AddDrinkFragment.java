@@ -253,11 +253,12 @@ public class AddDrinkFragment extends BaseInjectableFragment{
         }else {
             mConsumedMatricSwitch.setChecked(false);
         }
-        DateTime dateTime = new DateTime(bac.getTimeStamp()*1000);
-        mSelectDateTimeText.setText(DateUtils.getStringFromdate(dateTime.toDate()));
+        selectedDate = new DateTime(bac.getTimeStamp()*1000);
+        mSelectDateTimeText.setText(DateUtils.getStringFromdate(selectedDate.toDate()));
 
         mEditDrinkButton.setVisibility(View.VISIBLE);
         mDeleteEntryButton.setVisibility(View.VISIBLE);
         mAddDrinkButton.setText(mSaveDrinkString);
+        mAddDrinkButton.setEnabled(true);
     }
 }

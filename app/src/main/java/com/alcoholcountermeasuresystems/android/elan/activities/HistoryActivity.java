@@ -12,7 +12,7 @@ import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.activities.base.BaseInjectableActivity;
 import com.alcoholcountermeasuresystems.android.elan.managers.RealmStore;
 import com.alcoholcountermeasuresystems.android.elan.models.BAC;
-import com.alcoholcountermeasuresystems.android.elan.views.BacEstimationChart;
+import com.alcoholcountermeasuresystems.android.elan.views.BacHistoryChart;
 import com.alcoholcountermeasuresystems.android.elan.views.DatePickUpLayout;
 import com.alcoholcountermeasuresystems.android.elan.views.adapters.BacHistoryListAdapter;
 import com.github.mikephil.charting.data.Entry;
@@ -47,7 +47,7 @@ public class HistoryActivity extends BaseInjectableActivity {
     DatePickUpLayout mDatePickUpLayout;
 
     @BindView(R.id.linechart_history)
-    BacEstimationChart mHistoryLineChart;
+    BacHistoryChart mHistoryScatterChart;
 
     @BindView(R.id.listView_history)
     ListView mHistoryListView;
@@ -66,9 +66,9 @@ public class HistoryActivity extends BaseInjectableActivity {
         setContentView(R.layout.activity_history);
         ButterKnife.bind(this);
         initViews();
-        initChart();
         initBacHistoryListView();
         setDatePickupListner();
+        initChart();
     }
 
     @Override
@@ -101,10 +101,7 @@ public class HistoryActivity extends BaseInjectableActivity {
     }
 
     private void initChart(){
-        mHistoryLineChart.getLegend().setEnabled(false);
-        ArrayList entries = new ArrayList();
-        entries.add(new Entry(1451721600, 0.0040f));
-//        mHistoryLineChart.setLineChartDatas("",entries);
+        mHistoryScatterChart.setChartDatas(mHistoryBacs);
     }
 
     private void getBacDatas(){
@@ -136,5 +133,6 @@ public class HistoryActivity extends BaseInjectableActivity {
         getBacDatas();
         mBacListAdapter.setItems(mHistoryBacs);
         mBacListAdapter.notifyDataSetChanged();
+        initChart();
     }
 }

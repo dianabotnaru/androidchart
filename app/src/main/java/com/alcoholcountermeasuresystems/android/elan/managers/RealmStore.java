@@ -104,10 +104,15 @@ public class RealmStore {
         return savedProfile;
     }
 
-    public void addBac(@NonNull BAC bac) {
+    public void updateBac(@NonNull BAC bac){
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        BAC cachedBac = realm.createObject(BAC.class);
+        BAC cachedBac = realm.where(BAC.class)
+                .equalTo("timestamp", bac.getTimeStamp())
+                .findFirst();
+        if (cachedBac == null){
+            cachedBac = realm.createObject(BAC.class);
+        }
         cachedBac.setTimestamp(bac.getTimeStamp());
         cachedBac.setVolumeConsumption(bac.getVolumeConsumption());
         cachedBac.setPercentageConsumption(bac.getPercentageConsumption());

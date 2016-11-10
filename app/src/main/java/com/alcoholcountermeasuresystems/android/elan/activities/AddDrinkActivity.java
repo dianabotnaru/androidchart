@@ -120,7 +120,7 @@ public class AddDrinkActivity extends BaseInjectableActivity implements DateTime
 
     @Override
     public void onAddDrink(BAC bac){
-        mRealmStore.addBac(bac);
+        mRealmStore.updateBac(bac);
         addDrinkConfirmDialog = WarningDialogFragment.newInstance("Added Drink Successfully","New Drink Added",true);
         addDrinkConfirmDialog.show(getSupportFragmentManager(), WarningDialogFragment.TAG);
     }
