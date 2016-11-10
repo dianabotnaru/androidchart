@@ -9,9 +9,7 @@ import android.util.AttributeSet;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.models.BAC;
 import com.alcoholcountermeasuresystems.android.elan.utils.ChartUtils;
-import com.alcoholcountermeasuresystems.android.elan.views.formatter.HourAxisValueFormatter;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -47,8 +45,8 @@ public class BacEstimationChart extends LineChart {
             dataset.setCircleColorHole(ContextCompat.getColor(getContext(), R.color.blue));
             dataset.setDrawValues(false);
             dataset.setLabel(dataSetLabel);
-            LineData data = new LineData(dataset);
-            this.setData(data);
+//            LineData data = new LineData(dataset);
+//            this.setData(data);
         }
     }
 
@@ -56,7 +54,7 @@ public class BacEstimationChart extends LineChart {
         initXAxis();
         initYAxis();
         initLegend();
-        initDescription();
+//        initDescription();
     }
 
     private void initXAxis(){
@@ -68,10 +66,10 @@ public class BacEstimationChart extends LineChart {
         xAxis.setTextColor(Color.WHITE);
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(true);
-        xAxis.setValueFormatter(new HourAxisValueFormatter());
-        xAxis.setAxisMinimum((float) 0);
-        xAxis.setAxisMaximum((float) 6);
-        xAxis.setLabelCount(6);
+//        xAxis.setValueFormatter(new HourAxisValueFormatter());
+//        xAxis.setAxisMinimum((float) 0);
+//        xAxis.setAxisMaximum((float) 6);
+//        xAxis.setLabelCount(6);
     }
 
     private void initYAxis() {
@@ -95,18 +93,18 @@ public class BacEstimationChart extends LineChart {
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
     }
 
-    private void initDescription(){
-        Description description = new Description();
-        description.setText("");
-        setDescription(description);
-    }
+//    private void initDescription(){
+//        Description description = new Description();
+//        description.setText("");
+//        setDescription(description);
+//    }
 
     private ArrayList getEntriesForChart(List<BAC> bacs){
         ArrayList  yValues = new ArrayList();
-        for (int i = 0; i<=24;i++){
-            long timestamp = ChartUtils.getMiniumXAxisValue()+i*ChartUtils.getTimeStampforOneHour();
-            yValues.add(new Entry(ChartUtils.getXAxisValueFromTimeStamp(timestamp), getYValueForTimeStamp(bacs,timestamp)));
-        }
+//        for (int i = 0; i<=24;i++){
+//            long timestamp = ChartUtils.getMiniumXAxisValue()+i*ChartUtils.getTimeStampforOneHour();
+//            yValues.add(new Entry(ChartUtils.getXAxisValueFromTimeStamp(timestamp), (float)getYValueForTimeStamp(bacs,timestamp)));
+//        }
         return yValues;
     }
 

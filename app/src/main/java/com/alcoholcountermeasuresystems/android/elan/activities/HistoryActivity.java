@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,11 +16,9 @@ import com.alcoholcountermeasuresystems.android.elan.models.BAC;
 import com.alcoholcountermeasuresystems.android.elan.views.BacHistoryChart;
 import com.alcoholcountermeasuresystems.android.elan.views.DatePickUpLayout;
 import com.alcoholcountermeasuresystems.android.elan.views.adapters.BacHistoryListAdapter;
-import com.github.mikephil.charting.data.Entry;
 
 import org.joda.time.DateTime;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -49,6 +48,9 @@ public class HistoryActivity extends BaseInjectableActivity {
     @BindView(R.id.linechart_history)
     BacHistoryChart mHistoryScatterChart;
 
+    @BindView(R.id.layout_edge)
+    LinearLayout mEdgeLayout;
+
     @BindView(R.id.listView_history)
     ListView mHistoryListView;
 
@@ -66,9 +68,6 @@ public class HistoryActivity extends BaseInjectableActivity {
         setContentView(R.layout.activity_history);
         ButterKnife.bind(this);
         initViews();
-        initBacHistoryListView();
-        setDatePickupListner();
-        initChart();
     }
 
     @Override
@@ -80,6 +79,9 @@ public class HistoryActivity extends BaseInjectableActivity {
         mToolbarTitleText.setText(mTitleString);
         mSelectDate = new DateTime();
         mDatePickUpLayout.setDateText(mSelectDate);
+        setDatePickupListner();
+        initBacHistoryListView();
+        initChart();
     }
 
     private void setDatePickupListner(){
@@ -88,14 +90,14 @@ public class HistoryActivity extends BaseInjectableActivity {
             public void onForwardDate() {
                 mSelectDate = mSelectDate.plusDays(1);
                 mDatePickUpLayout.setDateText(mSelectDate);
-                refreshListView();
+                refresh();
             }
 
             @Override
             public void onBackDate() {
                 mSelectDate = mSelectDate.minusDays(1);
                 mDatePickUpLayout.setDateText(mSelectDate);
-                refreshListView();
+                refresh();
             }
         });
     }
@@ -113,6 +115,7 @@ public class HistoryActivity extends BaseInjectableActivity {
         mBacListAdapter = new BacHistoryListAdapter(this);
         mBacListAdapter.setItems(mHistoryBacs);
         mHistoryListView.setAdapter(mBacListAdapter);
+        initEdgeLayout();
         mHistoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
@@ -129,10 +132,19 @@ public class HistoryActivity extends BaseInjectableActivity {
         });
     }
 
-    private void refreshListView(){
+    private void refresh(){
         getBacDatas();
         mBacListAdapter.setItems(mHistoryBacs);
         mBacListAdapter.notifyDataSetChanged();
         initChart();
+        initEdgeLayout();
+    }
+
+    private void initEdgeLayout(){
+        if (mHistoryBacs.size()>0){
+            mEdgeLayout.setVisibility(View.VISIBLE);
+        }else{
+            mEdgeLayout.setVisibility(View.GONE);
+        }
     }
 }

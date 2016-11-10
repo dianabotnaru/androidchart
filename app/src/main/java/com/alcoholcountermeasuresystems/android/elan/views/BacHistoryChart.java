@@ -8,11 +8,8 @@ import android.util.AttributeSet;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.models.BAC;
-import com.alcoholcountermeasuresystems.android.elan.utils.ChartUtils;
-import com.alcoholcountermeasuresystems.android.elan.views.formatter.HourAxisValueFormatter;
+import com.alcoholcountermeasuresystems.android.elan.utils.DateUtils;
 import com.github.mikephil.charting.charts.ScatterChart;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -40,7 +37,6 @@ public class BacHistoryChart extends ScatterChart {
     public void initChart(){
         initXAxis();
         initYAxis();
-        initLegend();
         initDescription();
     }
 
@@ -53,10 +49,6 @@ public class BacHistoryChart extends ScatterChart {
         xAxis.setTextColor(Color.WHITE);
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(false);
-        xAxis.setValueFormatter(new HourAxisValueFormatter());
-        xAxis.setAxisMinimum((float) 0);
-        xAxis.setAxisMaximum((float) 6);
-        xAxis.setLabelCount(0);
     }
 
     private void initYAxis() {
@@ -67,22 +59,20 @@ public class BacHistoryChart extends ScatterChart {
         yAxis.setTextColor(Color.WHITE);
         YAxis yAxisRight = getAxisRight();
         yAxisRight.setEnabled(false);
-    }
-
-    private void initLegend(){
-        Legend legend = getLegend();
+        yAxis.setAxisMaxValue(1f);
+        yAxis.setAxisMinValue(0f);
     }
 
     private void initDescription(){
-        Description description = new Description();
-        description.setText("");
-        setDescription(description);
+        setDescription("");
     }
 
-    private ArrayList getEntriesForHistory(List<BAC> bacs){
-        ArrayList  yValues = new ArrayList();
+    private ArrayList<Entry> getEntriesForHistory(List<BAC> bacs){
+        ArrayList<Entry> yValues = new ArrayList<Entry>();
+        int i = 0;
         for (BAC bac : bacs) {
-            yValues.add(new Entry(ChartUtils.getXAxisValueFromTimeStamp(bac.getTimeStamp()),(float) bac.getPercentageConsumption()/100 ));
+            yValues.add(new Entry((float) bac.getPercentageConsumption()/100,i));
+            i++;
         }
         return yValues;
     }
@@ -90,10 +80,10 @@ public class BacHistoryChart extends ScatterChart {
     private ArrayList<String> getXvaluesForHistory(List<BAC> bacs){
         ArrayList<String>  xValues = new ArrayList<String>();
         for (BAC bac : bacs) {
-            xValues.add(String.valueOf(ChartUtils.getXAxisValueFromTimeStamp(bac.getTimeStamp())));
+            xValues.add(DateUtils.getAxisTimeStringFromTimeStamp(bac.getTimeStamp()));
         }
         return xValues;
-    }
+}
 
     public void setChartDatas(List<BAC> bacs){
         if (bacs.size()>0){
@@ -103,9 +93,11 @@ public class BacHistoryChart extends ScatterChart {
             dataset.setScatterShapeSize(7);
             dataset.setScatterShapeHoleColor(ContextCompat.getColor(getContext(), R.color.blue));
             dataset.setDrawValues(false);
-            ScatterData chartData = new ScatterData(dataset) ;
+            ScatterData chartData = new ScatterData(getXvaluesForHistory(bacs),dataset) ;
             this.setData(chartData);
+        }else {
+            clear();
         }
+        invalidate();
     }
-
 }

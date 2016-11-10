@@ -16,24 +16,6 @@ import java.util.Locale;
 
 public class DateUtils {
 
-    public static Date incrementDate(Date date) {
-        Date newDate;
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-        c.add(Calendar.DATE, 1);
-        newDate = c.getTime();
-        return newDate;
-    }
-
-    public static Date decrementDate(Date date) {
-        Date newDate;
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-        c.add(Calendar.DATE, -1);
-        newDate = c.getTime();
-        return newDate;
-    }
-
     public static String getStringFromdate(Date date){
         String dateString;
         Format formatter = new SimpleDateFormat("EE MMM dd,yyyy hh:mm aa", Locale.ENGLISH);
@@ -43,7 +25,7 @@ public class DateUtils {
 
     public static String getTimeStringFromTimeStamp(long timeStamp){
         DateTime dateTime = new DateTime(timeStamp*1000);
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm a");
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("hh:mm a");
         return formatter.print(dateTime);
     }
 
@@ -51,5 +33,13 @@ public class DateUtils {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("EE MMM dd,yyyy");
         return formatter.print(dateTime);
     }
+
+    public static String getAxisTimeStringFromTimeStamp(long timeStamp){
+        DateTime dateTime = new DateTime(timeStamp*1000);
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("hh.mma");
+        return formatter.print(dateTime);
+    }
+
+
 
 }
