@@ -59,8 +59,6 @@ public class BacHistoryChart extends ScatterChart {
         yAxis.setTextColor(Color.WHITE);
         YAxis yAxisRight = getAxisRight();
         yAxisRight.setEnabled(false);
-        yAxis.setAxisMaxValue(1f);
-        yAxis.setAxisMinValue(0f);
     }
 
     private void initDescription(){
@@ -83,7 +81,7 @@ public class BacHistoryChart extends ScatterChart {
             xValues.add(DateUtils.getAxisTimeStringFromTimeStamp(bac.getTimeStamp()));
         }
         return xValues;
-}
+    }
 
     public void setChartDatas(List<BAC> bacs){
         if (bacs.size()>0){

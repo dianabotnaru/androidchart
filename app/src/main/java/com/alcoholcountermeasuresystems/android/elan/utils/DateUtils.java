@@ -40,6 +40,9 @@ public class DateUtils {
         return formatter.print(dateTime);
     }
 
-
-
+    public static String getEstimationAxisStringFromTimeStamp(long timeStamp){
+        DateTime dateTime = new DateTime(timeStamp*1000);
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("hh a");
+        return formatter.print(dateTime);
+    }
 }

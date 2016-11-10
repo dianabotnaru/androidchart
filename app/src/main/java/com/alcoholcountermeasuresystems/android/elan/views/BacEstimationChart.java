@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.models.BAC;
 import com.alcoholcountermeasuresystems.android.elan.utils.ChartUtils;
+import com.alcoholcountermeasuresystems.android.elan.utils.DateUtils;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -39,14 +40,14 @@ public class BacEstimationChart extends LineChart {
 
     public void setLineChartDatas(String dataSetLabel, List<BAC> bacs){
         if (bacs.size()>0){
-            LineDataSet dataset = new LineDataSet(getEntriesForChart(bacs), "Test set");
+            LineDataSet dataset = new LineDataSet(getEntriesForChart(bacs), "");
             dataset.setColor(ContextCompat.getColor(getContext(), R.color.blue));
             dataset.setCircleColor(ContextCompat.getColor(getContext(), R.color.blue));
             dataset.setCircleColorHole(ContextCompat.getColor(getContext(), R.color.blue));
             dataset.setDrawValues(false);
             dataset.setLabel(dataSetLabel);
-//            LineData data = new LineData(dataset);
-//            this.setData(data);
+            LineData data = new LineData(getXValues(),dataset);
+            this.setData(data);
         }
     }
 
@@ -54,7 +55,7 @@ public class BacEstimationChart extends LineChart {
         initXAxis();
         initYAxis();
         initLegend();
-//        initDescription();
+        initDescription();
     }
 
     private void initXAxis(){
@@ -65,11 +66,7 @@ public class BacEstimationChart extends LineChart {
         xAxis.setTextSize(12f);
         xAxis.setTextColor(Color.WHITE);
         xAxis.setDrawAxisLine(true);
-        xAxis.setDrawGridLines(true);
-//        xAxis.setValueFormatter(new HourAxisValueFormatter());
-//        xAxis.setAxisMinimum((float) 0);
-//        xAxis.setAxisMaximum((float) 6);
-//        xAxis.setLabelCount(6);
+        xAxis.setDrawGridLines(false);
     }
 
     private void initYAxis() {
@@ -93,18 +90,16 @@ public class BacEstimationChart extends LineChart {
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
     }
 
-//    private void initDescription(){
-//        Description description = new Description();
-//        description.setText("");
-//        setDescription(description);
-//    }
+    private void initDescription(){
+        setDescription("");
+    }
 
     private ArrayList getEntriesForChart(List<BAC> bacs){
-        ArrayList  yValues = new ArrayList();
-//        for (int i = 0; i<=24;i++){
-//            long timestamp = ChartUtils.getMiniumXAxisValue()+i*ChartUtils.getTimeStampforOneHour();
-//            yValues.add(new Entry(ChartUtils.getXAxisValueFromTimeStamp(timestamp), (float)getYValueForTimeStamp(bacs,timestamp)));
-//        }
+        ArrayList<Entry>  yValues = new ArrayList<Entry>();
+        for (int i = 0; i<=24;i++){
+            long timestamp = ChartUtils.getMiniumXAxisValue()+i*ChartUtils.getTimeStampforOneHour();
+            yValues.add(new Entry(getYValueForTimeStamp(bacs,timestamp),i));
+        }
         return yValues;
     }
 
@@ -117,5 +112,14 @@ public class BacEstimationChart extends LineChart {
             }
         }
         return yValue;
+    }
+
+    private ArrayList<String> getXValues(){
+        ArrayList<String>  xValues = new ArrayList<String>();
+        for (int i = 0; i<=24;i++){
+            long timestamp = ChartUtils.getMiniumXAxisValue()+i*ChartUtils.getTimeStampforOneHour();
+            xValues.add(DateUtils.getEstimationAxisStringFromTimeStamp(timestamp));
+        }
+        return xValues;
     }
 }

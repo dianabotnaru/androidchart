@@ -8,18 +8,6 @@ import org.joda.time.DateTime;
 
 public class ChartUtils {
 
-    public static long getTimeStampFromXAxisValue(float value){
-        long timeStamp;
-        timeStamp = (long) (getMiniumXAxisValue()+value*getUnitTimeStampforXAxis());
-        return timeStamp;
-    }
-
-    public static float getXAxisValueFromTimeStamp(long timeStamp){
-        float xAxisValue;
-        xAxisValue = (float) (timeStamp - getMiniumXAxisValue())/(float) getUnitTimeStampforXAxis();
-        return xAxisValue;
-    }
-
     public static long getUnitTimeStampforXAxis(){
         DateTime nowDate = new DateTime();
         long miniumTimeStamp = nowDate.minusHours(12).getMillis() / 1000;
@@ -36,11 +24,5 @@ public class ChartUtils {
         DateTime nowDate = new DateTime();
         long miniumTimeStamp = nowDate.minusHours(12).getMillis() / 1000;
         return miniumTimeStamp;
-    }
-
-    public static long getMaxiumXAxisValue(){
-        DateTime nowDate = new DateTime();
-        long maxiumTimeStamp = nowDate.plusHours(12).getMillis() / 1000;
-        return maxiumTimeStamp;
     }
 }
