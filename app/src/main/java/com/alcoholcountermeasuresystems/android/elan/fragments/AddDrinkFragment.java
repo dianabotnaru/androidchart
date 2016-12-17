@@ -2,7 +2,6 @@ package com.alcoholcountermeasuresystems.android.elan.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -76,6 +75,9 @@ public class AddDrinkFragment extends BaseInjectableFragment{
 
     @BindView(R.id.switch_consumed_matric)
     Switch mConsumedMatricSwitch;
+
+    @BindView(R.id.text_ml)
+    TextView mMlUnitTextView;
 
     @BindString(R.string.add_drink_description)
     String mDisableDescriptionString;
@@ -156,6 +158,7 @@ public class AddDrinkFragment extends BaseInjectableFragment{
 
     private void initViews(){
         initNowCheckBox();
+        initSwitchChangeListner();
         initEditText();
         if(mIsComeFromHistory){
             initViewsForHistory(mBac);
@@ -176,6 +179,20 @@ public class AddDrinkFragment extends BaseInjectableFragment{
                                                      }
                                                  }
         );
+    }
+
+    private void initSwitchChangeListner(){
+        mConsumedMatricSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    mMlUnitTextView.setText(FluidOunce.toString());
+                }else{
+                    mMlUnitTextView.setText(Milliter.toString());
+                }
+            }
+        });
     }
 
     public void setDateTimeTextview(DateTime dateTime){
