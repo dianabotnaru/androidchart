@@ -6,7 +6,8 @@ package com.alcoholcountermeasuresystems.android.elan.data.enums;
 
 public enum BundleKey {
     KeyBac("bac"),
-    KeyIsComeHistory("is_coming_from_history");
+    KeyIsComeHistory("is_coming_from_history"),
+    KeyIsComeInformation("is_coming_from_information");
 
     private final String mName;
 

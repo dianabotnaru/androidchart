@@ -16,6 +16,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.alcoholcountermeasuresystems.android.elan.data.enums.BundleKey.KeyIsComeInformation;
+
 /**
  * Created by jordi on 28/10/16.
  */
@@ -33,7 +35,11 @@ public class InformationActivity extends BaseActivity{
 
     @OnClick(R.id.button_discalimer)
     void onDisclaimerButtonPressed() {
-        startActivity(new Intent(InformationActivity.this, BacDisclaimerActivity.class));
+        Intent intent = new Intent(InformationActivity.this, BacDisclaimerActivity.class);
+        Bundle mBundle = new Bundle();
+        mBundle.putBoolean(KeyIsComeInformation.toString(),false);
+        intent.putExtras(mBundle);
+        startActivity(intent);
         finish();
     }
 

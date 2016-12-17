@@ -30,6 +30,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.alcoholcountermeasuresystems.android.elan.data.enums.BundleKey.KeyIsComeInformation;
+
 public class MainActivity extends BaseInjectableActivity implements WarningDialogFragment.WarningDialogListener {
 
     @Inject
@@ -56,7 +58,11 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
 
     @OnClick(R.id.layout_bac_estimation)
     void onBacEstimationPressed() {
-        startActivity(new Intent(MainActivity.this, BacDisclaimerActivity.class));
+        Intent intent = new Intent(MainActivity.this, BacDisclaimerActivity.class);
+        Bundle mBundle = new Bundle();
+        mBundle.putBoolean(KeyIsComeInformation.toString(),false);
+        intent.putExtras(mBundle);
+        startActivity(intent);
     }
 
     @OnClick(R.id.layout_history)
@@ -127,7 +133,11 @@ public class MainActivity extends BaseInjectableActivity implements WarningDialo
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_dedisclaimer) {
-            startActivity(new Intent(MainActivity.this, BacDisclaimerActivity.class));
+            Intent intent = new Intent(MainActivity.this, BacDisclaimerActivity.class);
+            Bundle mBundle = new Bundle();
+            mBundle.putBoolean(KeyIsComeInformation.toString(),true);
+            intent.putExtras(mBundle);
+            startActivity(intent);
             return true;
         }
         else if (id == R.id.action_contactus) {
