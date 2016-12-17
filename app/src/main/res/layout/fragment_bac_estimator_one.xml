@@ -106,7 +106,8 @@
                                 android:id="@+id/checkBox_gender_female"
                                 android:layout_alignParentTop="true"
                                 android:layout_alignParentEnd="true"
-                                android:alpha="0.7" />
+                                android:alpha="0.7"
+                                android:checked="true" />
                         </RelativeLayout>
 
 

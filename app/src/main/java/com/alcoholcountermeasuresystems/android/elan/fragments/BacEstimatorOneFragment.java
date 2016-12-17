@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.alcoholcountermeasuresystems.android.elan.R;
 import com.alcoholcountermeasuresystems.android.elan.fragments.base.BaseInjectableFragment;
@@ -20,6 +21,8 @@ import com.alcoholcountermeasuresystems.android.elan.utils.Internals;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.alcoholcountermeasuresystems.android.elan.utils.MeasurementLookup.*;
 
 /**
  * Created by jordi on 31/10/16.
@@ -37,6 +40,7 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
     private static int HELIGHT_INCH_MAX_VALUE = 84;//7*12inch
     private static int WEIGHT_LBS_MAX_VALUE = 500;
     private static int WEIGHT_KG_MAX_VALUE = 220;
+
 
     @BindView(R.id.edittext_age)
     EditText mAgeEditText;
@@ -59,6 +63,12 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
     @BindView(R.id.switch_lbs)
     Switch mlbsSwitch;
 
+    @BindView(R.id.text_lbs)
+    TextView mWeightUnitTextView;
+
+    @BindView(R.id.text_in)
+    TextView mHeightUnitTextView;
+
     @Override
     protected void injectComponents() {}
 
@@ -75,7 +85,8 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
         initAgeEditText();
         initHeightEditText();
         initWeightEditText();
-        initCheckBoxs();
+        initCheckBoxChangeListner();
+        initSwitchChangeListner();
     }
 
     private void initAgeEditText(){
@@ -121,7 +132,7 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
         });
     }
 
-    void initWeightEditText(){
+    private void initWeightEditText(){
         mWeightEditText.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(!s.equals("")) {
@@ -145,7 +156,7 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
         });
     }
 
-    void initCheckBoxs(){
+    private void initCheckBoxChangeListner(){
         mMaleCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                                                      @Override
@@ -168,6 +179,32 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
         );
     }
 
+    private void initSwitchChangeListner(){
+        mInSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                                     @Override
+                                                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                         if (isChecked)
+                                                             mHeightUnitTextView.setText(CM);
+                                                         else
+                                                             mHeightUnitTextView.setText(INCHES);
+                                                     }
+                                                 }
+        );
+
+        mlbsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                                 @Override
+                                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                     if (isChecked)
+                                                         mWeightUnitTextView.setText(KG);
+                                                     else
+                                                         mWeightUnitTextView.setText(LBS);
+                                                 }
+                                             }
+        );
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -177,7 +214,7 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
         try{
             ((BacEstimatorOneFragment.BacEstimatorOneFragmentListener) getActivity()).onCompletedEstimatorSetting(isCompletedEdit(),getProfileInformationforEstimator());
         }catch (ClassCastException cce){
-            throw new ClassCastException("ScanNearbyDialogListener getTargetFragment is not set");
+            throw new ClassCastException("BacEstimatorOneFragmentListener getTargetFragment is not set");
         }
     }
 
@@ -200,14 +237,14 @@ public class BacEstimatorOneFragment extends BaseInjectableFragment{
                 profileForBac.setGender("F");
             }
             if (mInSwitch.isChecked()){
-                profileForBac.setHeightMetric("cm");
+                profileForBac.setHeightMetric(CM);
             }else {
-                profileForBac.setHeightMetric("in");
+                profileForBac.setHeightMetric(INCHES);
             }
             if (mlbsSwitch.isChecked()){
-                profileForBac.setHeightMetric("lb");
+                profileForBac.setHeightMetric(LBS);
             }else {
-                profileForBac.setHeightMetric("kg");
+                profileForBac.setHeightMetric(KG);
             }
             return profileForBac;
         }

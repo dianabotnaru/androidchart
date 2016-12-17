@@ -9,6 +9,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MeasurementLookup {
+
+    public final static String CM = "cm";
+    public final static String INCHES = "in";
+    public final static String KG = "kg";
+    public final static String LBS = "lbs";
+
     public static Map<String, Measurement> lookup = new HashMap<>();
 
     static {
